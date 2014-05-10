@@ -24,8 +24,8 @@ NeoBundle 'Shougo/neosnippet'
 NeoBundle 'taichouchou2/html5.vim' " html5シンタックス
 NeoBundle 'hail2u/vim-css3-syntax' " css3シンタックス
 NeoBundle 'taichouchou2/vim-javascript' " javascriptシンタックス
+NeoBundle 'kchmck/vim-coffee-script' " coffeescryptシンタックス
 "NeoBundle 'townk/vim-autoclose' " 閉じカッコを自動化
-NeoBundle 'kchmck/vim-coffee-script'
 
 " ファイル形式別プラグインのロードを有効化
 filetype plugin on
@@ -80,6 +80,8 @@ if !exists('g:neocomplcache_keyword_patterns')
         let g:neocomplcache_keyword_patterns = {}
 endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+
+
 
 "-------------------------------------------------
 " Basic 基本設定
