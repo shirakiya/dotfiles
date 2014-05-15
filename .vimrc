@@ -11,21 +11,21 @@ if has('vim_starting')
 endif
 
 NeoBundle 'Shougo/neobundle.vim'
-"githubリポジトリにあるプラグインを利用場合
-NeoBundle 'tpope/vim-fugitive'
-"github以外のgitリポジトリにあるプラグインを利用する場合
-NeoBundle 'git://git.wincent.com/command-t.git'
-"git以外のリポジトリにあるプラグインをを利用する場合
-NeoBundle 'http://svn.macports.org/repository/macports/contrib/mpvim/'
-"neobundle 'https://bitbucket.org/ns9tks/vim-fuzzyfinder'
-NeoBundle 'tpope/vim-surround'
 NeoBundle 'Shougo/vimproc'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'taichouchou2/html5.vim' " html5シンタックス
-NeoBundle 'hail2u/vim-css3-syntax' " css3シンタックス
-NeoBundle 'taichouchou2/vim-javascript' " javascriptシンタックス
-NeoBundle 'kchmck/vim-coffee-script' " coffeescryptシンタックス
-"NeoBundle 'townk/vim-autoclose' " 閉じカッコを自動化
+NeoBundle 'tpope/vim-fugitive' " githubリポジトリにあるプラグインを利用場合
+NeoBundle 'git://git.wincent.com/command-t.git' " github以外のgitリポジトリにあるプラグインを利用する場合
+NeoBundle 'http://svn.macports.org/repository/macports/contrib/mpvim/' " git以外のリポジトリにあるプラグインを利用する場合
+NeoBundle 'Shougo/neocomplcache' " みんな大好き入力補完
+NeoBundle 'tpope/vim-surround' " Vimのテキストオブジェクト処理の強化
+NeoBundle 'Shougo/neosnippet' " スニペット
+NeoBundle 'Shougo/neosnippet-snippets' " スニペット
+NeoBundle 'Align' " テキストファイルの整形
+" NeoBundle 'itchyny/lightline.vim' " ステータスバー強化
+" NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'taichouchou2/html5.vim' " html5シンタックス追加
+NeoBundle 'hail2u/vim-css3-syntax' " css3シンタックス追加
+NeoBundle 'pangloss/vim-javascript' " javascriptシンタックス追加
+NeoBundle 'kchmck/vim-coffee-script' " coffeescriptシンタックス追加
 
 " ファイル形式別プラグインのロードを有効化
 filetype plugin on
@@ -47,13 +47,11 @@ endif
 "-------------------------------------------------
 "neocomplcache設定
 "-------------------------------------------------
-NeoBundle 'Shougo/neocomplcache'
 
-"neocomplcacheを起動時に有効化
+" neocomplcacheを起動時に有効化
 let g:neocomplcache_enable_at_startup = 1
 
 let g:acp_enableAtStartup = 0
-let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_underbar_completion = 1
@@ -68,7 +66,7 @@ inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 
-"Define dictionary.
+" Define dictionary.
 let g:neocomplcache_dictionary_filetype_lists = {
             \ 'default' : '',
             \ 'vimshell' : $HOME.'/.vimshell_hist',
@@ -173,6 +171,22 @@ set showmatch
 " 保存時に行末の空白を除去する
 autocmd BufWritePre * :%s/\s\+$//e
 
+" .tx、.ttファイルをhtmlシンタックスで認識させる
+autocmd BufNewFile,BufRead *.tx set filetype=html
+autocmd BufNewFile,BufRead *.tt set filetype=html
+
+" インサートモードでもhjklで移動（Ctrlを押しながら）
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
+
+" インサートモードでも削除
+inoremap <C-x> <BS>
+
+" 'j'2回押下でESC
+inoremap jj <ESC>
+
 
 
 "-------------------------------------------------
@@ -231,12 +245,5 @@ set wildmode=list:longest,full
 " "list:full"	  複数のマッチがあるときは、全てのマッチを羅列し、最初のマッチを補完する
 " "list:longest"  複数のマッチがあるときは、全てのマッチを羅列し、共通する最長の文字列までが補完される
 
-" インサートモードでもhjklで移動（Ctrlを押しながら）
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-h> <Left>
-inoremap <C-l> <Right>
 
-" インサートモードでも削除
-inoremap <C-x> <BS>
 
