@@ -1,4 +1,6 @@
 #! /usr/local/bin/zsh
+# if you use bash
+# #! /bin/bash
 ln -s ~/dotfiles/.vimrc ~/.vimrc
 ln -s ~/dotfiles/.vim ~/.vim
 ln -s ~/dotfiles/.zshrc ~/.zshrc

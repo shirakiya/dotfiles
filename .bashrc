@@ -21,6 +21,7 @@ alias gad='git add'
 
 
 # Macvim kaoriya
+# Linuxの場合、これらは削除する必要がある
 alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias vim='env_LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 
