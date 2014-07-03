@@ -20,8 +20,6 @@ NeoBundle 'tpope/vim-surround' " Vimのテキストオブジェクト処理の�
 NeoBundle 'Shougo/neosnippet' " スニペット
 NeoBundle 'Shougo/neosnippet-snippets' " スニペット
 NeoBundle 'Align' " テキストファイルの整形
-" NeoBundle 'itchyny/lightline.vim' " ステータスバー強化
-" NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'taichouchou2/html5.vim' " html5シンタックス追加
 NeoBundle 'hail2u/vim-css3-syntax' " css3シンタックス追加
 NeoBundle 'pangloss/vim-javascript' " javascriptシンタックス追加
@@ -169,7 +167,7 @@ set number
 set showmatch
 
 " 保存時に行末の空白を除去する
-autocmd BufWritePre * :%s/\s\+$//e
+"autocmd BufWritePre * :%s/\s\+$//e
 
 " .tx、.ttファイルをhtmlシンタックスで認識させる
 autocmd BufNewFile,BufRead *.tx set filetype=html
