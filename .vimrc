@@ -147,6 +147,11 @@ set mouse=a
 " クリップボードを利用する
 set clipboard=unnamed,autoselect
 
+" Insertモード前にあった文字をBackspaceキーで削除可能にする
+set backspace=start,eol,indent
+
+" 検索結果をハイライトする
+set hlsearch
 
 "-------------------------------------------------
 "" Color Scheme設定
