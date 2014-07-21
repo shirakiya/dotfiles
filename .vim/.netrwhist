@@ -1,10 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
-let g:netrw_dirhist_1='/Users/yoshihikoshiraki/kensyu14/appbc/shiraki/Shiratter/lib/Shiratter'
-let g:netrw_dirhist_2='/Users/yoshihikoshiraki/kensyu14/appbc/shiraki/Shiratter/config'
-let g:netrw_dirhist_3='/Users/yoshihikoshiraki/kensyu14/appbc/shiraki/Shiratter/lib/Shiratter'
-let g:netrw_dirhist_4='/Users/yoshihikoshiraki/kensyu14/tddbc/9_shiraki_tannai/lib/trainroute'
-let g:netrw_dirhist_5='/Users/yoshihikoshiraki/kensyu14/appbc/shiraki/Shiratter/lib/Shiratter/DB'
-let g:netrw_dirhist_6='/Users/yoshihikoshiraki/kensyu14/appbc/shiraki/Shiratter/tmpl/profile'
-let g:netrw_dirhist_7='/Users/yoshihikoshiraki/kensyu14/appbc/shiraki/Shiratter/tmpl/timeline'
-let g:netrw_dirhist_8='/Users/yoshihikoshiraki/dotfiles/.git'
+let g:netrw_dirhist_cnt =0
