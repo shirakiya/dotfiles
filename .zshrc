@@ -2,11 +2,36 @@
 # Alias Settings
 # ------------------------------
 
+# for unix
 alias la="ls -a"
 alias ll="ls -l"
 alias lla="ls -al"
 
+# for vim 
+alias v="vim"
+alias vi="vim"
+
+# for tmux
 alias tm="tmuxx"
+
+# for git
+alias g="git"
+alias gst="git status"
+alias gsh="git show"
+alias gad="git add ."
+alias gcm="git commit"
+alias gps="git push"
+alias gdf="git diff"
+alias gsta="git stash"
+alias gstl="git stash list"
+alias gbr="git branch"
+alias gco="git checkout"
+alias gft="git fetch"
+alias grb="git rebase"
+alias glg="git log"
+alias ggr="git grep"
+alias gmv="git mv"
+alias grm="git rm"
 
 
 # ------------------------------
