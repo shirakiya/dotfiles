@@ -6,13 +6,20 @@
 alias la="ls -a"
 alias ll="ls -l"
 alias lla="ls -al"
+alias pag="ps aux | grep"
 
 # for vim 
 alias v="vim"
 alias vi="vim"
 
 # for tmux
-alias tm="tmuxx"
+alias tm="tmux"
+alias tmx="tmuxx"
+alias tmls="tmux ls"
+alias tmrn="tmux rename -t"
+alias tma="tmux a -t"
+alias tmkss="tmux kill-session -t"
+alias tmksv="tmux kill-server"
 
 # for git
 alias g="git"
@@ -23,6 +30,8 @@ alias gcm="git commit"
 alias gps="git push"
 alias gdf="git diff"
 alias gsta="git stash"
+alias gsts="git stash save"
+alias gstp="git stash pop"
 alias gstl="git stash list"
 alias gbr="git branch"
 alias gco="git checkout"
@@ -32,6 +41,9 @@ alias glg="git log"
 alias ggr="git grep"
 alias gmv="git mv"
 alias grm="git rm"
+alias grs="git reset"
+alias gmg="git merge"
+alias gcp="git cherry-pick"
 
 
 # ------------------------------

@@ -174,10 +174,6 @@ set showmatch
 " 保存時に行末の空白を除去する
 "autocmd BufWritePre * :%s/\s\+$//e
 
-" .tx、.ttファイルをhtmlシンタックスで認識させる
-autocmd BufNewFile,BufRead *.tx set filetype=html
-autocmd BufNewFile,BufRead *.tt set filetype=html
-
 " インサートモードでもhjklで移動（Ctrlを押しながら）
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
@@ -245,6 +241,23 @@ if has("autocmd")
   autocmd FileType zsh        setlocal sw=4 sts=4 ts=4 et
   autocmd FileType scala      setlocal sw=2 sts=2 ts=2 et
 endif
+
+
+
+"-------------------------------------------------
+" シンタックス
+"-------------------------------------------------
+
+" .psgiをperlとして認識させる
+au BufRead,BufNewFile *.psgi set filetype=perl
+
+" .airyファイルをAiry議事録フォーマットとして認識させる
+au BufRead,BufNewFile *.airy set filetype=airy
+
+" .tx、.ttファイルをhtmlシンタックスで認識させる
+autocmd BufNewFile,BufRead *.tx set filetype=html
+autocmd BufNewFile,BufRead *.tt set filetype=html
+
 
 
 "-------------------------------------------------
