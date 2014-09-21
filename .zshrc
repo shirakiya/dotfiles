@@ -1,58 +1,9 @@
 # ------------------------------
-# Alias Settings
-# ------------------------------
-
-# for unix
-alias la="ls -a"
-alias ll="ls -l"
-alias lla="ls -al"
-alias pag="ps aux | grep"
-
-# for vim 
-alias v="vim"
-alias vi="vim"
-
-# for tmux
-alias tm="tmux"
-alias tmx="tmuxx"
-alias tmls="tmux ls"
-alias tmrn="tmux rename -t"
-alias tma="tmux a -t"
-alias tmkss="tmux kill-session -t"
-alias tmksv="tmux kill-server"
-
-# for git
-alias g="git"
-alias gst="git status"
-alias gsh="git show"
-alias gad="git add ."
-alias gcm="git commit"
-alias gps="git push"
-alias gdf="git diff"
-alias gsta="git stash"
-alias gsts="git stash save"
-alias gstp="git stash pop"
-alias gstl="git stash list"
-alias gbr="git branch"
-alias gco="git checkout"
-alias gft="git fetch"
-alias grb="git rebase"
-alias glg="git log"
-alias ggr="git grep"
-alias gmv="git mv"
-alias grm="git rm"
-alias grs="git reset"
-alias gmg="git merge"
-alias gcp="git cherry-pick"
-
-
-# ------------------------------
 # General Settings
 # ------------------------------
 
 # zsh関連ファイルの読み込み
-#[[ -f ~/.zshrc.alias ]] && source ~/.zshrc.alias
-#[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+[[ -f ~/.zshrc.alias ]] && source ~/.zshrc.alias
 
 # 文字コードをUTF-8に設定
 export LANG=ja_JP.UTF-8
@@ -77,9 +28,8 @@ setopt hist_ignore_space
 
 # ヒストリの設定
 HISTFILE=~/.zsh_history
-HISTSIZE=1000
-SAVEHIST=1000
-
+HISTSIZE=10000
+SAVEHIST=10000
 
 
 # ------------------------------
@@ -104,7 +54,6 @@ export CLICOLOR=true
 
 # 補完候補に色を付ける
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-
 
 
 # ------------------------------
@@ -135,7 +84,6 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/s
 
 # ps コマンドのプロセス名補完
 zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
-
 
 
 # ------------------------------
@@ -177,9 +125,8 @@ SPROMPT="'%r' is correct? ([n]o, [y]es, [a]bort, [e]dit):"
 path=(/usr/local/bin ${path})
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
-# pmver {{{
-pmver ()
-{
+# show cpan module version
+pmver () {
     do_cd=;
     if [ "$1" = '-cd' ]; then
         do_cd=1;
@@ -196,19 +143,3 @@ pmver ()
         \cd $(dirname $fullpath);
     fi
 }
-# }}}
-
-# for tmux auto-starting
-#if [ -z "$TMUX" -a -z "$STY" ]; then
-#    if type tmuxx >/dev/null 2>&1; then
-#        tmuxx
-#    elif type tmux >/dev/null 2>&1; then
-#        if tmux has-session && tmux list-sessions | /usr/bin/grep -qE '.*]$'; then
-#            tmux attach && echo "tmux attached session "
-#        else
-#            tmux new-session && echo "tmux created new session"
-#        fi
-#    elif type screen >/dev/null 2>&1; then
-#        screen -rx || screen -D -RR
-#    fi
-#fi

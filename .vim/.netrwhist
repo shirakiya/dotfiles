@@ -1,9 +1,3 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/Users/yoshihikoshiraki/projects/geekdojo/app/static/js'
-let g:netrw_dirhist_2='/Users/yoshihikoshiraki/practice/javascript/backbone/node_modules/jquery/dist'
-let g:netrw_dirhist_3='/Users/yoshihikoshiraki/kensyu14/serverspec/spec/base'
-let g:netrw_dirhist_4='/Users/yoshihikoshiraki/practice/php_practice/www'
-let g:netrw_dirhist_5='/Users/yoshihikoshiraki/projects/geekdojo/app/config'
-let g:netrw_dirhist_6='/Users/yoshihikoshiraki/projects/lovedriving/app/config'
-let g:netrw_dirhist_7='/Users/yoshihikoshiraki/projects/lovedriving/app/.git'
+let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_1='/Users/yoshihikoshiraki/projects/lovedriving/app/lib/LoveDriving/Calc'
