@@ -35,24 +35,40 @@ let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
 
 "-------------------------------------------------
+" PowerLine 設定
+"-------------------------------------------------
+
+let g:Powerline_symbols = 'compatible'
+
+
+"-------------------------------------------------
 " NERDTree 設定
 "-------------------------------------------------
 
-"隠しファイルを表示する。
+" 隠しファイルを表示する。
 let NERDTreeShowHidden = 1 
 
 " デフォルトでツリーを表示させる
 "autocmd VimEnter * execute 'NERDTree'
 
-"引数なしで実行したとき、NERDTreeを実行する
+" 引数なしで実行したとき、NERDTreeを実行する
 let file_name = expand("%:p")
 if has('vim_starting') &&  file_name == ""
     autocmd VimEnter * execute 'NERDTree ./'
 endif
 
+" NERDTree呼び出しキーマッピング
+nnoremap [NERDTree] <Nop>
+nmap <Space>t [NERDTree]
+nnoremap <silent> [NERDTree]o :<C-u>NERDTree<CR>
+
 
 "-------------------------------------------------
-" PowerLine 設定
+" previm 設定
 "-------------------------------------------------
 
-let g:Powerline_symbols = 'compatible'
+" previm呼び出しキーマッピング
+nnoremap [previm] <Nop>
+nmap <Space>p [previm]
+nnoremap <silent> [previm]o :<C-u>PrevimOpen<CR>
+nnoremap <silent> [previm]r :call previm#refresh()<CR>
