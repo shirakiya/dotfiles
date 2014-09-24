@@ -1,6 +1,2 @@
 .DS_Store
-.vim/bundle/
-.vim/colors/
-.vim/syntax/
-.vim/*.vim
-.vim/.netrwhist
+.vim/
