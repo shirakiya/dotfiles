@@ -13,7 +13,6 @@ call neobundle#begin(expand('~/.vim/bundle'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
@@ -41,7 +40,100 @@ filetype plugin indent on
 
 
 "-------------------------------------------------
-" Basic 基本設定
+" neocomplcache 設定
+"-------------------------------------------------
+
+" neocomplcacheを起動時に有効化
+let g:neocomplcache_enable_at_startup = 1
+
+let g:acp_enableAtStartup = 0
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+let g:NeoComplCache_SkipInputTime = '0.5'
+" カーソルキーで補完候補を表示しない
+let g:neocomplcache_enable_insert_char_pre = 1
+"inoremap <expr><Up> pumvisible() ? neocomplcache#smart_close_popup()."\<Up>" : "\<Up>"
+"inoremap <expr><Down> pumvisible() ? neocomplcache#smart_close_popup()."\<Down>" : "\<Down>"
+inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "<CR>"
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+" 補完候補の共通文字列を補完する(シェル補完のような動作)
+inoremap <expr><C-l>   neocomplcache#complete_common_string()
+
+" Define dictionary.
+let g:neocomplcache_dictionary_filetype_lists = {
+            \ 'default' : '',
+            \ 'vimshell' : $HOME.'/.vimshell_hist',
+            \ 'scheme' : $HOME.'/.gosh_completions'
+            \ }
+
+" Define keyword.
+if !exists('g:neocomplcache_keyword_patterns')
+        let g:neocomplcache_keyword_patterns = {}
+endif
+let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+
+"関数を補完するための区切り文字パターン
+if !exists('g:neocomplcache_delimiter_patterns')
+	let g:neocomplcache_delimiter_patterns = {}
+endif
+let g:neocomplcache_delimiter_patterns['php'] = ['->', '::', '\']
+
+"if !exists('g:neocomplcache_next_keyword_patterns')
+"	let g:neocomplcache_next_keyword_patterns = {}
+"endif
+
+" スニペット
+let g:neosnippet#enable_snipmate_compatibility = 1
+let g:neocomplcache_snippets_dir = $HOME.'/.vim/snippets'
+
+"-------------------------------------------------
+" PowerLine 設定
+"-------------------------------------------------
+
+let g:Powerline_symbols = 'compatible'
+
+
+"-------------------------------------------------
+" NERDTree 設定
+"-------------------------------------------------
+
+" 隠しファイルを表示する。
+let NERDTreeShowHidden = 1 
+
+" デフォルトでツリーを表示させる
+"autocmd VimEnter * execute 'NERDTree'
+
+" 引数なしで実行したとき、NERDTreeを実行する
+let file_name = expand("%:p")
+if has('vim_starting') &&  file_name == ""
+    autocmd VimEnter * execute 'NERDTree ./'
+endif
+
+" NERDTree呼び出しキーマッピング
+nnoremap [NERDTree] <Nop>
+nmap <Space>t [NERDTree]
+nnoremap <silent> [NERDTree]o :<C-u>NERDTree<CR>
+
+
+"-------------------------------------------------
+" previm 設定
+"-------------------------------------------------
+
+" previm呼び出しキーマッピング
+nnoremap [previm] <Nop>
+nmap <Space>p [previm]
+nnoremap <silent> [previm]o :<C-u>PrevimOpen<CR>
+nnoremap <silent> [previm]r :call previm#refresh()<CR>
+
+
+"-------------------------------------------------
+" Basic
 "-------------------------------------------------
 
 " 分割した設定ファイルをすべて読み込む

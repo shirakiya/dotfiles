@@ -2,17 +2,12 @@
 
 DOTDIR=$HOME/dotfiles
 VIMDIR=$HOME/.vim
-VIMCONFDIR=$VIMDIR/conf
 VIMBUNDLEDIR=$VIMDIR/bundle
 
 ln -s $DOTDIR/vimrc $HOME/.vimrc
 if ! [ -e $VIMDIR ]; then
     mkdir $VIMDIR
 fi
-if [ ! -e $VIMCONFDIR ]; then
-    mkdir $VIMCONFDIR
-fi
-ln -s $DOTDIR/.vim/conf/plugin_conf.vim $VIMCONFDIR/plugin_conf.vim
 
 if [ ! -e $VIMBUNDLEDIR ]; then
     mkdir $VIMBUNDLEDIR
