@@ -62,6 +62,7 @@ inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><ESC> neocomplcache#smart_close_popup()."\<C-h>"
 " 補完候補の共通文字列を補完する(シェル補完のような動作)
 inoremap <expr><C-l>   neocomplcache#complete_common_string()
 
@@ -78,19 +79,6 @@ if !exists('g:neocomplcache_keyword_patterns')
 endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
-"関数を補完するための区切り文字パターン
-if !exists('g:neocomplcache_delimiter_patterns')
-	let g:neocomplcache_delimiter_patterns = {}
-endif
-let g:neocomplcache_delimiter_patterns['php'] = ['->', '::', '\']
-
-"if !exists('g:neocomplcache_next_keyword_patterns')
-"	let g:neocomplcache_next_keyword_patterns = {}
-"endif
-
-" スニペット
-let g:neosnippet#enable_snipmate_compatibility = 1
-let g:neocomplcache_snippets_dir = $HOME.'/.vim/snippets'
 
 "-------------------------------------------------
 " PowerLine 設定
