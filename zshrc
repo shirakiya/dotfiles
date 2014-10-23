@@ -94,7 +94,7 @@ zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
 if [[ -n "${REMOTEHOST}${SSH_CONNECTION}" ]]; then
     local rhost=`who am i|sed 's/.*\(.*\)).*\1/'`
     rhost=${rhost#localhost:}
-    rhost=${rhost%%.*}
+    rhost=${rhost%.*}
     p_rhst="%B%F{magenta}($rhost)%f%b"
 fi
 
