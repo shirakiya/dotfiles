@@ -129,7 +129,7 @@ set runtimepath+=~/.vim/
 runtime! conf/*.vim
 
 " カーソルの上または下に表示する最小限の行数
-set scrolloff=5
+set scrolloff=1
 
 " 入力されているテキストの最大幅 「0」で無効
 set textwidth=0
