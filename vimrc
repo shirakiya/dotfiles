@@ -279,6 +279,7 @@ if has("autocmd")
   autocmd FileType haml       setlocal sw=2 sts=2 ts=2 et
   autocmd FileType sh         setlocal sw=4 sts=4 ts=4 et
   autocmd FileType sql        setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType txt        setlocal sw=4 sts=4 ts=4 et
   autocmd FileType vb         setlocal sw=4 sts=4 ts=4 et
   autocmd FileType vim        setlocal sw=4 sts=4 ts=4 et
   autocmd FileType wsh        setlocal sw=4 sts=4 ts=4 et
