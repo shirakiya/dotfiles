@@ -30,6 +30,7 @@ NeoBundle 'taichouchou2/html5.vim'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'Keithbsmiley/rspec.vim'
 
 call neobundle#end()
 
@@ -120,6 +121,23 @@ nnoremap <silent> [previm]o :<C-u>PrevimOpen<CR>
 nnoremap <silent> [previm]r :call previm#refresh()<CR>
 
 
+
+"-------------------------------------------------
+" RSpec syntax highlight 設定
+"-------------------------------------------------
+let g:quickrun_config = {}
+let g:quickrun_config._={
+      \ 'outputter/buffer/split': ':botright'
+      \ }
+let g:quickrun_config['ruby.rspec'] = {
+      \ 'command': 'rspec'
+      \ }
+augroup RSpec
+  autocmd!
+  autocmd BufWinEnter,BufNewFile *_spec.rb set filetype=ruby.rspec
+augroup END
+
+
 "-------------------------------------------------
 " Basic
 "-------------------------------------------------
@@ -136,6 +154,9 @@ set textwidth=0
 
 " バックアップの作成は行わない
 set nobackup
+
+" crontabの編集時だけバックアップの作成を行う
+autocmd BufRead /private/tmp/crontab.* set backupcopy=yes
 
 " Vimの外部で変更されたことが判明したとき、自動的に読み直す
 set autoread
@@ -232,6 +253,7 @@ au BufNewFile,BufRead *.tx set filetype=html
 au BufNewFile,BufRead *.tt set filetype=html
 au BufRead,BufNewFile *.md set filetype=markdown
 au BufRead,BufNewFile *.airy set filetype=airy
+au BufRead,BufNewFile *.txt set filetype=airy
 
 
 "-------------------------------------------------
