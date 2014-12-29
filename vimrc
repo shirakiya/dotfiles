@@ -17,7 +17,9 @@ NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'tomasr/molokai'
+NeoBundle 'alpaca-tc/alpaca_powertabline'
 NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'Lokaltog/powerline-fontpatcher'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'The-NERD-tree'
@@ -235,6 +237,9 @@ inoremap <C-x> <BS>
 " 'j'2回押下でESC
 inoremap jj <ESC>
 
+" ノーマルモードにおいて';'で':'
+noremap ; :
+
 
 "-------------------------------------------------
 " Color 設定
@@ -242,7 +247,7 @@ inoremap jj <ESC>
 
 syntax enable
 colorscheme molokai
-
+set t_Co=256
 
 "-------------------------------------------------
 " Filetype 設定
