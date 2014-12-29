@@ -1,0 +1,48 @@
+stty stop undef
+
+function peco-src () {
+    local selected_dir=$(ghq list --full-path | peco --query "$LBUFFER")
+    if [ -n "$selected_dir" ]; then
+        BUFFER="cd ${selected_dir}"
+        zle accept-line
+    fi
+    zle clear-screen
+}
+zle -N peco-src
+bindkey '^s' peco-src
+
+
+# 履歴のインクリメンタルサーチ
+function peco-history() {
+  local tac
+  type tac &> /dev/null \
+    && tac="tac" \
+    || tac="tail -r"
+  BUFFER=$(history -n 1 | eval $tac | peco --query "$LBUFFER" --prompt "HISTORY>")
+  CURSOR=$#BUFFER
+}
+zle -N peco-history
+bindkey '^r' peco-history
+
+
+# ファイル選択
+function peco-path() {
+  local filepath="$(find . | grep -v '/\.' | peco --prompt 'PATH>')"
+  [ -z "$filepath" ] && return
+  if [ -n "$LBUFFER" ]; then
+    BUFFER="$LBUFFER$filepath"
+  else
+    if [ -d "$filepath" ]; then
+      BUFFER="cd $filepath"
+    elif [ -f "$filepath" ]; then
+      BUFFER="$EDITOR $filepath"
+    fi
+  fi
+  CURSOR=$#BUFFER
+}
+zle -N peco-path
+bindkey '^f' peco-path
+
+
+# ブランチ選択
+alias -g B='`git branch | peco | sed -e "s/^\*[ ]*//g"`'

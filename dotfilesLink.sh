@@ -18,6 +18,7 @@ fi
 ln -s $DOTDIR/zshrc        $HOME/.zshrc
 ln -s $DOTDIR/zshenv       $HOME/.zshenv
 ln -s $DOTDIR/zshrc.alias  $HOME/.zshrc.alias
+ln -s $DOTDIR/zshrc.peco   $HOME/.zshrc.peco
 ln -s $DOTDIR/bashrc       $HOME/.bashrc
 ln -s $DOTDIR/bash_profile $HOME/.bash_profile
 ln -s $DOTDIR/tmux.conf    $HOME/.tmux.conf

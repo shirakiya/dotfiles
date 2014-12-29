@@ -4,6 +4,7 @@
 
 # zsh関連ファイルの読み込み
 [[ -f ~/.zshrc.alias ]] && source ~/.zshrc.alias
+type peco &> /dev/null && source $HOME/.zshrc.peco
 
 # 文字コードをUTF-8に設定
 export LANG=ja_JP.UTF-8

@@ -25,3 +25,6 @@
     lg = log
     df = diff
     gr = grep
+[ghq]
+	root = ~/.ghq
+	root = ~/.go/src
