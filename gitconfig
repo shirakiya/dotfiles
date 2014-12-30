@@ -6,6 +6,7 @@
 	smudge = git-media-smudge %f
 [core]
 	editor = vim
+	excludesfile = ~/.gitignore
 [color]
     status = auto
     diff = auto

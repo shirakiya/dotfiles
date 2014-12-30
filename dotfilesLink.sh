@@ -23,3 +23,4 @@ ln -s $DOTDIR/bashrc       $HOME/.bashrc
 ln -s $DOTDIR/bash_profile $HOME/.bash_profile
 ln -s $DOTDIR/tmux.conf    $HOME/.tmux.conf
 ln -s $DOTDIR/gitconfig    $HOME/.gitconfig
+ln -s $DOTDIR/gitignore    $HOME/.gitignore
