@@ -1,26 +1,33 @@
-#! /bin/sh
+#!/bin/sh
 
 DOTDIR=$HOME/dotfiles
 VIMDIR=$HOME/.vim
 VIMBUNDLEDIR=$VIMDIR/bundle
 
-ln -s $DOTDIR/vimrc $HOME/.vimrc
+function make_ln() {
+    if [ -e ${HOME}/.${1} ]; then
+        echo "\033[32mAlready exist ${HOME}/.${1} as symbolic link.\033[m"
+    else
+        echo "\033[31mexec ln -s ${DOTDIR}/${1} ${HOME}/.${1}\033[m"
+        ln -s ${DOTDIR}/${1} ${HOME}/.${1}
+    fi
+}
+
+make_ln vimrc
 if ! [ -e $VIMDIR ]; then
     mkdir $VIMDIR
 fi
 
-if [ ! -e $VIMBUNDLEDIR ]; then
-    mkdir $VIMBUNDLEDIR
-    git clone https://github.com/Shougo/neobundle.vim $VIMBUNDLEDIR/neobundle.vim
-    $VIMBUNDLEDIR/neobundle.vim/bin/neoinstall
+if [ ! -e ${VIMBUNDLEDIR} ]; then
+    mkdir ${VIMBUNDLEDIR}
+    git clone https://github.com/Shougo/neobundle.vim ${VIMBUNDLEDIR}/neobundle.vim
+    ${VIMBUNDLEDIR}/neobundle.vim/bin/neoinstall
 fi
 
-ln -s $DOTDIR/zshrc        $HOME/.zshrc
-ln -s $DOTDIR/zshenv       $HOME/.zshenv
-ln -s $DOTDIR/zshrc.alias  $HOME/.zshrc.alias
-ln -s $DOTDIR/zshrc.peco   $HOME/.zshrc.peco
-ln -s $DOTDIR/bashrc       $HOME/.bashrc
-ln -s $DOTDIR/bash_profile $HOME/.bash_profile
-ln -s $DOTDIR/tmux.conf    $HOME/.tmux.conf
-ln -s $DOTDIR/gitconfig    $HOME/.gitconfig
-ln -s $DOTDIR/gitignore    $HOME/.gitignore
+make_ln zshrc
+make_ln zshenv
+make_ln zshrc.alias
+make_ln zshrc.peco
+make_ln tmux.conf
+make_ln gitconfig
+make_ln gitignore
