@@ -144,3 +144,25 @@ pmver () {
         \cd $(dirname $fullpath);
     fi
 }
+
+showusers() {
+    case "${OSTYPE}" in
+    darwin*)
+        dscl . list /Users
+        ;;
+    *)
+        cat /etc/passwd | sed -e 's/:.*//g'
+        ;;
+    esac
+}
+
+showgroups() {
+    case "${OSTYPE}" in
+    darwin*)
+        dscl . list /Groups
+        ;;
+    *)
+        cat /etc/group | sed -e 's/:.*//g'
+        ;;
+    esac
+}
