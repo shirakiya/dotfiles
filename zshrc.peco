@@ -46,3 +46,10 @@ bindkey '^f' peco-path
 
 # ブランチ選択
 alias -g B='`git branch | peco | sed -e "s/^\*[ ]*//g"`'
+
+#SSHのホスト名選択
+function peco-ssh() {
+  SSH=$(grep "^\s*Host " ~/.ssh/config | sed s/"[\s ]*Host "// | grep -v "^\*$" | sort | peco)
+  ssh $SSH
+}
+alias ss="peco-ssh"
