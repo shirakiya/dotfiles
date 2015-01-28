@@ -22,6 +22,8 @@ NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'Lokaltog/powerline-fontpatcher'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'Townk/vim-autoclose'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'The-NERD-tree'
 NeoBundle 'The-NERD-Commenter'
 NeoBundle 'Align'
@@ -65,7 +67,6 @@ inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><ESC> neocomplcache#smart_close_popup()."\<C-h>"
 " 補完候補の共通文字列を補完する(シェル補完のような動作)
 inoremap <expr><C-l>   neocomplcache#complete_common_string()
 
@@ -91,11 +92,26 @@ let g:Powerline_symbols = 'compatible'
 
 
 "-------------------------------------------------
+" vim-indent-guides 設定
+"-------------------------------------------------
+
+" vimを立ち上げたときに、自動的にvim-indent-guidesをオンにする
+let g:indent_guides_enable_on_vim_startup = 1
+
+
+"-------------------------------------------------
+" vim-trailing-whitespace 設定
+"-------------------------------------------------
+
+":FixWhitespaceで行末スペースを全て削除
+
+
+"-------------------------------------------------
 " NERDTree 設定
 "-------------------------------------------------
 
 " 隠しファイルを表示する。
-let NERDTreeShowHidden = 1 
+let NERDTreeShowHidden = 1
 
 " デフォルトでツリーを表示させる
 "autocmd VimEnter * execute 'NERDTree'
