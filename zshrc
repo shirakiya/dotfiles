@@ -68,6 +68,12 @@ compinit
 # 補完候補を一覧で表示する
 setopt auto_list
 
+# 補完候補がディレクトリの場合, 末尾に/を追加
+setopt auto_param_slash
+
+# カッコの対応も補完
+setopt auto_param_keys
+
 # 補完キー連打で補完候補を順に表示する
 setopt auto_menu
 
@@ -76,6 +82,9 @@ setopt list_packed
 
 # 補完候補にファイルの種類も表示する
 setopt list_types
+
+# 曖昧補完も有効化
+setopt rec_exact
 
 # 補完で小文字でも大文字にマッチさせる
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'

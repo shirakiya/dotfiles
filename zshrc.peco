@@ -1,5 +1,10 @@
 stty stop undef
 
+# ブランチ選択
+alias -g B='`git branch | peco | sed -e "s/^\*[ ]*//g"`'
+
+
+# ghqによるリポジトリ一覧&移動
 function peco-src () {
     local selected_dir=$(ghq list --full-path | peco --query "$LBUFFER" --prompt "GHQ>")
     if [ -n "$selected_dir" ]; then
@@ -44,12 +49,21 @@ zle -N peco-path
 bindkey '^f' peco-path
 
 
-# ブランチ選択
-alias -g B='`git branch | peco | sed -e "s/^\*[ ]*//g"`'
-
-#SSHのホスト名選択
+# SSHのホスト名選択
 function peco-ssh() {
     SSH=$(grep "^\s*Host " ~/.ssh/config | sed s/"[\s ]*Host "// | grep -v "^\*$" | sort | peco)
-    ssh $SSH
+    if [ "$1" = "root" ]; then
+        ssh 'root@'$SSH
+    else
+        ssh $SSH
+    fi
 }
 alias ss="peco-ssh"
+alias ssr="peco-ssh root"
+
+
+# プロセス一覧を表示
+function peco-ps() {
+    \ps $@ | peco --prompt 'PROCESS>'
+}
+alias psp=peco-ps
