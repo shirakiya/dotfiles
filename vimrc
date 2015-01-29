@@ -256,6 +256,14 @@ inoremap jj <ESC>
 " ノーマルモードにおいて';'で':'
 noremap ; :
 
+" Linuxの場合はviminfoを用いてヤンクデータを共有
+let OSTYPE = system('uname')
+if OSTYPE == "Linux\n"
+    noremap y y:wv<CR>
+    noremap p :rv!<CR>p
+endif
+
+set viminfo='50,\"3000,:0,n~/.viminfo
 
 "-------------------------------------------------
 " Color 設定
