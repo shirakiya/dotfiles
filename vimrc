@@ -260,6 +260,8 @@ noremap ; :
 let OSTYPE = system('uname')
 if OSTYPE == "Linux\n"
     noremap y y:wv<CR>
+    vnoremap x x:wv<CR>
+    vnoremap d d:wv<CR>
     noremap p :rv!<CR>p
 endif
 
