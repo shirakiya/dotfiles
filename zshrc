@@ -32,6 +32,8 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 
+# Ctrl+D で強制ログアウトしないようにする
+setopt ignoreeof
 
 # ------------------------------
 # Color settings
