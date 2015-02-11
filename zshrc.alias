@@ -9,7 +9,7 @@ alias lla="ls -al"
 alias pag="ps aux | grep"
 alias ex="exit"
 
-# for vim 
+# for vim
 alias v="vim"
 alias vi="vim"
 
@@ -48,3 +48,10 @@ alias grm="git rm"
 alias grs="git reset"
 alias gmg="git merge"
 alias gcp="git cherry-pick"
+
+
+# perl
+alias ce="carton exec --"
+
+# ruby
+alias be="bundle exec"
