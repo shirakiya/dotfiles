@@ -56,6 +56,16 @@ export CLICOLOR=true
 # 補完候補に色を付ける
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
+# lsがカラー表示になるようエイリアスを設定
+case "${OSTYPE}" in
+    darwin*)
+        alias ls="ls -GF"
+        ;;
+    linux*)
+        alias ls='ls -F --color'
+        ;;
+esac
+
 
 # ------------------------------
 # complement settings
