@@ -17,5 +17,5 @@ export PATH="/usr/local/bin:$PATH"
 # for php-fpm
 export PATH="/usr/local/sbin:$PATH"
 
-# for node.js(npm)
-export NODE_PATH="/usr/local/lib/node_modules:$PATH"
+# for nodebrew
+export PATH=$HOME/.nodebrew/current/bin:$PATH
