@@ -6,9 +6,9 @@ VIMBUNDLEDIR=$VIMDIR/bundle
 
 function make_ln() {
     if [ -e ${HOME}/.${1} ]; then
-        echo "\033[32mAlready exist ${HOME}/.${1} as symbolic link.\033[m"
+        echo "\033[31mAlready exist ${HOME}/.${1} as symbolic link.\033[m"
     else
-        echo "\033[31mexec ln -s ${DOTDIR}/${1} ${HOME}/.${1}\033[m"
+        echo "\033[32mexec ln -s ${DOTDIR}/${1} ${HOME}/.${1}\033[m"
         ln -s ${DOTDIR}/${1} ${HOME}/.${1}
     fi
 }
