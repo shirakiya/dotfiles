@@ -31,3 +31,4 @@ make_ln zshrc.peco
 make_ln tmux.conf
 make_ln gitconfig
 make_ln gitignore
+make_ln my.cnf
