@@ -225,6 +225,9 @@ set backspace=start,eol,indent
 " 閉じ括弧が入力されたとき、対応する開き括弧にわずかの間ジャンプする
 set showmatch
 
+" 全角記号をズレずに表示する
+set ambiwidth=double
+
 " カーソル上の行番号のハイライト
 set cursorline
 hi clear CursorLine
