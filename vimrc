@@ -23,12 +23,7 @@ NeoBundle 'Lokaltog/powerline-fontpatcher'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'bronson/vim-trailing-whitespace'
-NeoBundle 'The-NERD-tree'
-NeoBundle 'The-NERD-Commenter'
 NeoBundle 'Align'
-NeoBundle 'tpope/vim-markdown'
-NeoBundle 'kannokanno/previm'
-NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'kchmck/vim-coffee-script'
@@ -102,40 +97,6 @@ let g:indent_guides_enable_on_vim_startup = 1
 "-------------------------------------------------
 
 ":FixWhitespaceで行末スペースを全て削除
-
-
-"-------------------------------------------------
-" NERDTree 設定
-"-------------------------------------------------
-
-" 隠しファイルを表示する。
-let NERDTreeShowHidden = 1
-
-" デフォルトでツリーを表示させる
-"autocmd VimEnter * execute 'NERDTree'
-
-" 引数なしで実行したとき、NERDTreeを実行する
-let file_name = expand("%:p")
-if has('vim_starting') &&  file_name == ""
-    autocmd VimEnter * execute 'NERDTree ./'
-endif
-
-" NERDTree呼び出しキーマッピング
-nnoremap [NERDTree] <Nop>
-nmap <Space>t [NERDTree]
-nnoremap <silent> [NERDTree]o :<C-u>NERDTree<CR>
-
-
-"-------------------------------------------------
-" previm 設定
-"-------------------------------------------------
-
-" previm呼び出しキーマッピング
-nnoremap [previm] <Nop>
-nmap <Space>p [previm]
-nnoremap <silent> [previm]o :<C-u>PrevimOpen<CR>
-nnoremap <silent> [previm]r :call previm#refresh()<CR>
-
 
 
 "-------------------------------------------------
