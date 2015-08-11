@@ -134,8 +134,16 @@ precmd() {
 
 local p_git="%1v"
 local p_cdir="%B%F{yellow}(%~)%f%b"
-local p_info="%F{green}[%n@%m${WINDOW:+"($WINDOW)"}]%f"
 local p_mark="%(?,%F{green},%F{red})%(!,#,$)%f"
+
+case ${OSTYPE} in
+    darwin*)
+        local p_info="%F{green}[%n@%m${WINDOW:+"($WINDOW)"}]%f"
+        ;;
+    *)
+        local p_info="%F{cyan}[%n@%m${WINDOW:+"($WINDOW)"}]%f"
+        ;;
+esac
 
 PROMPT="$p_rhst$p_info $p_cdir
 $p_mark "
