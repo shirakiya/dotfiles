@@ -35,6 +35,10 @@ SAVEHIST=10000
 # Ctrl+D で強制ログアウトしないようにする
 setopt ignoreeof
 
+# もしかして機能
+setopt correct
+
+
 # ------------------------------
 # Color settings
 # ------------------------------
