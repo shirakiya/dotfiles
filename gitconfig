@@ -14,19 +14,8 @@
     interactive = auto
     grep = auto
 [alias]
-    st = status
-    sh = show
-    co = checkout
-    ad = add
-    cm = commit
-    br = branch
-    ft = fetch
-    rb = rebase
-    ps = push
-    lg = log
-    df = diff
-    gr = grep
 	current-branch = rev-parse --abbrev-ref HEAD
+	push = !push origin `git current-branch`
 [ghq]
 	root = ~/.ghq
 	root = ~/.go/src
