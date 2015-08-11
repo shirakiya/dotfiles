@@ -15,7 +15,8 @@
     grep = auto
 [alias]
 	current-branch = rev-parse --abbrev-ref HEAD
-	push = !push origin `git current-branch`
+	ps = !git push origin `git current-branch`
+	pl = !git pull origin `git current-branch`
 [ghq]
 	root = ~/.ghq
 	root = ~/.go/src
