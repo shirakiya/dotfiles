@@ -26,6 +26,7 @@
     lg = log
     df = diff
     gr = grep
+	current-branch = rev-parse --abbrev-ref HEAD
 [ghq]
 	root = ~/.ghq
 	root = ~/.go/src
