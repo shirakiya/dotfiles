@@ -51,6 +51,7 @@ alias grm="git rm"
 alias grs="git reset"
 alias gmg="git merge"
 alias gcp="git cherry-pick"
+alias gbm="git blame"
 
 
 # perl
