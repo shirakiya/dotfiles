@@ -187,7 +187,9 @@ set backspace=start,eol,indent
 set showmatch
 
 " 全角記号をズレずに表示する
-set ambiwidth=double
+"set ambiwidth=double
+" Powerlineの右端の崩れを無くすためにはsingleにしないといけない
+set ambiwidth=single
 
 " カーソル上の行番号のハイライト
 set cursorline
