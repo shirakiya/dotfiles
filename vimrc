@@ -17,9 +17,9 @@ NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'tomasr/molokai'
-NeoBundle 'alpaca-tc/alpaca_powertabline'
-NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
-NeoBundle 'Lokaltog/powerline-fontpatcher'
+"NeoBundle 'alpaca-tc/alpaca_powertabline'
+"NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
+"NeoBundle 'Lokaltog/powerline-fontpatcher'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'bronson/vim-trailing-whitespace'
@@ -81,7 +81,7 @@ let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 " PowerLine 設定
 "-------------------------------------------------
 
-let g:Powerline_symbols = 'compatible'
+"let g:Powerline_symbols = 'compatible'
 
 
 "-------------------------------------------------
@@ -161,6 +161,10 @@ set ruler
 
 " ステータス行を常に表示する
 set laststatus=2
+"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+set statusline=%<%F\ %m%r%h%w
+set statusline+=%{'['.(&fenc!=''?&fenc:&enc).']['.&fileformat.']'}[%Y]
+set statusline+=%=%l/%L,\ %c%V%8P
 
 " 行番号を表示する。
 set number
