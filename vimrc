@@ -161,7 +161,8 @@ set ruler
 
 " ステータス行を常に表示する
 set laststatus=2
-"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+
+" ステータスラインのカスタマイズ
 set statusline=%<%F\ %m%r%h%w
 set statusline+=%{'['.(&fenc!=''?&fenc:&enc).']['.&fileformat.']'}[%Y]
 set statusline+=%=%l/%L,\ %c%V%8P
