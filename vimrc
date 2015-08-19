@@ -2,8 +2,7 @@
 " NeoBundle プラグイン管理
 "-------------------------------------------------
 
-filetype off
-set nocompatible
+"filetype off
 
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
@@ -11,6 +10,7 @@ endif
 
 call neobundle#begin(expand('~/.vim/bundle'))
 
+" NeoBundle自体を更新可能にする
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'Shougo/neocomplcache'
@@ -31,10 +31,11 @@ NeoBundle 'Keithbsmiley/rspec.vim'
 
 call neobundle#end()
 
+" 未インストールのものがあればインストールするか確認する
 NeoBundleCheck
 
 " ファイル形式別プラグインのロードを有効化
-filetype plugin indent on
+"filetype plugin indent on
 
 
 "-------------------------------------------------
@@ -78,18 +79,19 @@ let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
 
 "-------------------------------------------------
+" Color 設定
+"-------------------------------------------------
+
+syntax enable
+colorscheme molokai
+set t_Co=256
+
+
+"-------------------------------------------------
 " PowerLine 設定
 "-------------------------------------------------
 
 "let g:Powerline_symbols = 'compatible'
-
-
-"-------------------------------------------------
-" vim-indent-guides 設定
-"-------------------------------------------------
-
-" vimを立ち上げたときに、自動的にvim-indent-guidesをオンにする
-let g:indent_guides_enable_on_vim_startup = 1
 
 
 "-------------------------------------------------
@@ -156,9 +158,6 @@ set browsedir=buffer
 " コマンド (の一部) を画面の最下行に表示する
 set showcmd
 
-" カーソルが何行目の何列目に置かれているかを表示する
-set ruler
-
 " ステータス行を常に表示する
 set laststatus=2
 
@@ -166,9 +165,6 @@ set laststatus=2
 set statusline=%<%F\ %m%r%h%w
 set statusline+=%{'['.(&fenc!=''?&fenc:&enc).']['.&fileformat.']'}[%Y]
 set statusline+=%=%l/%L,\ %c%V%8P
-
-" 行番号を表示する。
-set number
 
 " コマンドラインに使われる画面上の行数
 set cmdheight=2
@@ -235,14 +231,6 @@ endif
 set viminfo='50,\"3000,:0,n~/.viminfo
 
 "-------------------------------------------------
-" Color 設定
-"-------------------------------------------------
-
-syntax enable
-colorscheme molokai
-set t_Co=256
-
-"-------------------------------------------------
 " Filetype 設定
 "-------------------------------------------------
 
@@ -250,8 +238,6 @@ au BufRead,BufNewFile *.psgi set filetype=perl
 au BufNewFile,BufRead *.tx set filetype=html
 au BufNewFile,BufRead *.tt set filetype=html
 au BufRead,BufNewFile *.md set filetype=markdown
-au BufRead,BufNewFile *.airy set filetype=airy
-au BufRead,BufNewFile *.txt set filetype=airy
 
 
 "-------------------------------------------------
