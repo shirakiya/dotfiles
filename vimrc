@@ -190,6 +190,9 @@ set showmatch
 " 全角記号をズレずに表示する
 set ambiwidth=double
 
+" 行番号を表示する
+set number
+
 " カーソル上の行番号のハイライト
 set cursorline
 hi clear CursorLine
