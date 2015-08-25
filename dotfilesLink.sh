@@ -26,6 +26,8 @@ fi
 
 make_ln zshrc
 make_ln zshenv
+make_ln zshrc.MacOS
+make_ln zshrc.Linux
 make_ln zshrc.alias
 make_ln zshrc.peco
 make_ln tmux.conf

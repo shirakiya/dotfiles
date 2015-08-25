@@ -2,10 +2,6 @@
 # General Settings
 # ------------------------------
 
-# zsh関連ファイルの読み込み
-[[ -f ~/.zshrc.alias ]] && source ~/.zshrc.alias
-type peco &> /dev/null && source $HOME/.zshrc.peco
-
 # 文字コードをUTF-8に設定
 export LANG=ja_JP.UTF-8
 
@@ -61,16 +57,6 @@ export CLICOLOR=true
 
 # 補完候補に色を付ける
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-
-# lsがカラー表示になるようエイリアスを設定
-case "${OSTYPE}" in
-    darwin*)
-        alias ls="ls -GF"
-        ;;
-    linux*)
-        alias ls='ls -F --color'
-        ;;
-esac
 
 
 # ------------------------------
@@ -200,5 +186,24 @@ showgroups() {
     esac
 }
 
-### Added by the Heroku Toolbelt
+### added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+
+# ------------------------------
+# read External file
+# ------------------------------
+
+# zsh関連ファイルの読み込み
+[[ -f ~/.zshrc.alias ]] && source ~/.zshrc.alias
+type peco &> /dev/null && source $HOME/.zshrc.peco
+
+# lsがカラー表示になるようエイリアスを設定
+case "${OSTYPE}" in
+    darwin*)
+        [[ -f ~/.zshrc.MacOS ]] && source ~/.zshrc.MacOS
+        ;;
+    linux*)
+        [[ -f ~/.zshrc.Linux ]] && source ~/.zshrc.Linux
+        ;;
+esac
