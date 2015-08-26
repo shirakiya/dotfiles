@@ -14,3 +14,7 @@ fi
 if [ -e /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
   source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
+
+# source-highlight
+export LESS="-R"
+export LESSOPEN='| /usr/local/bin/src-hilite-lesspipe.sh %s'
