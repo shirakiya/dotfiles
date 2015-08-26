@@ -23,6 +23,12 @@ setopt share_history
 # スペースから始まるコマンド行はヒストリに残さない
 setopt hist_ignore_space
 
+# 重複を記録しない
+setopt hist_ignore_dups
+
+# 余分な空白は詰めて記録
+setopt hist_reduce_blanks
+
 # ヒストリの設定
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
