@@ -28,6 +28,7 @@ NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'Keithbsmiley/rspec.vim'
+NeoBundle 'toyamarinyon/vim-swift'
 
 call neobundle#end()
 
