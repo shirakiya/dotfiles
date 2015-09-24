@@ -2,7 +2,7 @@
 " NeoBundle プラグイン管理
 "-------------------------------------------------
 
-"filetype off
+filetype off
 
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
@@ -36,7 +36,7 @@ call neobundle#end()
 NeoBundleCheck
 
 " ファイル形式別プラグインのロードを有効化
-"filetype plugin indent on
+filetype plugin indent on
 
 
 "-------------------------------------------------
