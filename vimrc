@@ -13,17 +13,20 @@ call neobundle#begin(expand('~/.vim/bundle'))
 " NeoBundle自体を更新可能にする
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+" Utility
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'tomasr/molokai'
-"NeoBundle 'alpaca-tc/alpaca_powertabline'
-"NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
-"NeoBundle 'Lokaltog/powerline-fontpatcher'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'bronson/vim-trailing-whitespace'
-NeoBundle 'Align'
+NeoBundle 'scrooloose/syntastic'
+"NeoBundle 'alpaca-tc/alpaca_powertabline'
+"NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
+"NeoBundle 'Lokaltog/powerline-fontpatcher'
+" Color
+NeoBundle 'tomasr/molokai'
+" Syntax
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'kchmck/vim-coffee-script'
@@ -101,6 +104,13 @@ set t_Co=256
 
 ":FixWhitespaceで行末スペースを全て削除
 
+
+"-------------------------------------------------
+" syntastic 設定
+"-------------------------------------------------
+
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=2
 
 "-------------------------------------------------
 " RSpec syntax highlight 設定
