@@ -6,6 +6,9 @@ if [ `uname` = 'Darwin' ]; then
     # for rbenv path
     if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
+    # for pyenv path
+    if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
     # for Go
     export GOPATH=$HOME/.go
     export PATH=$PATH:$HOME/.go/bin
