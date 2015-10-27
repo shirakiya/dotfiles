@@ -7,7 +7,10 @@ if [ `uname` = 'Darwin' ]; then
     if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
     # for pyenv path
-    if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+    if which pyenv > /dev/null; then
+        eval "$(pyenv init -)"
+        eval "$(pyenv virtualenv-init -)"
+    fi
 
     # for Go
     export GOPATH=$HOME/.go
