@@ -63,7 +63,8 @@ bindkey '^f' peco-path
 
 # SSHのホスト名選択
 function peco-ssh() {
-    SSH=$(grep "^\s*Host " ~/.ssh/config | sed s/"[\s ]*Host "// | grep -v "^\*$" | sort | peco)
+    local SSH=$(grep "^\s*Host " ~/.ssh/config | sed s/"[\s ]*Host "// | grep -v "^\*$" | sort | peco --prompt "SSH>")
+    [ -z "$SSH" ] && return
     if [ "$1" = "root" ]; then
         ssh 'root@'$SSH
     else
