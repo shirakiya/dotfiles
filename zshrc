@@ -40,6 +40,9 @@ setopt ignoreeof
 # もしかして機能
 setopt correct
 
+# ctrl-s による端末ロックを無効化
+stty stop undef
+
 
 # ------------------------------
 # Color settings
@@ -144,14 +147,28 @@ SPROMPT="'%r' is correct? ([n]o, [y]es, [a]bort, [e]dit):"
 
 
 # ------------------------------
+# compile zsh setting files
+# ------------------------------
+
+if [[ ! -f ${HOME}/.zprofile.zwc || ${HOME}/.zprofile -nt ${HOME}/.zprofile.zwc ]]; then
+   zcompile ~/.zprofile
+fi
+if [[ ! -f ${HOME}/.zshenv.zwc || ${HOME}/.zshenv -nt ${HOME}/.zshenv.zwc ]]; then
+   zcompile ~/.zshenv
+fi
+if [[ ! -f ${HOME}/.zshrc.zwc || ${HOME}/.zshrc -nt ${HOME}/.zshrc.zwc ]]; then
+   zcompile ~/.zshrc
+fi
+
+
+# ------------------------------
 # read External file
 # ------------------------------
 
 # zsh関連ファイルの読み込み
 [[ -f ~/.zshrc.alias ]] && source ~/.zshrc.alias
-which peco &> /dev/null && [[ -f ~/.zshrc.alias ]] && source $HOME/.zshrc.peco
 
-# lsがカラー表示になるようエイリアスを設定
+# OS別設定ファイルの読み込み
 case "${OSTYPE}" in
     darwin*)
         [[ -f ~/.zshrc.MacOS ]] && source ~/.zshrc.MacOS
