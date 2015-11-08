@@ -20,7 +20,7 @@ NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'bronson/vim-trailing-whitespace'
-NeoBundle 'scrooloose/syntastic'
+"NeoBundle 'scrooloose/syntastic'
 "NeoBundle 'alpaca-tc/alpaca_powertabline'
 "NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
 "NeoBundle 'Lokaltog/powerline-fontpatcher'
