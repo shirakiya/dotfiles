@@ -26,8 +26,9 @@ if [ ! -e ${VIMBUNDLEDIR} ]; then
     ${VIMBUNDLEDIR}/neobundle.vim/bin/neoinstall
 fi
 
-make_ln zshrc
+make_ln zprofile
 make_ln zshenv
+make_ln zshrc
 make_ln zshrc.MacOS
 make_ln zshrc.Linux
 make_ln zshrc.alias

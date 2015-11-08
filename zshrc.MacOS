@@ -18,3 +18,20 @@ fi
 # source-highlight
 export LESS="-R"
 export LESSOPEN='| /usr/local/bin/src-hilite-lesspipe.sh %s'
+
+
+# ------------------------------
+# Optional package settings
+# ------------------------------
+
+# for plenv path
+# https://github.com/tokuhirom/plenv#basic-github-checkout
+if which plenv > /dev/null; then
+    eval "$(plenv init -)"
+fi
+
+# for rbenv path
+# https://github.com/sstephenson/rbenv#basic-github-checkout
+if which rbenv > /dev/null; then
+    eval "$(rbenv init -)";
+fi

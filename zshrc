@@ -144,78 +144,12 @@ SPROMPT="'%r' is correct? ([n]o, [y]es, [a]bort, [e]dit):"
 
 
 # ------------------------------
-# Optional package settings
-# ------------------------------
-
-# add xxenv path
-if [[ `uname` == 'Darwin' ]]; then
-    # for plenv path
-    # https://github.com/tokuhirom/plenv#basic-github-checkout
-    if which plenv > /dev/null; then
-        eval "$(plenv init -)"
-    fi
-
-    # for rbenv path
-    # https://github.com/sstephenson/rbenv#basic-github-checkout
-    if which rbenv > /dev/null; then
-        eval "$(rbenv init -)";
-    fi
-fi
-
-
-# ------------------------------
-# Optional command settings
-# ------------------------------
-
-# show cpan module version
-pmver () {
-    do_cd=;
-    if [ "$1" = '-cd' ]; then
-        do_cd=1;
-        shift;
-    fi;
-    module=$1;
-    perl -M${module} -e "print \$${module}::VERSION,\"\n\"";
-    fullpath=$(
-        perldoc -ml ${module} 2>/dev/null
-        [ $? -eq  255 ] && perldoc -l ${module}
-    );
-    echo $fullpath;
-    if [ "$do_cd" = '1' ]; then
-        \cd $(dirname $fullpath);
-    fi
-}
-
-showusers() {
-    case "${OSTYPE}" in
-    darwin*)
-        dscl . list /Users
-        ;;
-    *)
-        cat /etc/passwd | sed -e 's/:.*//g'
-        ;;
-    esac
-}
-
-showgroups() {
-    case "${OSTYPE}" in
-    darwin*)
-        dscl . list /Groups
-        ;;
-    *)
-        cat /etc/group | sed -e 's/:.*//g'
-        ;;
-    esac
-}
-
-
-# ------------------------------
 # read External file
 # ------------------------------
 
 # zsh関連ファイルの読み込み
 [[ -f ~/.zshrc.alias ]] && source ~/.zshrc.alias
-type peco &> /dev/null && source $HOME/.zshrc.peco
+which peco &> /dev/null && [[ -f ~/.zshrc.alias ]] && source $HOME/.zshrc.peco
 
 # lsがカラー表示になるようエイリアスを設定
 case "${OSTYPE}" in
