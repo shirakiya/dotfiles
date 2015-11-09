@@ -32,7 +32,6 @@ make_ln zshrc
 make_ln zshrc.MacOS
 make_ln zshrc.Linux
 make_ln zshrc.alias
-make_ln zshrc.peco
 make_ln tmux.conf
 make_ln gitconfig
 make_ln gitignore
