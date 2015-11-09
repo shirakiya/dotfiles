@@ -5,15 +5,11 @@
 # lsがカラー表示になるようエイリアスを設定
 alias ls="ls -GF"
 
-# zsh-completions
-if [ -e /usr/local/share/zsh-completions ]; then
-    fpath=(/usr/local/share/zsh-completions $fpath)
-fi
-
 # zsh-syntax-highliting
-if [ -e /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
-  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
+# シェルが遅くなるので一旦削除
+#if [ -e /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+#  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#fi
 
 # source-highlight
 export LESS="-R"

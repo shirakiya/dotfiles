@@ -72,9 +72,15 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # complement settings
 # ------------------------------
 
+# zsh-completions
+# compinit の実行よりも前に記述する
+if [ -e /usr/local/share/zsh-completions ]; then
+    fpath=(/usr/local/share/zsh-completions $fpath)
+fi
+
 # 補完機能を有効にする
 autoload -Uz compinit
-compinit
+compinit -C
 
 # 補完候補を一覧で表示する
 setopt auto_list
