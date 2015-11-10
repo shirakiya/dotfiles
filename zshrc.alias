@@ -58,4 +58,4 @@ alias gbm="git blame"
 alias ce="carton exec --"
 
 # ruby
-alias be="bundle exec"
+alias be="bundle exec --"
