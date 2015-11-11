@@ -21,6 +21,7 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'bronson/vim-trailing-whitespace'
 "NeoBundle 'scrooloose/syntastic'
+"NeoBundle 'mattn/benchvimrc-vim'  "使いたい時はコメントを外して :BenchVimrc
 "NeoBundle 'alpaca-tc/alpaca_powertabline'
 "NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
 "NeoBundle 'Lokaltog/powerline-fontpatcher'
@@ -234,13 +235,13 @@ inoremap jj <ESC>
 noremap ; :
 
 " Linuxの場合はviminfoを用いてヤンクデータを共有
-let OSTYPE = system('uname')
-if OSTYPE == "Linux\n"
+if has("unix") && !has("mac")
     noremap y y:wv<CR>
     vnoremap x x:wv<CR>
     vnoremap d d:wv<CR>
     noremap p :rv!<CR>p
 endif
+
 
 set viminfo='50,\"3000,:0,n~/.viminfo
 
