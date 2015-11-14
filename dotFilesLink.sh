@@ -26,6 +26,7 @@ if [ ! -e ${VIMBUNDLEDIR} ]; then
     ${VIMBUNDLEDIR}/neobundle.vim/bin/neoinstall
 fi
 
+
 make_ln zprofile
 make_ln zshenv
 make_ln zshrc
@@ -36,6 +37,7 @@ make_ln tmux.conf
 make_ln gitconfig
 make_ln gitignore
 make_ln my.cnf
+make_ln vimperatorrc
 
 
 # for peco setting file
