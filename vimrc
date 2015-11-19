@@ -21,7 +21,6 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'bronson/vim-trailing-whitespace'
 "NeoBundle 'scrooloose/syntastic'
-"NeoBundle 'mattn/benchvimrc-vim'  "使いたい時はコメントを外して :BenchVimrc
 "NeoBundle 'alpaca-tc/alpaca_powertabline'
 "NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
 "NeoBundle 'Lokaltog/powerline-fontpatcher'
@@ -33,6 +32,13 @@ NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'Keithbsmiley/rspec.vim'
 NeoBundle 'toyamarinyon/vim-swift'
+
+" :BenchVimrc で計測
+NeoBundleLazy 'mattn/benchvimrc-vim', {
+  \ 'autoload': {
+    \   'commands': ['BenchVimrc'],
+      \  },
+    \}
 
 call neobundle#end()
 
