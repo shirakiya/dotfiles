@@ -191,7 +191,7 @@ set cmdheight=2
 set showmode
 
 " モードラインの無効化
-set nomodeline
+set modeline
 
 " すべてのモードでマウスが有効
 set mouse=a

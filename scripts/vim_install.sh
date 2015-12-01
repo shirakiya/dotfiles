@@ -1,8 +1,12 @@
 #!/bin/sh
 
-# OS  はRedhat系であること
-# Git はインストールされているものとする
-# TODO: 自動判別し、インストールされていない場合は実行しないようにする
+# OS はRedhat系であること
+
+# 既にVimをインストールしている場合はreturn
+if type vim > /dev/null; then
+  echo 'already vim installed'
+  exit 0
+fi
 
 # コンパイルに必要なパッケージ
 sudo yum install -y make gcc
@@ -11,11 +15,10 @@ sudo yum install -y ncurses-devel gtk2-devel atk-devel libX11-devel libXt-devel
 # Lua拡張を使いたい場合
 sudo yum install -y lua-devel
 
-# Vim のインストール
 cd /usr/local/src
-sudo hg clone https://vim.googlecode.com/hg/ vim
-cd /usr/local/src/vim
-sudo hg pull
+wget ftp://ftp.vim.org/pub/vim/unix/vim-7.4.tar.bz2
+tar xf vim-7.4.tar.bz2
+cd vim74
 
 # Configure
 sudo ./configure \
