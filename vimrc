@@ -20,10 +20,8 @@ NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'bronson/vim-trailing-whitespace'
-"NeoBundle 'scrooloose/syntastic'
-"NeoBundle 'alpaca-tc/alpaca_powertabline'
-"NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
-"NeoBundle 'Lokaltog/powerline-fontpatcher'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'itchyny/lightline.vim'
 " Color
 NeoBundle 'tomasr/molokai'
 " Syntax
@@ -180,9 +178,9 @@ set showcmd
 set laststatus=2
 
 " ステータスラインのカスタマイズ
-set statusline=%<%F\ %m%r%h%w
-set statusline+=%{'['.(&fenc!=''?&fenc:&enc).']['.&fileformat.']'}[%Y]
-set statusline+=%=%l/%L,\ %c%V%8P
+"set statusline=%<%F\ %m%r%h%w
+"set statusline+=%{'['.(&fenc!=''?&fenc:&enc).']['.&fileformat.']'}[%Y]
+"set statusline+=%=%l/%L,\ %c%V%8P
 
 " コマンドラインに使われる画面上の行数
 set cmdheight=2
