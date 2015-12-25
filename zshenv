@@ -17,16 +17,23 @@ if [[ `uname` == 'Darwin' ]]; then
     # for Heroku Toolbelt
     export PATH="/usr/local/heroku/bin:$PATH"
 
-    # for plenv path
+    # for plenv
     # https://github.com/tokuhirom/plenv#basic-github-checkout
-    if which plenv > /dev/null; then
+    if type plenv > /dev/null; then
         eval "$(plenv init -)"
     fi
 
-    # for rbenv path
+    # for rbenv
     # https://github.com/sstephenson/rbenv#basic-github-checkout
-    if which rbenv > /dev/null; then
+    if type rbenv > /dev/null; then
         eval "$(rbenv init - --no-rehash)";
+    fi
+
+    # for scalaenv
+    # https://github.com/mazgi/scalaenv
+    export SCALAENV_ROOT=/usr/local/var/scalaenv
+    if type scalaenv > /dev/null; then
+        eval "$(scalaenv init -)"
     fi
 fi
 
