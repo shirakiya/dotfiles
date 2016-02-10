@@ -12,8 +12,10 @@ if [[ `uname` == 'Darwin' ]]; then
     # https://github.com/yyuu/pyenv#basic-github-checkout
     if which pyenv > /dev/null; then
         eval "$(pyenv init -)"
-        eval "$(pyenv virtualenv-init -)"
     fi
+	if which pyenv-virtualenv-init > /dev/null; then
+        eval "$(pyenv virtualenv-init -)"
+	fi
 
     # for Go
     export GOPATH=$HOME/.go
