@@ -4,3 +4,6 @@
 
 # lsがカラー表示になるようエイリアスを設定
 alias ls='ls -F --color'
+
+export PATH=$PATH:$HOME/.rbenv/bin:$HOME/.rbenv/shims
+eval "$(rbenv init -)"
