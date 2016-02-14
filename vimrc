@@ -153,7 +153,7 @@ function! LightLineModified()
 endfunction
 
 function! LightLineFilename()
-  return ('' != expand('%') ? expand('%') : '[No Name]') .
+  return ('' != expand('%:p') ? expand('%:p') : '[No Name]') .
         \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
 endfunction
 
