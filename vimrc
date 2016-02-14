@@ -22,6 +22,8 @@ NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'airblade/vim-gitgutter'
 " Color
 NeoBundle 'tomasr/molokai'
 " Syntax
@@ -31,7 +33,7 @@ NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'Keithbsmiley/rspec.vim'
 NeoBundle 'toyamarinyon/vim-swift'
 
-" :BenchVimrc で計測
+" ':BenchVimrc' を叩くと計測
 NeoBundleLazy 'mattn/benchvimrc-vim', {
   \ 'autoload': {
     \   'commands': ['BenchVimrc'],
@@ -97,10 +99,63 @@ set t_Co=256
 
 
 "-------------------------------------------------
-" PowerLine 設定
+" lightline.vim 設定
 "-------------------------------------------------
 
-"let g:Powerline_symbols = 'compatible'
+let g:lightline = {
+    \    'colorscheme': 'default',
+    \    'active': {
+    \        'left': [
+    \            ['mode', 'paste'],
+    \            ['fugitive', 'gitgutter', 'readonly', 'filename'],
+    \        ],
+    \    },
+    \    'component_function' : {
+    \        'fugitive' : 'LightLineFugitive',
+    \        'gitgutter': 'MyGitGutter',
+    \        'readonly' : 'LightLineReadonly',
+    \        'filename' : 'LightLineFilename',
+    \    },
+    \    'subseparator': { 'left': '|', 'right': '|' }
+    \}
+
+function! LightLineFugitive()
+  return exists('*fugitive#head') ? fugitive#head() : ''
+endfunction
+
+function! MyGitGutter()
+  if ! exists('*GitGutterGetHunkSummary')
+        \ || ! get(g:, 'gitgutter_enabled', 0)
+        \ || winwidth('.') <= 90
+    return ''
+  endif
+  let symbols = [
+        \ g:gitgutter_sign_added . ' ',
+        \ g:gitgutter_sign_modified . ' ',
+        \ g:gitgutter_sign_removed . ' '
+        \ ]
+  let hunks = GitGutterGetHunkSummary()
+  let ret = []
+  for i in [0, 1, 2]
+    if hunks[i] > 0
+      call add(ret, symbols[i] . hunks[i])
+    endif
+  endfor
+  return join(ret, ' ')
+endfunction
+
+function! LightLineReadonly()
+  return &ft !~? 'help' && &readonly ? 'RO' : ''
+endfunction
+
+function! LightLineModified()
+  return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! LightLineFilename()
+  return ('' != expand('%') ? expand('%') : '[No Name]') .
+        \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+endfunction
 
 
 "-------------------------------------------------
