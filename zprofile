@@ -42,6 +42,9 @@ if [[ `uname` == 'Darwin' ]]; then
     if type scalaenv > /dev/null; then
         eval "$(scalaenv init -)"
     fi
+
+	# for composer(global required)
+	export PATH=$PATH:$HOME/.composer/vendor/bin
 fi
 
 
