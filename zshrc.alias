@@ -8,7 +8,12 @@ alias ll="ls -l"
 alias lla="ls -al"
 alias pag="ps aux | grep"
 alias ex="exit"
-alias dus="du -sh "
+
+if type colordiff > /dev/null; then
+    alias diff="colordiff -u"
+else
+    alias diff="diff -u"
+fi
 
 # for vim
 alias v="vim"
@@ -57,7 +62,6 @@ alias grs="git reset"
 alias gmg="git merge"
 alias gcp="git cherry-pick"
 alias gbm="git blame"
-
 
 # perl
 alias ce="carton exec --"
