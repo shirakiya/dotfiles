@@ -9,11 +9,16 @@ alias lla="ls -al"
 alias pag="ps aux | grep"
 alias ex="exit"
 
+if type ccat > /dev/null; then
+    alias cat="ccat"
+fi
+
 if type colordiff > /dev/null; then
     alias diff="colordiff -u"
 else
     alias diff="diff -u"
 fi
+
 
 # for vim
 alias v="vim"
