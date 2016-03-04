@@ -26,20 +26,20 @@ if [[ `uname` == 'Darwin' ]]; then
 
     # for plenv
     # https://github.com/tokuhirom/plenv#basic-github-checkout
-    if type plenv > /dev/null; then
+    if which plenv > /dev/null; then
         eval "$(plenv init -)"
     fi
 
     # for rbenv
     # https://github.com/sstephenson/rbenv#basic-github-checkout
-    if type rbenv > /dev/null; then
+    if which rbenv > /dev/null; then
         eval "$(rbenv init - --no-rehash)";
     fi
 
     # for scalaenv
     # https://github.com/mazgi/scalaenv
     export SCALAENV_ROOT=/usr/local/var/scalaenv
-    if type scalaenv > /dev/null; then
+    if which scalaenv > /dev/null; then
         eval "$(scalaenv init -)"
     fi
 
