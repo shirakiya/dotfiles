@@ -13,3 +13,8 @@ fi
 # source-highlight
 export LESS="-R"
 export LESSOPEN='| /usr/local/bin/src-hilite-lesspipe.sh %s'
+
+# enable zsh completion aws-cli
+if which aws > /dev/null; then
+    source /usr/local/share/zsh/site-functions/_aws
+fi
