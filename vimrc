@@ -268,6 +268,12 @@ set number
 set cursorline
 hi clear CursorLine
 
+" 大文字小文字を区別せずに検索を行う
+set ignorecase
+
+" 検索文字列に大文字が含まれているならば大文字小文字区別して検索する
+set smartcase
+
 " 検索結果をハイライトする
 set hlsearch
 
