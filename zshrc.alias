@@ -40,6 +40,7 @@ alias gad="git add ."
 alias gcm="git commit"
 alias gcma="git commit --amend"
 alias gps="git ps"  # check .gitconfig
+alias gpsf="git push --force-with-lease"  # http://ohbarye.hatenablog.jp/entry/2016/04/04/235819
 alias gpl="git pl"  # check .gitconfig
 alias gdf="git diff"
 alias gdfc="git diff --cached"
