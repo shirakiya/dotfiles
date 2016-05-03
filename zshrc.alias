@@ -69,8 +69,11 @@ alias gmg="git merge"
 alias gcp="git cherry-pick"
 alias gbm="git blame"
 
-# perl
+# Perl
 alias ce="carton exec --"
 
-# ruby
+# Ruby
 alias be="bundle exec --"
+
+# Python
+alias py="python"
