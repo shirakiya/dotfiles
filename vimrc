@@ -280,6 +280,9 @@ set hlsearch
 " 検索で途中までマッチしているものをハイライト
 set incsearch
 
+" ESCを二回押すことでハイライトを消す
+nmap <silent> <Esc><Esc> :nohlsearch<CR>
+
 "補完候補を表示する
 set wildmenu
 set wildmode=list:longest,full
