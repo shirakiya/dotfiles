@@ -47,14 +47,14 @@ NeoBundleLazy "jmcantrell/vim-virtualenv", {
     \ "autoload": {
     \   "filetypes": ["python", "python3", "djangohtml"]
     \ }}
-NeoBundleLazy "davidhalter/jedi-vim", {
-    \ "autoload": {
-    \   "filetypes": [ "python", "python3", "djangohtml"]
-    \ },
-    \ "build": {
-    \   "mac": "pip install jedi",
-    \   "unix": "pip install jedi",
-    \ }}
+"NeoBundleLazy "davidhalter/jedi-vim", {
+"    \ "autoload": {
+"    \   "filetypes": [ "python", "python3", "djangohtml"]
+"    \ },
+"    \ "build": {
+"    \   "mac": "pip install jedi",
+"    \   "unix": "pip install jedi",
+"    \ }}
 
 " ':BenchVimrc' を叩くと計測
 NeoBundleLazy 'mattn/benchvimrc-vim', {
