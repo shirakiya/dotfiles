@@ -5,7 +5,7 @@
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
 [core]
-	editor = vim
+	editor = vim -c \"set fenc=utf-8\"
 	excludesfile = ~/.gitignore
 [color]
     status = auto
