@@ -15,9 +15,9 @@ if which ccat > /dev/null; then
 fi
 
 if which colordiff > /dev/null; then
-    alias diff="colordiff -u"
+    alias diff="colordiff -Nru"
 else
-    alias diff="diff -u"
+    alias diff="diff -Nru"
 fi
 
 
