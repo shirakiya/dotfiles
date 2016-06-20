@@ -183,3 +183,5 @@ case "${OSTYPE}" in
         [[ -f ~/.zshrc.Linux ]] && source ~/.zshrc.Linux
         ;;
 esac
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
