@@ -185,6 +185,7 @@ fi
 
 # zsh関連ファイルの読み込み
 [[ -f ~/.zshrc.alias ]] && source ~/.zshrc.alias
+[[ -f ~/.zshrc.command ]] && source ~/.zshrc.command
 
 # OS別設定ファイルの読み込み
 case "${OSTYPE}" in

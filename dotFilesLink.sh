@@ -33,11 +33,11 @@ make_ln zshrc
 make_ln zshrc.MacOS
 make_ln zshrc.Linux
 make_ln zshrc.alias
+make_ln zshrc.command
 make_ln tmux.conf
 make_ln gitconfig
 make_ln gitignore
 make_ln my.cnf
-make_ln vimperatorrc
 
 
 # for peco setting file
