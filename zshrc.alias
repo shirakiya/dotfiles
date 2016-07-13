@@ -78,3 +78,4 @@ alias be="bundle exec --"
 
 # Python
 alias py="python -tt"
+alias pipupall="pip list --outdated | awk '{print $1}' | xargs pip install -U"
