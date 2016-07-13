@@ -43,3 +43,7 @@ showgroups() {
     esac
 }
 
+pip-upgrade-all() {
+    pip list --outdated | awk '{print $1}' | xargs pip install -U
+}
+alias pipupall=pip-upgrade-all
