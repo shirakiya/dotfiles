@@ -30,6 +30,7 @@ NeoBundle 'tomasr/molokai'
 " Syntax
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'mxw/vim-jsx'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'Keithbsmiley/rspec.vim'
 NeoBundle 'toyamarinyon/vim-swift'
@@ -242,6 +243,7 @@ endfunction
 
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
+let g:syntastic_python_checkers = ["flake8"]
 
 
 "-------------------------------------------------
@@ -266,6 +268,13 @@ augroup END
 "-------------------------------------------------
 
 let python_highlight_all = 1
+
+
+"-------------------------------------------------
+" vim-jsx 設定
+"-------------------------------------------------
+
+let g:jsx_ext_required = 0
 
 
 "-------------------------------------------------
