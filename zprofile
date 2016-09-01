@@ -45,6 +45,10 @@ if [[ `uname` == 'Darwin' ]]; then
 
 	# for composer(global required)
 	export PATH=$PATH:$HOME/.composer/vendor/bin
+
+	# for direnv
+	export EDITOR='vim'
+	eval "$(direnv hook zsh)"
 fi
 
 
