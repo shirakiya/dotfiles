@@ -43,6 +43,9 @@ if [[ `uname` == 'Darwin' ]]; then
         eval "$(scalaenv init -)"
     fi
 
+	# for nodebrew
+	export PATH=$HOME/.nodebrew/current/bin:$PATH
+
 	# for composer(global required)
 	export PATH=$PATH:$HOME/.composer/vendor/bin
 
