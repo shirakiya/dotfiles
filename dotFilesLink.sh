@@ -26,7 +26,6 @@ if [ ! -e ${VIMBUNDLEDIR} ]; then
     ${VIMBUNDLEDIR}/neobundle.vim/bin/neoinstall
 fi
 
-
 make_ln zprofile
 make_ln zshenv
 make_ln zshrc
@@ -39,10 +38,9 @@ make_ln gitconfig
 make_ln gitignore
 make_ln my.cnf
 
-
 # for peco setting file
 if [ ! -e ${PECODIR} ]; then
     mkdir $PECODIR
-    ln -s ${DOTDIR}/scripts/peco_config.json ${PECODIR}/config.json
-    echo "\033[32mexec ln -s ${DOTDIR}/script/peco_config.json ${PECODIR}/.${1}\033[m"
+    ln -s ${DOTDIR}/peco_config.json ${PECODIR}/config.json
+    echo "\033[32mexec ln -s ${DOTDIR}/peco_config.json ${PECODIR}/.${1}\033[m"
 fi
