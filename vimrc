@@ -359,6 +359,9 @@ set number
 set cursorline
 hi clear CursorLine
 
+" インデントの折り返しをキレイに表示
+set breakindent
+
 " 大文字小文字を区別せずに検索を行う
 set ignorecase
 
