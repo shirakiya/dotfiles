@@ -437,7 +437,7 @@ set shiftwidth=4
 set softtabstop=4
 
 " Insertモードで <Tab>を挿入するとき、代わりに適切な数の空白を使う。（有効:expandtab/無効:noexpandtab）
-set noexpandtab
+set expandtab
 
 " 行頭の余白内で Tab を打ち込むと、'shiftwidth'の数だけインデントする
 set smarttab
