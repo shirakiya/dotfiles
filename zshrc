@@ -43,6 +43,9 @@ setopt correct
 # ctrl-s による端末ロックを無効化
 stty stop undef
 
+# Emacs keybind
+bindkey -e
+
 
 # ------------------------------
 # Color settings
@@ -201,4 +204,3 @@ esac
 # iTerm2
 # ------------------------------
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
