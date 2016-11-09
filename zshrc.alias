@@ -40,6 +40,7 @@ alias gsh="git show"
 alias gad="git add ."
 alias gcm="git commit"
 alias gcma="git commit --amend"
+alias gcmae="git commit --allow-empty"
 alias gps="git ps"  # check .gitconfig
 alias gpsf="git push --force-with-lease"  # http://ohbarye.hatenablog.jp/entry/2016/04/04/235819
 alias gpl="git pl"  # check .gitconfig
@@ -81,3 +82,4 @@ alias be="bundle exec --"
 alias py="python -tt"
 alias pipiu="pip install --upgrade"
 alias piplo="pip list --outdated"
+alias pyenv='CFLAGS="-I$(xcrun --show-sdk-path)/usr/include" pyenv'
