@@ -132,16 +132,13 @@ compctl -K _pip_completion pip
 # Prompt setting
 # ------------------------------
 
-# リモート接続時のホスト名
-if [[ -n "${REMOTEHOST}${SSH_CONNECTION}" ]]; then
-    local rhost=`whoami`
-    rhost=${rhost#localhost:}
-    rhost=${rhost%.*}
-    p_rhst="%B%F{magenta}($rhost)%f%b"
-fi
-
 # gitのブランチ名
 autoload -Uz vcs_info
+setopt prompt_subst
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:*' formats "[%b]"
+zstyle ':vcs_info:*' actionformats "[%b|%a]"
+
 precmd() {
     psvar=()
     LANG=en_US.UTF-8 vcs_info
@@ -161,7 +158,7 @@ case ${OSTYPE} in
         ;;
 esac
 
-PROMPT="$p_rhst$p_info $p_cdir
+PROMPT="$p_info $p_cdir
 $p_mark "
 RPROMPT="$p_git"
 SPROMPT="'%r' is correct? ([n]o, [y]es, [a]bort, [e]dit):"
