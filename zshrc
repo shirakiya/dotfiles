@@ -134,7 +134,7 @@ compctl -K _pip_completion pip
 
 # リモート接続時のホスト名
 if [[ -n "${REMOTEHOST}${SSH_CONNECTION}" ]]; then
-    local rhost=`who am i|sed 's/.*\(.*\)).*\1/'`
+    local rhost=`whoami`
     rhost=${rhost#localhost:}
     rhost=${rhost%.*}
     p_rhst="%B%F{magenta}($rhost)%f%b"
