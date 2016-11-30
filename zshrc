@@ -142,7 +142,7 @@ zstyle ':vcs_info:*' actionformats "[%b|%a]"
 precmd() {
     psvar=()
     LANG=en_US.UTF-8 vcs_info
-    psvar[1]=$vcs_info_msg_0_
+    psvar[1]="$vcs_info_msg_0_"
 }
 
 local p_git="%1v"
@@ -158,9 +158,9 @@ case ${OSTYPE} in
         ;;
 esac
 
-PROMPT="$p_info $p_cdir
+PROMPT="$p_info $p_cdir $p_git
 $p_mark "
-RPROMPT="$p_git"
+RPROMPT=""
 SPROMPT="'%r' is correct? ([n]o, [y]es, [a]bort, [e]dit):"
 
 
