@@ -82,4 +82,3 @@ alias be="bundle exec --"
 alias py="python -tt"
 alias pipiu="pip install --upgrade"
 alias piplo="pip list --outdated"
-alias pyenv='CFLAGS="-I$(xcrun --show-sdk-path)/usr/include" pyenv'
