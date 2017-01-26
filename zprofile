@@ -6,7 +6,7 @@
 if [[ `uname` == 'Darwin' ]]; then
     # for Homebrew-cask
     # https://github.com/caskroom/homebrew-cask/blob/master/USAGE.md
-    export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/usr/local/Caskroom"
+    export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
     # for Intaractive shell
     # http://qiita.com/toshihr/items/0a941fc4f8e9f6932729
