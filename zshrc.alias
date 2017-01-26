@@ -71,6 +71,7 @@ alias grsh="git reset HEAD"
 alias gmg="git merge"
 alias gcp="git cherry-pick"
 alias gbm="git blame"
+alias grp="git remote prune origin"
 
 # Perl
 alias ce="carton exec --"
