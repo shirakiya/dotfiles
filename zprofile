@@ -8,29 +8,21 @@ if [[ `uname` == 'Darwin' ]]; then
     # https://github.com/caskroom/homebrew-cask/blob/master/USAGE.md
     export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
-    # for Intaractive shell
-    # http://qiita.com/toshihr/items/0a941fc4f8e9f6932729
-    if which brew > /dev/null && brew list | grep readline > /dev/null; then
-        export LDFLAGS="-L/usr/local/opt/readline/lib $LDFLAGS"
-        export CPPFLAGS="-I/usr/local/opt/readline/include $CPPFLAGS"
-    fi
-
-    # for pyenv path
-    # https://github.com/yyuu/pyenv#basic-github-checkout
-    if which pyenv > /dev/null; then
-        eval "$(pyenv init -)"
-        export CFLAGS="-I$(xcrun --show-sdk-path)/usr/include $CFLAGS"
-    fi
-	if which pyenv-virtualenv-init > /dev/null; then
-        eval "$(pyenv virtualenv-init -)"
-	fi
-
     # for Go
     export GOPATH=$HOME/.go
     export PATH=$PATH:$HOME/.go/bin
 
     # for Heroku Toolbelt
     export PATH="/usr/local/heroku/bin:$PATH"
+
+    # for pyenv path
+    # https://github.com/yyuu/pyenv
+    if which pyenv > /dev/null; then
+        eval "$(pyenv init -)"
+    fi
+	if which pyenv-virtualenv-init > /dev/null; then
+        eval "$(pyenv virtualenv-init -)"
+	fi
 
     # for plenv
     # https://github.com/tokuhirom/plenv#basic-github-checkout
