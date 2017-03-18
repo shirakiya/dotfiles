@@ -9,6 +9,7 @@ alias lla="ls -al"
 alias grep="grep --color=auto"
 alias pag="ps aux | grep"
 alias gip="curl globalip.me"
+alias unixtime="date +'%s'"
 alias ex="exit"
 
 if which ccat > /dev/null; then
