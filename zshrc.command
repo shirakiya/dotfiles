@@ -53,7 +53,7 @@ alias pipupall=pip-upgrade-all
 # peco command settings
 # ------------------------------
 
-if which peco > /dev/null; then
+if exist_command peco; then
 
 	# ブランチ選択
 	function peco-branch () {

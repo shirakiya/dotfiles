@@ -12,11 +12,11 @@ alias gip="curl globalip.me"
 alias unixtime="date +'%s'"
 alias ex="exit"
 
-if which ccat > /dev/null; then
+if exist_command ccat; then
     alias cat="ccat"
 fi
 
-if which colordiff > /dev/null; then
+if exist_command colordiff; then
     alias diff="colordiff -Nru"
 else
     alias diff="diff -Nru"

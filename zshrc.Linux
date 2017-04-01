@@ -6,8 +6,3 @@
 alias ls='ls -F --color'
 # tmux上でのコピー
 alias tc='tmux save-buffer - | pbcopy'
-
-if which rbenv > /dev/null; then
-    export PATH=$PATH:$HOME/.rbenv/bin:$HOME/.rbenv/shims
-    eval "$(rbenv init -)"
-fi

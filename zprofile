@@ -3,7 +3,16 @@
 # cf.) https://github.com/thoughtbot/dotfiles/issues/420
 # ------------------------------
 
+exist_command() {
+    if which $1 > /dev/null; then
+        return 0
+    else
+        return 1
+    fi
+}
+
 if [[ `uname` == 'Darwin' ]]; then
+
     # for Homebrew-cask
     # https://github.com/caskroom/homebrew-cask/blob/master/USAGE.md
     export HOMEBREW_CASK_OPTS="--appdir=/Applications"
@@ -17,39 +26,38 @@ if [[ `uname` == 'Darwin' ]]; then
 
     # for pyenv path
     # https://github.com/yyuu/pyenv
-    if which pyenv > /dev/null; then
+    if exist_command pyenv; then
         eval "$(pyenv init -)"
     fi
-	if which pyenv-virtualenv-init > /dev/null; then
+	if exist_command pyenv-virtualenv-init; then
         eval "$(pyenv virtualenv-init -)"
 	fi
 
     # for plenv
     # https://github.com/tokuhirom/plenv#basic-github-checkout
-    if which plenv > /dev/null; then
+    if exist_command plenv; then
         eval "$(plenv init -)"
     fi
 
     # for rbenv
     # https://github.com/sstephenson/rbenv#basic-github-checkout
-    if which rbenv > /dev/null; then
+    if exist_command rbenv; then
         eval "$(rbenv init - --no-rehash)";
     fi
 
-    # for scalaenv
-    # https://github.com/mazgi/scalaenv
-    export SCALAENV_ROOT=/usr/local/var/scalaenv
-    if which scalaenv > /dev/null; then
-        eval "$(scalaenv init -)"
+    # for nodebrew
+    export PATH=$HOME/.nodebrew/current/bin:$PATH
+
+    # for direnv
+    export EDITOR='vim'
+    eval "$(direnv hook zsh)"
+
+elif [[ `uname` == 'Linux' ]]; then
+
+    # for rbenv
+    if which rbenv > /dev/null; then
+        export PATH=$PATH:$HOME/.rbenv/bin:$HOME/.rbenv/shims
+        eval "$(rbenv init -)"
     fi
 
-	# for nodebrew
-	export PATH=$HOME/.nodebrew/current/bin:$PATH
-
-	# for composer(global required)
-	export PATH=$PATH:$HOME/.composer/vendor/bin
-
-	# for direnv
-	export EDITOR='vim'
-	eval "$(direnv hook zsh)"
 fi
