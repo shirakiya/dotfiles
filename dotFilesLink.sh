@@ -7,7 +7,7 @@ PECODIR=$HOME/.peco
 
 function make_ln() {
     if [ -e ${HOME}/.${1} ]; then
-        echo "\033[31mAlready exist ${HOME}/.${1} as symbolic link.\033[m"
+        echo "Already exist ${HOME}/.${1} as symbolic link."
     else
         ln -s ${DOTDIR}/${1} ${HOME}/.${1}
         echo "\033[32mexec ln -s ${DOTDIR}/${1} ${HOME}/.${1}\033[m"
