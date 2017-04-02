@@ -128,13 +128,6 @@ if exist_command peco; then
 	}
 	alias ss="peco-ssh"
 	alias ssr="peco-ssh root"
-
-
-	# プロセス一覧を表示
-	function peco-ps() {
-	    \ps $@ | peco --prompt 'PROCESS>'
-	}
-	alias psp=peco-ps
 fi
 
 if exist_command pet; then
