@@ -56,7 +56,7 @@ alias pipupall=pip-upgrade-all
 if exist_command peco; then
 
 	# ブランチ選択
-	function peco-branch () {
+	peco-branch () {
 	    local branch=$(git branch -a | peco | tr -d ' ' | tr -d '*')
 	    if [ -n "$branch" ]; then
 	      if [ -n "$LBUFFER" ]; then
@@ -72,7 +72,7 @@ if exist_command peco; then
 	bindkey '^b' peco-branch
 
 	# ghqによるリポジトリ一覧&移動
-	function peco-src () {
+	peco-src () {
 	    local selected_dir=$(ghq list --full-path | peco --query "$LBUFFER" --prompt "GHQ>")
 	    if [ -n "$selected_dir" ]; then
 	        BUFFER="cd ${selected_dir}"
@@ -85,7 +85,7 @@ if exist_command peco; then
 
 
 	# 履歴のインクリメンタルサーチ
-	function peco-history() {
+	peco-history() {
 	    local tac
 	    type tac &> /dev/null \
 	        && tac="tac" \
@@ -98,7 +98,7 @@ if exist_command peco; then
 
 
 	# ファイル選択
-	function peco-path() {
+	peco-path() {
 	    local filepath="$(find . | grep -v '/\.' | peco --prompt 'PATH>')"
 	    [ -z "$filepath" ] && return
 	    if [ -n "$LBUFFER" ]; then
@@ -117,7 +117,7 @@ if exist_command peco; then
 
 
 	# SSHのホスト名選択
-	function peco-ssh() {
+	peco-ssh() {
 	    local SSH=$(grep "^\s*Host " ~/.ssh/config | sed s/"[\s ]*Host "// | grep -v "^\*$" | sort | peco --prompt "SSH>")
 	    [ -z "$SSH" ] && return
 	    if [ "$1" = "root" ]; then
@@ -129,6 +129,11 @@ if exist_command peco; then
 	alias ss="peco-ssh"
 	alias ssr="peco-ssh root"
 fi
+
+
+# ------------------------------
+# pet command settings
+# ------------------------------
 
 if exist_command pet; then
 
