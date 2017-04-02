@@ -81,7 +81,7 @@ if exist_command peco; then
 	    zle clear-screen
 	}
 	zle -N peco-src
-	bindkey '^s' peco-src
+	bindkey '^t' peco-src
 
 
 	# 履歴のインクリメンタルサーチ
@@ -135,4 +135,16 @@ if exist_command peco; then
 	    \ps $@ | peco --prompt 'PROCESS>'
 	}
 	alias psp=peco-ps
+fi
+
+if exist_command pet; then
+
+    # petからコマンド検索
+    pet-select() {
+        BUFFER=$(pet search --query "$LBUFFER")
+        CURSOR=$#BUFFER
+        zle redisplay
+    }
+    zle -N pet-select
+    bindkey '^s' pet-select
 fi
