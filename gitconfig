@@ -1,5 +1,5 @@
 [user]
-	name = yoshihiko.shiraki
+	name = shirakiya
 	email = shirakiya.pv@gmail.com
 [filter "media"]
 	clean = git-media-clean %f

@@ -5,7 +5,7 @@ VIMDIR=$HOME/.vim
 VIMBUNDLEDIR=$VIMDIR/bundle
 PECODIR=$HOME/.peco
 
-function make_ln() {
+make_ln() {
     if [ -e ${HOME}/.${1} ]; then
         echo "Already exist ${HOME}/.${1} as symbolic link."
     else

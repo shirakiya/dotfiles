@@ -52,6 +52,9 @@ if [[ `uname` == 'Darwin' ]]; then
     export EDITOR='vim'
     eval "$(direnv hook zsh)"
 
+    # for MySQL5.6 (via Homebrew)
+    export PATH=/usr/local/opt/mysql@5.6/bin:$PATH
+
 elif [[ `uname` == 'Linux' ]]; then
 
     # for rbenv
