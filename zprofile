@@ -45,8 +45,11 @@ if [[ `uname` == 'Darwin' ]]; then
         eval "$(rbenv init - --no-rehash)";
     fi
 
-    # for nodebrew
-    export PATH=$HOME/.nodebrew/current/bin:$PATH
+    # for ndenv
+    if exist_command ndenv; then
+        export PATH="$HOME/.ndenv/bin:$PATH"
+        eval "$(ndenv init -)"
+    fi
 
     # for direnv
     export EDITOR='vim'
