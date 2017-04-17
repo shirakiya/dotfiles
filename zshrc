@@ -186,10 +186,12 @@ fi
 # zsh関連ファイルの読み込み
 [[ -f ~/.zshrc.alias ]] && source ~/.zshrc.alias
 [[ -f ~/.zshrc.command ]] && source ~/.zshrc.command
-# OS別設定ファイルの読み込み
-[ -f ~/.zshrc.`uname` ] && source ~/.zshrc.`uname`
+[[ -f ~/.zshrc.`uname` ]] && source ~/.zshrc.`uname`
+
 
 # ------------------------------
 # iTerm2
 # ------------------------------
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+if [[ -f ${HOME}/.iterm2_shell_integration.zsh ]]; then
+    source ${HOME}/.iterm2_shell_integration.zsh
+fi
