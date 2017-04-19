@@ -49,6 +49,13 @@ pip-upgrade-all() {
 alias pipupall=pip-upgrade-all
 
 
+# 権限をディレクトリは755, ファイルは644に変更する
+chmod_basic() {
+    find $1 -type d -exec chmod 755 {} +
+    find $1 -type f -exec chmod 644 {} +
+}
+
+
 # ------------------------------
 # peco command settings
 # ------------------------------
