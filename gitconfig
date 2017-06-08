@@ -14,6 +14,8 @@
     branch = auto
     interactive = auto
     grep = auto
+[fetch]
+    prune = true
 [alias]
 	current-branch = rev-parse --abbrev-ref HEAD
 	ps = !git push origin `git current-branch`
