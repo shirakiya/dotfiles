@@ -106,7 +106,7 @@ if exist_command peco; then
 
 	# ファイル選択
 	peco-path() {
-	    local filepath="$(find . | grep -v '/\.' | peco --prompt 'PATH>')"
+	    local filepath="$(find . | grep -vE '/\.|[_\.]pyc' | peco --prompt 'PATH>')"
 	    [ -z "$filepath" ] && return
 	    if [ -n "$LBUFFER" ]; then
 	        BUFFER="$LBUFFER$filepath"
