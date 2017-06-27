@@ -7,7 +7,7 @@
 [core]
 	editor = vim -c \"set fenc=utf-8\"
 	excludesfile = ~/.gitignore
-    pager = less
+    pager =
 [color]
     status = auto
     diff = auto
