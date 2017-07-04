@@ -197,13 +197,3 @@ if [[ -f ${HOME}/.iterm2_shell_integration.zsh ]]; then
 else
     echo 'Not install "iterm2_shell_integration.zsh"'
 fi
-
-
-# ------------------------------
-# iTerm2
-# ------------------------------
-# activeになっている場合でさらにシェルを読み込んだときに有効になる
-# = activateしてから画面分割する時などで自動でactiveになる
-if [ -n "$VIRTUAL_ENV" ]; then
-    source ${VIRTUAL_ENV}/bin/activate
-fi
