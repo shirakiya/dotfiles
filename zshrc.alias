@@ -11,6 +11,7 @@ alias pag="ps aux | grep"
 alias gip="curl globalip.me"
 alias unixtime="date +'%s'"
 alias ex="exit"
+alias cdp="cd ~/Dropbox/engineering/practice/"
 
 if exist_command ccat; then
     alias cat="ccat"
@@ -21,7 +22,6 @@ if exist_command colordiff; then
 else
     alias diff="diff -Nru"
 fi
-
 
 # for vim
 alias v="vim"
