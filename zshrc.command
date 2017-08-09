@@ -56,6 +56,18 @@ chmod_basic() {
 }
 
 
+unixtime_to_datetime() {
+    case "${OSTYPE}" in
+    darwin*)
+        date -r $1 +"%Y-%m-%d %H:%M:%S"
+        ;;
+    *)
+        date --date "@${1}"
+        ;;
+    esac
+}
+
+
 # ------------------------------
 # peco command settings
 # ------------------------------
