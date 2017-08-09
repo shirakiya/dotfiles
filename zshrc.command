@@ -56,6 +56,15 @@ chmod_basic() {
 }
 
 
+datetime_to_unixtime() {
+    case "${OSTYPE}" in
+    darwin*)
+        date -j -f "%Y-%m-%d %H:%M:%S" "${1}" "+%s"
+        ;;
+    esac
+}
+
+
 unixtime_to_datetime() {
     case "${OSTYPE}" in
     darwin*)
