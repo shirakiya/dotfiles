@@ -32,6 +32,7 @@ NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'mxw/vim-jsx'
 NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'leafgarland/typescript-vim'
 NeoBundle 'Keithbsmiley/rspec.vim'
 NeoBundle 'toyamarinyon/vim-swift'
 
