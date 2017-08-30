@@ -56,7 +56,14 @@ if [[ `uname` == 'Darwin' ]]; then
     eval "$(direnv hook zsh)"
 
     # for MySQL5.6 (via Homebrew)
-    export PATH=/usr/local/opt/mysql@5.6/bin:$PATH
+    if [[ -d "/usr/local/opt/mysql@5.6/bin" ]]; then
+        export PATH=/usr/local/opt/mysql@5.6/bin:$PATH
+    fi
+
+    # for sqlite3
+    if [[ -d "/usr/local/opt/sqlite/bin" ]]; then
+        export PATH="/usr/local/opt/sqlite/bin:$PATH"
+    fi
 
 elif [[ `uname` == 'Linux' ]]; then
 
