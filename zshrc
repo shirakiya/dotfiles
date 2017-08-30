@@ -40,6 +40,9 @@ setopt ignoreeof
 # もしかして機能
 setopt correct
 
+# グロブ展開させない
+setopt nonomatch
+
 # ctrl-s による端末ロックを無効化
 stty stop undef
 
