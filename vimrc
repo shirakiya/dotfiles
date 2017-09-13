@@ -243,10 +243,13 @@ endfunction
 " syntastic 設定
 "-------------------------------------------------
 
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=2
-let g:syntastic_python_checkers = ["flake8"]
-let g:syntastic_python_flake8_args="--max-line-length=120"
+let g:syntastic_enable_signs = 1
+let g:syntastic_auto_loc_list = 2
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_flake8_args = '--max-line-length=120'
+" mypyによるチェックを行う場合は以下を有効にする
+" call add(g:syntastic_python_checkers, 'mypy')
+" let g:syntastic_python_mypy_args = '--ignore-missing-imports --follow-imports=skip'
 
 
 "-------------------------------------------------
