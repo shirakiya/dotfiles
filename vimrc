@@ -32,6 +32,7 @@ NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'mxw/vim-jsx'
 NeoBundle 'leafgarland/typescript-vim'
+NeoBundle 'posva/vim-vue'
 NeoBundle 'Keithbsmiley/rspec.vim'
 NeoBundle 'toyamarinyon/vim-swift'
 
@@ -416,8 +417,8 @@ set viminfo='50,\"3000,:0,n~/.viminfo
 "-------------------------------------------------
 
 au BufRead,BufNewFile *.psgi set filetype=perl
-au BufNewFile,BufRead *.tx set filetype=html
-au BufNewFile,BufRead *.tt set filetype=html
+au BufRead,BufNewFile *.tx set filetype=html
+au BufRead,BufNewFile *.tt set filetype=html
 au BufRead,BufNewFile *.md set filetype=markdown
 
 
@@ -468,6 +469,7 @@ if has("autocmd")
   autocmd FileType sql        setlocal sw=4 sts=4 ts=4 et
   autocmd FileType txt        setlocal sw=4 sts=4 ts=4 et
   autocmd FileType vim        setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType vue        setlocal sw=2 sts=2 ts=2 et
   autocmd FileType xhtml      setlocal sw=4 sts=4 ts=4 et
   autocmd FileType xml        setlocal sw=4 sts=4 ts=4 et
   autocmd FileType yaml       setlocal sw=2 sts=2 ts=2 et
