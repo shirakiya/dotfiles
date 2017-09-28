@@ -90,3 +90,6 @@ alias piplo="pip list --outdated"
 alias mkvenv="python -m venv"
 alias jpt="jupyter"
 alias jptn="jupyter notebook"
+
+# Homebrew
+alias brew-cask-upgrade="brew cask reinstall $(brew cask outdated --quiet)"
