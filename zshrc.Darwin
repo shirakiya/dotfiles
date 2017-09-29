@@ -18,5 +18,5 @@ export LESSOPEN='| /usr/local/bin/src-hilite-lesspipe.sh %s'
 
 # enable zsh completion aws-cli
 if exist_command aws; then
-    source /usr/local/bin/aws_zsh_completer.sh
+    source /usr/local/share/zsh/site-functions/aws_zsh_completer.sh
 fi
