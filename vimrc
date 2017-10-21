@@ -1,75 +1,48 @@
 "-------------------------------------------------
-" NeoBundle プラグイン管理
+" dein プラグイン管理
 "-------------------------------------------------
 
 filetype off
 
-if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+if &compatible
+  set nocompatible
 endif
 
-call neobundle#begin(expand('~/.vim/bundle'))
+" プラグインが実際にインストールされるディレクトリ
+let s:dein_dir = expand('~/.vim/dein')
+" dein.vim 本体
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
-" NeoBundle自体を更新可能にする
-NeoBundleFetch 'Shougo/neobundle.vim'
+if &runtimepath !~# '/dein.vim'
+  " dein.vim がなければ github から落としてくる
+  if !isdirectory(s:dein_repo_dir)
+    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+  endif
 
-" Utility
-NeoBundle 'Shougo/neocomplete.vim'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'honza/vim-snippets'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'Townk/vim-autoclose'
-NeoBundle 'bronson/vim-trailing-whitespace'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'airblade/vim-gitgutter'
-" Color
-NeoBundle 'tomasr/molokai'
-" Syntax
-NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'mxw/vim-jsx'
-NeoBundle 'leafgarland/typescript-vim'
-NeoBundle 'posva/vim-vue'
-NeoBundle 'Keithbsmiley/rspec.vim'
-NeoBundle 'toyamarinyon/vim-swift'
+  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
+endif
 
-" Python
-NeoBundle 'hdima/python-syntax'
-NeoBundle 'nvie/vim-flake8'  " `:call Flake8()`
-NeoBundle 'hynek/vim-python-pep8-indent'
-" Djangoを正しくVimで読み込めるようにする
-NeoBundleLazy "lambdalisue/vim-django-support", {
-    \ "autoload": {
-    \   "filetypes": ["python", "python3", "djangohtml"]
-    \ }}
-" Vimで正しくvirtualenvを処理できるようにする
-NeoBundleLazy "jmcantrell/vim-virtualenv", {
-    \ "autoload": {
-    \   "filetypes": ["python", "python3", "djangohtml"]
-    \ }}
-"NeoBundleLazy "davidhalter/jedi-vim", {
-"    \ "autoload": {
-"    \   "filetypes": [ "python", "python3", "djangohtml"]
-"    \ },
-"    \ "build": {
-"    \   "mac": "pip install jedi",
-"    \   "unix": "pip install jedi",
-"    \ }}
+" 設定開始
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
 
-" ':BenchVimrc' を叩くと計測
-NeoBundleLazy 'mattn/benchvimrc-vim', {
-  \ 'autoload': {
-    \   'commands': ['BenchVimrc'],
-      \  },
-    \}
+  let g:config_dir = s:dein_dir . '/config'
+  let s:toml       = g:config_dir . '/dein.toml'
+  let s:lazy_toml  = g:config_dir . '/dein_lazy.toml'
 
-call neobundle#end()
+  " TOML を読み込み、キャッシュしておく
+  call dein#load_toml(s:toml,      {'lazy': 0})
+  call dein#load_toml(s:lazy_toml, {'lazy': 1})
 
-" 未インストールのものがあればインストールするか確認する
-NeoBundleCheck
+  " 設定終了
+  call dein#end()
+  call dein#save_state()
+endif
+
+" 未インストールものものがあったらインストール
+if dein#check_install()
+  call dein#install()
+endif
 
 " ファイル形式別プラグインのロードを有効化
 filetype plugin indent on
@@ -103,14 +76,12 @@ endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
 " Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
+inoremap <expr><C-g>  neocomplete#undo_completion()
+inoremap <expr><C-l>  neocomplete#complete_common_string()
 
-" Recommended key-mappings.
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
-  "return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
   " For no inserting <CR> key.
   return pumvisible() ? "\<C-y>" : "\<CR>"
 endfunction
@@ -119,17 +90,6 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
-
-" AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
-
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplete#enable_auto_select = 1
-"let g:neocomplete#disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
 
 " Enable omni completion.
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -137,10 +97,9 @@ autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=python3complete#Complete completeopt-=preview
-
-" Use jedi-vim
-" autocmd FileType python setlocal omnifunc=jedi#completions
-" let g:jedi#auto_vim_configuration = 0
+" jedy-vim
+autocmd FileType python setlocal omnifunc=jedi#completions
+let g:jedi#auto_vim_configuration = 0
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
@@ -420,6 +379,8 @@ au BufRead,BufNewFile *.psgi set filetype=perl
 au BufRead,BufNewFile *.tx set filetype=html
 au BufRead,BufNewFile *.tt set filetype=html
 au BufRead,BufNewFile *.md set filetype=markdown
+au BufRead,BufNewFile nginx.conf set filetype=nginx
+au BufRead,BufNewFile *.service set filetype=toml
 
 
 "-------------------------------------------------
@@ -459,6 +420,7 @@ if has("autocmd")
   autocmd FileType java       setlocal sw=4 sts=4 ts=4 et
   autocmd FileType javascript setlocal sw=2 sts=2 ts=2 et
   autocmd FileType json       setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType nginx      setlocal sw=4 sts=4 ts=4 noet
   autocmd FileType perl       setlocal sw=4 sts=4 ts=4 et
   autocmd FileType php        setlocal sw=4 sts=4 ts=4 noet
   autocmd FileType python     setlocal sw=4 sts=4 ts=4 et
@@ -468,7 +430,7 @@ if has("autocmd")
   autocmd FileType sh         setlocal sw=2 sts=2 ts=2 et
   autocmd FileType sql        setlocal sw=4 sts=4 ts=4 et
   autocmd FileType txt        setlocal sw=4 sts=4 ts=4 et
-  autocmd FileType vim        setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType vim        setlocal sw=2 sts=2 ts=2 et
   autocmd FileType vue        setlocal sw=2 sts=2 ts=2 et
   autocmd FileType xhtml      setlocal sw=4 sts=4 ts=4 et
   autocmd FileType xml        setlocal sw=4 sts=4 ts=4 et

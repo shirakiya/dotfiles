@@ -1,0 +1,108 @@
+[[plugins]]
+repo = 'Shougo/neocomplete.vim'
+on_i = 1
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+on_i = 1
+
+[[plugins]]
+repo = 'Townk/vim-autoclose'
+on_i = 1
+
+[[plugins]]
+repo = 'Shougo/neosnippet'
+on_i = 1
+
+[[plugins]]
+repo      = 'Shougo/neosnippet-snippets'
+on_source = ['neosnippet']
+
+[[plugins]]
+repo      = 'honza/vim-snippets'
+on_source = ['neosnippet']
+
+[[plugins]]
+repo   = 'mattn/benchvimrc-vim'
+on_cmd = ['BenchVimrc']
+
+# Syntax
+#
+[[plugins]]
+repo  = 'hail2u/vim-css3-syntax'
+on_ft = ['html', 'css', 'scss', 'sass', 'vue']
+
+[[plugins]]
+repo  = 'pangloss/vim-javascript'
+on_ft = ['html', 'javascript', 'javascript.jsx', 'vue']
+
+[[plugins]]
+repo  = 'mxw/vim-jsx'
+on_ft = ['html', 'javascript', 'javascript.jsx', 'vue']
+
+[[plugins]]
+repo  = 'leafgarland/typescript-vim'
+on_ft = ['typescript']
+
+[[plugins]]
+repo  = 'posva/vim-vue'
+on_ft = ['vue']
+
+[[plugins]]
+repo  = 'posva/vim-vue'
+on_ft = ['vue']
+
+[[plugins]]
+repo  = 'Keithbsmiley/rspec.vim'
+on_ft = ['ruby', 'ruby.rspec']
+
+[[plugins]]
+repo  = 'toyamarinyon/vim-swift'
+on_ft = ['swift']
+
+[[plugins]]
+repo  = 'fatih/vim-go'
+on_ft = ['go']
+
+[[plugins]]  # Djangoを正しくVimで読み込めるようにする
+repo  = 'lambdalisue/vim-django-support'
+on_ft = ['python', 'python3', 'djangohtml']
+
+[[plugins]]
+repo  = 'vim-scripts/nginx.vim'
+on_ft = ['nginx']
+
+[[plugins]]
+repo  = 'cespare/vim-toml'
+on_ft = ['toml']
+
+[[plugins]]
+repo  = 'hdima/python-syntax'
+on_ft = ['python', 'python3', 'djangohtml']
+
+[[plugins]]
+repo  = 'nvie/vim-flake8'  # `:call Flake8()`
+on_ft = ['python', 'python3', 'djangohtml']
+
+[[plugins]]
+repo  = 'hynek/vim-python-pep8-indent'
+on_ft = ['python', 'python3', 'djangohtml']
+
+[[plugins]]  # Vimで正しくvirtualenvを処理できるようにする
+repo  = 'jmcantrell/vim-virtualenv'
+on_ft = ['python', 'python3', 'djangohtml']
+
+[[plugins]]
+repo  = 'davidhalter/jedi-vim'
+on_ft = ['python', 'python3', 'djangohtml']
+hook_add = '''
+  let g:jedi#popup_select_first = 0
+  let g:jedi#popup_on_dot = 0
+  let g:jedi#goto_command = "<leader>d"
+  let g:jedi#goto_assignments_command = "<leader>g"
+  let g:jedi#goto_definitions_command = ""
+  let g:jedi#documentation_command = "K"
+  let g:jedi#usages_command = "<leader>n"
+  let g:jedi#rename_command = "<leader>R"
+  autocmd FileType python setlocal completeopt-=preview
+'''
