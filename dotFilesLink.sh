@@ -6,12 +6,12 @@ DOTDIR=$HOME/dotfiles
 PECODIR=$HOME/.peco
 
 make_dotfile_ln() {
-    if [ -e ${HOME}/.$1 ]; then
-        echo "Already exist ${HOME}/.$1 as symbolic link."
-    else
-        ln -s ${DOTDIR}/$1 ${HOME}/.$1
-        echo "\033[32mexec ln -s ${DOTDIR}/$1 ${HOME}/.${1}\033[m"
-    fi
+  if [ -e ${HOME}/.$1 ]; then
+    echo "Already exist ${HOME}/.$1 as symbolic link."
+  else
+    ln -s ${DOTDIR}/$1 ${HOME}/.$1
+    echo "\033[32mexec ln -s ${DOTDIR}/$1 ${HOME}/.${1}\033[m"
+  fi
 }
 
 make_ln() {
@@ -63,7 +63,7 @@ make_dotfile_ln my.cnf
 
 # for peco setting file
 if [ ! -e ${PECODIR} ]; then
-    mkdir $PECODIR
-    ln -s ${DOTDIR}/peco_config.json ${PECODIR}/config.json
-    echo "\033[32mexec ln -s ${DOTDIR}/peco_config.json ${PECODIR}/.${1}\033[m"
+  mkdir $PECODIR
+  ln -s ${DOTDIR}/peco_config.json ${PECODIR}/config.json
+  echo "\033[32mexec ln -s ${DOTDIR}/peco_config.json ${PECODIR}/.${1}\033[m"
 fi
