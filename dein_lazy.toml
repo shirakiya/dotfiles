@@ -3,14 +3,6 @@ repo = 'Shougo/neocomplete.vim'
 on_i = 1
 
 [[plugins]]
-repo = 'tpope/vim-surround'
-on_i = 1
-
-[[plugins]]
-repo = 'Townk/vim-autoclose'
-on_i = 1
-
-[[plugins]]
 repo = 'Shougo/neosnippet'
 on_i = 1
 
