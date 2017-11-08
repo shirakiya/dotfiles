@@ -94,3 +94,10 @@ alias jptn="jupyter notebook"
 
 # Homebrew
 alias brew-cask-upgrade="brew cask reinstall $(brew cask outdated --quiet)"
+
+# Other package
+
+# pipのawscliにパスが持っていかれないようにbrewなどで入れたawscliを使うようにする
+alias aws="/usr/local/bin/aws"
+# treeの出力をマルチバイトなファイル名などに対応する
+alias tree='tree -N'
