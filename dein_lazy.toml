@@ -65,6 +65,10 @@ repo  = 'vim-scripts/nginx.vim'
 on_ft = ['nginx']
 
 [[plugins]]
+repo  = 'itkq/fluentd-vim'
+on_ft = ['fluentd']
+
+[[plugins]]
 repo  = 'cespare/vim-toml'
 on_ft = ['toml']
 
