@@ -12,6 +12,11 @@ exist_command() {
 }
 
 if [[ `uname` == 'Darwin' ]]; then
+    PATH=
+    if [ -x /usr/libexec/path_helper ]; then
+        eval `/usr/libexec/path_helper -s`
+    fi
+    export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
     # for Homebrew-cask
     # https://github.com/caskroom/homebrew-cask/blob/master/USAGE.md
@@ -19,7 +24,7 @@ if [[ `uname` == 'Darwin' ]]; then
 
     # for Go
     export GOPATH=$HOME/.go
-    export PATH=$PATH:$HOME/.go/bin
+    export PATH=$HOME/.go/bin:$PATH
 
     # for Heroku Toolbelt
     export PATH="/usr/local/heroku/bin:$PATH"

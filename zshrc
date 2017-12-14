@@ -49,6 +49,9 @@ stty stop undef
 # Emacs keybind
 bindkey -e
 
+# 重複した環境変数を取り除く
+typeset -U path
+
 
 # ------------------------------
 # Color settings
