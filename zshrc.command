@@ -43,6 +43,10 @@ showgroups() {
     esac
 }
 
+readable-path() {
+    echo $PATH | tr ':' '\n'
+}
+
 pip-upgrade-all() {
     pip list --outdated | awk '{print $1}' | xargs pip install -U
 }
