@@ -78,7 +78,8 @@ alias grp="git remote prune origin"
 
 # Docker
 alias d="docker"
-alias docker-rm-a='docker rm $(docker ps -aq)'
+alias docker-prm-a='docker rm $(docker ps -aq)'
+alias docker-vrm-a='docker volume ls -q | xargs docker volume rm'
 
 # Perl
 alias ce="carton exec --"
