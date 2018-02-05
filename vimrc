@@ -368,8 +368,12 @@ if has("unix") && !has("mac")
     noremap p :rv!<CR>p
 endif
 
-
 set viminfo='50,\"3000,:0,n~/.viminfo
+
+" rubyファイル編集を軽くする
+set nofoldenable
+set re=1
+
 
 "-------------------------------------------------
 " Filetype 設定
