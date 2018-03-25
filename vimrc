@@ -112,138 +112,6 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 
 "-------------------------------------------------
-" neosnippet 設定
-"-------------------------------------------------
-
-" Plugin key-mappings.
-imap <C-s> <Plug>(neosnippet_expand_or_jump)
-smap <C-s> <Plug>(neosnippet_expand_or_jump)
-xmap <C-s> <Plug>(neosnippet_expand_target)
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
-
-
-"-------------------------------------------------
-" Color 設定
-"-------------------------------------------------
-
-syntax enable
-colorscheme molokai
-set t_Co=256
-
-
-"-------------------------------------------------
-" lightline.vim 設定
-"-------------------------------------------------
-
-let g:lightline = {
-    \    'colorscheme': 'default',
-    \    'active': {
-    \        'left': [
-    \            ['mode', 'paste'],
-    \            ['fugitive', 'gitgutter', 'readonly', 'filename'],
-    \        ],
-    \    },
-    \    'component_function' : {
-    \        'fugitive' : 'LightLineFugitive',
-    \        'gitgutter': 'MyGitGutter',
-    \        'readonly' : 'LightLineReadonly',
-    \        'filename' : 'LightLineFilename',
-    \    },
-    \    'subseparator': { 'left': '|', 'right': '|' }
-    \}
-
-function! LightLineFugitive()
-  return exists('*fugitive#head') ? fugitive#head() : ''
-endfunction
-
-function! MyGitGutter()
-  if ! exists('*GitGutterGetHunkSummary')
-        \ || ! get(g:, 'gitgutter_enabled', 0)
-        \ || winwidth('.') <= 90
-    return ''
-  endif
-  let symbols = [
-        \ g:gitgutter_sign_added . ' ',
-        \ g:gitgutter_sign_modified . ' ',
-        \ g:gitgutter_sign_removed . ' '
-        \ ]
-  let hunks = GitGutterGetHunkSummary()
-  let ret = []
-  for i in [0, 1, 2]
-    if hunks[i] > 0
-      call add(ret, symbols[i] . hunks[i])
-    endif
-  endfor
-  return join(ret, ' ')
-endfunction
-
-function! LightLineReadonly()
-  return &ft !~? 'help' && &readonly ? 'RO' : ''
-endfunction
-
-function! LightLineModified()
-  return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-endfunction
-
-function! LightLineFilename()
-  return ('' != expand('%:p') ? expand('%:p') : '[No Name]') .
-        \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
-endfunction
-
-
-"-------------------------------------------------
-" vim-trailing-whitespace 設定
-"-------------------------------------------------
-
-":FixWhitespaceで行末スペースを全て削除
-
-
-"-------------------------------------------------
-" syntastic 設定
-"-------------------------------------------------
-
-let g:syntastic_enable_signs = 1
-let g:syntastic_auto_loc_list = 2
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_python_flake8_args = '--max-line-length=120'
-" mypyによるチェックを行う場合は以下を有効にする
-" call add(g:syntastic_python_checkers, 'mypy')
-" let g:syntastic_python_mypy_args = '--ignore-missing-imports --follow-imports=skip'
-
-
-"-------------------------------------------------
-" RSpec syntax highlight 設定
-"-------------------------------------------------
-
-let g:quickrun_config = {}
-let g:quickrun_config._={
-      \ 'outputter/buffer/split': ':botright'
-      \ }
-let g:quickrun_config['ruby.rspec'] = {
-      \ 'command': 'rspec'
-      \ }
-augroup RSpec
-  autocmd!
-  autocmd BufWinEnter,BufNewFile *_spec.rb set filetype=ruby.rspec
-augroup END
-
-
-"-------------------------------------------------
-" python-syntax 設定
-"-------------------------------------------------
-
-let python_highlight_all = 1
-
-
-"-------------------------------------------------
-" vim-jsx 設定
-"-------------------------------------------------
-
-let g:jsx_ext_required = 0
-
-
-"-------------------------------------------------
 " Basic
 "-------------------------------------------------
 
@@ -443,3 +311,28 @@ if has("autocmd")
   autocmd FileType yaml       setlocal sw=2 sts=2 ts=2 et
   autocmd FileType zsh        setlocal sw=4 sts=4 ts=4 et
 endif
+
+
+"-------------------------------------------------
+" Color 設定
+"-------------------------------------------------
+
+syntax enable
+colorscheme molokai
+set t_Co=256
+
+
+"-------------------------------------------------
+" command
+"-------------------------------------------------
+" [:DeinClean] 利用していないpluginを削除する
+function! s:deinClean()
+  let disabled_plugins = dein#check_clean()
+  if len(disabled_plugins)
+    call map(disabled_plugins, 'delete(v:val, "rf")')
+    call dein#recache_runtimepath()
+  else
+    echo 'Not exist disabled plugins.'
+  endif
+endfunction
+command! DeinClean :call s:deinClean()
