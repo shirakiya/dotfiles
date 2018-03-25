@@ -10,7 +10,7 @@ make_dotfile_ln() {
 
   if [ ! -e $TARGET_PATH ]; then
     ln -s $BASE_PATH $TARGET_PATH
-    echo "\033[32mcreate symlink to ${TARGET_PATH}\033[m"
+    echo "create symlink to ${TARGET_PATH}"
   fi
 }
 
