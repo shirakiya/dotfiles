@@ -102,3 +102,7 @@ hook_add = '''
   let g:jedi#rename_command = "<leader>R"
   autocmd FileType python setlocal completeopt-=preview
 '''
+
+[[plugins]]
+repo  = 'fisadev/vim-isort'
+on_ft = ['python', 'python3']

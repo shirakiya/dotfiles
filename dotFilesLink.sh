@@ -59,6 +59,7 @@ make_dotfile_ln tmux.conf
 make_dotfile_ln gitconfig
 make_dotfile_ln gitignore
 make_dotfile_ln my.cnf
+make_dotfile_ln isort.cfg
 
 setup_vim
 setup_peco
