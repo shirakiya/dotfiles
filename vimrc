@@ -242,6 +242,9 @@ set viminfo='50,\"3000,:0,n~/.viminfo
 set nofoldenable
 set re=1
 
+" JSONのダブルクオートを表示する
+set conceallevel=0
+
 
 "-------------------------------------------------
 " Filetype 設定
