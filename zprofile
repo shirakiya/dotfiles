@@ -56,6 +56,12 @@ if [[ `uname` == 'Darwin' ]]; then
         eval "$(ndenv init -)"
     fi
 
+    # for goenv
+    if exist_command goenv; then
+        export PATH="$HOME/.goenv/shims:$PATH"
+        eval "$(goenv init -)"
+    fi
+
     # for direnv
     export EDITOR='vim'
     eval "$(direnv hook zsh)"
