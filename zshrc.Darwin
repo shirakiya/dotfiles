@@ -23,5 +23,5 @@ if exist_command aws; then
 fi
 
 # export for xgboost
-export CC=gcc-5
-export CXX=g++-5
+# export CC=gcc-5
+# export CXX=g++-5
