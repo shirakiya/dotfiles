@@ -66,6 +66,7 @@ alias glgp="git log -p"
 alias glgs="git log --stat"
 alias glgo="git log --no-merges --date=short --pretty='format:%C(yellow)%h %C(green)%cd %C(blue)%an%C(red)%d %C(reset)%s'"
 alias glgg="git log --graph --name-status --pretty='format:%C(red)%h %C(green)%an %Creset%s %C(yellow)%d%Creset'"
+alias glgd="git log --diff-filter=D --summary"
 alias ggr="git grep -In"
 alias gmv="git mv"
 alias grm="git rm"
@@ -94,6 +95,9 @@ alias pipiu="pip install --upgrade"
 alias piplo="pip list --outdated"
 alias pip-uninstall-all="pip freeze | xargs pip uninstall -y"
 alias mkvenv="python -m venv"
+
+alias pe="pipenv run --"
+
 alias jpt="jupyter"
 alias jptn="jupyter notebook"
 
