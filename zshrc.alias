@@ -79,6 +79,7 @@ alias grp="git remote prune origin"
 
 # Docker
 alias d="docker"
+alias dcp="docker-compose"
 alias docker-prm-a='docker rm $(docker ps -aq)'
 alias docker-vrm-a='docker volume ls -q | xargs docker volume rm'
 
