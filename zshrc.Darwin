@@ -5,9 +5,6 @@
 # lsがカラー表示になるようエイリアスを設定
 alias ls="ls -GF"
 
-# tmux上でのコピー
-alias tc='tmux save-buffer - | reattach-to-user-namespace pbcopy'
-
 # zsh-syntax-highliting
 if [ -e /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
     source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
