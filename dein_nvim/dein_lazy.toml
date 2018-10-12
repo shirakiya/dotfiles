@@ -1,0 +1,114 @@
+[[plugins]]
+repo     = 'Shougo/deoplete.nvim'
+on_event = 'InsertEnter'
+hook_add = '''
+  let g:deoplete#enable_at_startup = 1
+  inoremap <expr><Tab> pumvisible() ? "\<DOWN>" : "\<Tab>"
+  inoremap <expr><S-Tab> pumvisible() ? "\<UP>" : "\<S-Tab>"
+
+  " ref.) https://github.com/zchee/deoplete-jedi/wiki/Setting-up-Python-for-Neovim
+  let s:python_path = expand('~/.pyenv/versions/neovim3/bin/python')
+  if filereadable(s:python_path)
+    let g:python3_host_prog = s:python_path
+  endif
+'''
+
+[[plugins]]
+repo        = 'Shougo/neosnippet'
+on_i        = 1
+depends     = ['neosnippet-snippets', 'vim-snippets']
+hook_source = '''
+  imap <C-k> <Plug>(neosnippet_expand_or_jump)
+  smap <C-k> <Plug>(neosnippet_expand_or_jump)
+  xmap <C-k> <Plug>(neosnippet_expand_target)
+
+  let g:neosnippet#snippets_directory = '~/.vim/dein/repos/github.com/honza/vim-snippets/snippets'
+
+  if has('conceal')
+    set conceallevel=2 concealcursor=niv
+  endif
+'''
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+on_i = 1
+
+[[plugins]]
+repo = 'honza/vim-snippets'
+on_i = 1
+
+[[plugins]]
+repo   = 'mattn/benchvimrc-vim'
+on_cmd = ['BenchVimrc']
+
+# Syntax
+#
+[[plugins]]
+repo = 'elzr/vim-json'
+on_ft = ['json']
+hook_add = '''
+  let g:vim_json_syntax_conceal = 0
+'''
+
+[[plugins]]
+repo  = 'hail2u/vim-css3-syntax'
+on_ft = ['html', 'css', 'scss', 'sass', 'vue']
+
+[[plugins]]
+repo  = 'pangloss/vim-javascript'
+on_ft = ['html', 'javascript', 'javascript.jsx', 'vue']
+
+[[plugins]]
+repo        = 'mxw/vim-jsx'
+on_ft       = ['html', 'javascript', 'javascript.jsx', 'vue']
+hook_source = '''
+  let g:jsx_ext_required = 0
+'''
+
+[[plugins]]
+repo  = 'leafgarland/typescript-vim'
+on_ft = ['typescript']
+
+[[plugins]]
+repo  = 'posva/vim-vue'
+on_ft = ['vue']
+
+[[plugins]]
+repo  = 'fatih/vim-go'
+on_ft = ['go']
+hook_source = '''
+  let g:go_highlight_functions = 1
+  let g:go_highlight_methods = 1
+  let g:go_highlight_structs = 1
+'''
+
+[[plugins]]  # Djangoを正しくVimで読み込めるようにする
+repo  = 'lambdalisue/vim-django-support'
+on_ft = ['python', 'python3', 'djangohtml']
+
+[[plugins]]
+repo  = 'vim-scripts/nginx.vim'
+on_ft = ['nginx']
+
+[[plugins]]
+repo  = 'itkq/fluentd-vim'
+on_ft = ['fluentd']
+
+[[plugins]]
+repo  = 'cespare/vim-toml'
+on_ft = ['toml']
+
+[[plugins]]
+repo  = 'hdima/python-syntax'
+on_ft = ['python', 'python3', 'djangohtml']
+hook_add = '''
+  let g:python_highlight_all = 1
+'''
+
+[[plugins]]
+repo  = 'nvie/vim-flake8'  # `:call Flake8()`
+on_ft = ['python', 'python3', 'djangohtml']
+
+[[plugins]]
+repo  = 'hynek/vim-python-pep8-indent'
+on_ft = ['python', 'python3', 'djangohtml']

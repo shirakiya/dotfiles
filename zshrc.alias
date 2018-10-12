@@ -24,8 +24,9 @@ else
 fi
 
 # for vim
-alias v="vim"
+alias v="nvim"
 alias vi="vim"
+alias vim="nvim"
 
 # for tmux
 alias tm="tmux"

@@ -33,12 +33,21 @@ check_and_mkdir() {
 setup_vim() {
   make_dotfile_ln vimrc
 
-  VIM_DIR=$HOME/.vim
-  DEIN_CONFIG_DIR=$VIM_DIR/dein/config
-
+  DEIN_CONFIG_DIR=$HOME/.vim/dein/config
   check_and_mkdir $DEIN_CONFIG_DIR
-  make_ln dein.toml $DEIN_CONFIG_DIR/dein.toml
-  make_ln dein_lazy.toml $DEIN_CONFIG_DIR/dein_lazy.toml
+  make_ln dein_vim/dein.toml $DEIN_CONFIG_DIR/dein.toml
+  make_ln dein_vim/dein_lazy.toml $DEIN_CONFIG_DIR/dein_lazy.toml
+}
+
+setup_neovim() {
+  NVIM_DIR=$HOME/.config/nvim
+  check_and_mkdir $NVIM_DIR
+  make_ln init.vim $NVIM_DIR/init.vim
+
+  DEIN_CONFIG_DIR=$HOME/.config/dein/config
+  check_and_mkdir $DEIN_CONFIG_DIR
+  make_ln dein_nvim/dein.toml $DEIN_CONFIG_DIR/dein.toml
+  make_ln dein_nvim/dein_lazy.toml $DEIN_CONFIG_DIR/dein_lazy.toml
 }
 
 setup_peco() {
@@ -62,4 +71,5 @@ make_dotfile_ln my.cnf
 make_dotfile_ln isort.cfg
 
 setup_vim
+setup_neovim
 setup_peco

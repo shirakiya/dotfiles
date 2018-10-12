@@ -2,14 +2,8 @@
 " dein プラグイン管理
 "-------------------------------------------------
 
-filetype off
-
-if &compatible
-  set nocompatible
-endif
-
 " プラグインが実際にインストールされるディレクトリ
-let s:dein_dir = expand('~/.vim/dein')
+let s:dein_dir = expand('~/.config/dein')
 " dein.vim 本体
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
@@ -44,17 +38,22 @@ if dein#check_install()
   call dein#install()
 endif
 
-" ファイル形式別プラグインのロードを有効化
-filetype plugin indent on
-
 
 "-------------------------------------------------
 " Basic
 "-------------------------------------------------
 
-" 分割した設定ファイルをすべて読み込む
-set runtimepath+=~/.vim/
-runtime! conf/*.vim
+" 行番号を表示する
+set number
+
+" カーソルの変更をしない
+set guicursor=
+
+" 検索の/
+set inccommand=split
+
+" ペインを縦分割する時は右に開く
+set splitright
 
 " カーソルの上または下に表示する最小限の行数
 set scrolloff=1
@@ -121,9 +120,6 @@ set showmatch
 " 全角記号をズレずに表示する
 set ambiwidth=double
 
-" 行番号を表示する
-set number
-
 " カーソル上の行番号のハイライト
 set cursorline
 hi clear CursorLine
@@ -137,17 +133,10 @@ set ignorecase
 " 検索文字列に大文字が含まれているならば大文字小文字区別して検索する
 set smartcase
 
-" 検索結果をハイライトする
-set hlsearch
-
-" 検索で途中までマッチしているものをハイライト
-set incsearch
-
 " ESCを二回押すことでハイライトを消す
 nmap <silent> <Esc><Esc> :nohlsearch<CR>
 
 "補完候補を表示する
-set wildmenu
 set wildmode=list:longest,full
 
 " インサートモードでもhjklで移動（Ctrlを押しながら）
@@ -173,8 +162,6 @@ if has("unix") && !has("mac")
     noremap p :rv!<CR>p
 endif
 
-set viminfo='50,\"3000,:0,n~/.viminfo
-
 " rubyファイル編集を軽くする
 set nofoldenable
 set re=1
@@ -197,9 +184,6 @@ au BufRead,BufNewFile *.service set filetype=toml
 " Indent 設定
 "-------------------------------------------------
 
-" 新しい行を開始したときに、新しい行のインデントを現在行と同じ量にする
-set autoindent
-
 " 新しい行を作ったときに高度な自動インデントを行う
 set smartindent
 
@@ -214,9 +198,6 @@ set softtabstop=4
 
 " Insertモードで <Tab>を挿入するとき、代わりに適切な数の空白を使う。（有効:expandtab/無効:noexpandtab）
 set expandtab
-
-" 行頭の余白内で Tab を打ち込むと、'shiftwidth'の数だけインデントする
-set smarttab
 
 if has("autocmd")
   autocmd FileType apache     setlocal sw=4 sts=4 ts=4 et
@@ -255,9 +236,10 @@ endif
 " Color 設定
 "-------------------------------------------------
 
-syntax enable
 colorscheme molokai
 set t_Co=256
+set background=dark
+"set termguicolors
 
 
 "-------------------------------------------------
