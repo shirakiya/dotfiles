@@ -15,7 +15,7 @@ hook_add = '''
 
 [[plugins]]
 repo        = 'Shougo/neosnippet'
-on_i        = 1
+on_event    = 'InsertEnter'
 depends     = ['neosnippet-snippets', 'vim-snippets']
 hook_source = '''
   imap <C-k> <Plug>(neosnippet_expand_or_jump)
@@ -30,12 +30,12 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/neosnippet-snippets'
-on_i = 1
+repo      = 'Shougo/neosnippet-snippets'
+on_source = ['neosnippet']
 
 [[plugins]]
-repo = 'honza/vim-snippets'
-on_i = 1
+repo      = 'honza/vim-snippets'
+on_source = ['neosnippet']
 
 [[plugins]]
 repo   = 'mattn/benchvimrc-vim'

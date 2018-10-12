@@ -1,6 +1,6 @@
 [[plugins]]
-repo = 'Shougo/neocomplete.vim'
-on_i = 1
+repo     = 'Shougo/neocomplete.vim'
+on_event = 'InsertEnter'
 hook_add = '''
   " Disable AutoComplPop.
   let g:acp_enableAtStartup = 0
@@ -64,7 +64,7 @@ hook_add = '''
 
 [[plugins]]
 repo        = 'Shougo/neosnippet'
-on_i        = 1
+on_event    = 'InsertEnter'
 depends     = ['neosnippet-snippets', 'vim-snippets']
 hook_source = '''
   imap <C-k> <Plug>(neosnippet_expand_or_jump)
