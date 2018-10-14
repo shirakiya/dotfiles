@@ -178,6 +178,7 @@ au BufRead,BufNewFile *.md set filetype=markdown
 au BufRead,BufNewFile nginx.conf set filetype=nginx
 au BufRead,BufNewFile td-agent.conf set filetype=fluentd
 au BufRead,BufNewFile *.service set filetype=toml
+au BufRead,BufNewFile Dockerfile* set filetype=dockerfile
 
 
 "-------------------------------------------------
