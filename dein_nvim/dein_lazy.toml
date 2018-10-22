@@ -14,6 +14,13 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'zchee/deoplete-jedi'
+on_ft = ['python', 'python3', 'djangohtml']
+hook_add = '''
+    let g:deoplete#sources#jedi#python_path = '/Users/yoshihiko.shiraki/.pyenv/shims/python2'
+'''
+
+[[plugins]]
 repo        = 'Shougo/neosnippet'
 on_event    = 'InsertEnter'
 depends     = ['neosnippet-snippets', 'vim-snippets']
