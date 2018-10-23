@@ -4,5 +4,3 @@
 
 # lsがカラー表示になるようエイリアスを設定
 alias ls='ls -F --color'
-# tmux上でのコピー
-alias tc='tmux save-buffer - | pbcopy'
