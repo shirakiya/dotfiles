@@ -2,6 +2,14 @@
 # Optional command settings
 # ------------------------------
 
+exist_command() {
+    if which $1 > /dev/null; then
+        return 0
+    else
+        return 1
+    fi
+}
+
 # show cpan module version
 pmver () {
     do_cd=;
