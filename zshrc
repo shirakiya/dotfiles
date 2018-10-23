@@ -200,6 +200,4 @@ fi
 # ------------------------------
 if [[ -f ${HOME}/.iterm2_shell_integration.zsh ]]; then
     source ${HOME}/.iterm2_shell_integration.zsh
-else
-    echo 'Not install "iterm2_shell_integration.zsh"'
 fi
