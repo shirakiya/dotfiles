@@ -3,8 +3,12 @@ repo     = 'Shougo/deoplete.nvim'
 on_event = 'InsertEnter'
 hook_add = '''
   let g:deoplete#enable_at_startup = 1
+  let g:deoplete#auto_complete_delay = 0
+
   inoremap <expr><Tab> pumvisible() ? "\<DOWN>" : "\<Tab>"
   inoremap <expr><S-Tab> pumvisible() ? "\<UP>" : "\<S-Tab>"
+
+  set completeopt-=preview
 
   " ref.) https://github.com/zchee/deoplete-jedi/wiki/Setting-up-Python-for-Neovim
   let s:python_path = expand('~/.pyenv/versions/neovim3/bin/python')
