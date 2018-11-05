@@ -9,6 +9,7 @@ hook_add = '''
   inoremap <expr><S-Tab> pumvisible() ? "\<UP>" : "\<S-Tab>"
 
   set completeopt-=preview
+  set completeopt+=noinsert
 
   " ref.) https://github.com/zchee/deoplete-jedi/wiki/Setting-up-Python-for-Neovim
   let s:python_path = expand('~/.pyenv/versions/neovim3/bin/python')
@@ -32,9 +33,9 @@ repo        = 'Shougo/neosnippet'
 on_event    = 'InsertEnter'
 depends     = ['neosnippet-snippets', 'vim-snippets']
 hook_source = '''
-  imap <C-k> <Plug>(neosnippet_expand_or_jump)
-  smap <C-k> <Plug>(neosnippet_expand_or_jump)
-  xmap <C-k> <Plug>(neosnippet_expand_target)
+  imap <C-n> <Plug>(neosnippet_expand_or_jump)
+  smap <C-n> <Plug>(neosnippet_expand_or_jump)
+  xmap <C-n> <Plug>(neosnippet_expand_target)
 
   let g:neosnippet#snippets_directory = '~/.vim/dein/repos/github.com/honza/vim-snippets/snippets'
 
