@@ -106,7 +106,7 @@ alias pe="pipenv run --"
 alias jpt="jupyter"
 alias jptn="jupyter notebook"
 
-alias mypy="mypy --ignore-missing-imports --follow-imports=skip"
+alias mypy="/usr/local/bin/mypy --ignore-missing-imports --follow-imports=skip"
 
 # Homebrew
 alias brew-cask-upgrade="brew cask reinstall $(brew cask outdated --quiet)"
