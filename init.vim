@@ -38,6 +38,10 @@ if dein#check_install()
   call dein#install()
 endif
 
+" 使っていないpluginを削除する
+" call map(dein#check_clean(), "delete(v:val, 'rf')")
+" call dein#recache_runtimepath()
+
 
 "-------------------------------------------------
 " Basic

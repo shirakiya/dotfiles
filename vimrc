@@ -44,6 +44,10 @@ if dein#check_install()
   call dein#install()
 endif
 
+" 使っていないpluginを削除する
+" call map(dein#check_clean(), "delete(v:val, 'rf')")
+" call dein#recache_runtimepath()
+
 " ファイル形式別プラグインのロードを有効化
 filetype plugin indent on
 

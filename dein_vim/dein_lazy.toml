@@ -132,10 +132,6 @@ hook_source = '''
   let g:go_highlight_structs = 1
 '''
 
-[[plugins]]  # Djangoを正しくVimで読み込めるようにする
-repo  = 'lambdalisue/vim-django-support'
-on_ft = ['python', 'python3', 'djangohtml']
-
 [[plugins]]
 repo  = 'vim-scripts/nginx.vim'
 on_ft = ['nginx']
@@ -154,10 +150,6 @@ on_ft = ['python', 'python3', 'djangohtml']
 hook_add = '''
   let g:python_highlight_all = 1
 '''
-
-[[plugins]]
-repo  = 'nvie/vim-flake8'  # `:call Flake8()`
-on_ft = ['python', 'python3', 'djangohtml']
 
 [[plugins]]
 repo  = 'hynek/vim-python-pep8-indent'
@@ -181,7 +173,3 @@ hook_source = '''
   let g:jedi#rename_command = "<leader>R"
   autocmd FileType python setlocal completeopt-=preview
 '''
-
-[[plugins]]
-repo  = 'fisadev/vim-isort'
-on_ft = ['python', 'python3']
