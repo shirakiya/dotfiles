@@ -96,11 +96,6 @@ set showcmd
 " ステータス行を常に表示する
 set laststatus=2
 
-" ステータスラインのカスタマイズ
-"set statusline=%<%F\ %m%r%h%w
-"set statusline+=%{'['.(&fenc!=''?&fenc:&enc).']['.&fileformat.']'}[%Y]
-"set statusline+=%=%l/%L,\ %c%V%8P
-
 " コマンドラインに使われる画面上の行数
 set cmdheight=2
 
@@ -121,9 +116,6 @@ set backspace=start,eol,indent
 
 " 閉じ括弧が入力されたとき、対応する開き括弧にわずかの間ジャンプする
 set showmatch
-
-" 全角記号をズレずに表示する
-set ambiwidth=double
 
 " 行番号を表示する
 set number
