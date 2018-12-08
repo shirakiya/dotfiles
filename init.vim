@@ -243,7 +243,6 @@ endif
 " Color 設定
 "-------------------------------------------------
 
-colorscheme molokai
 set t_Co=256
 set background=dark
 "set termguicolors
