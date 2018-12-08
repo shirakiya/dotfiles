@@ -52,3 +52,9 @@ on_source = ['vim-airline']
 [[plugins]]
 repo      = 'airblade/vim-gitgutter'
 on_source = ['vim-airline']
+
+[[plugins]]
+repo        = 'scrooloose/nerdcommenter'
+hook_source = '''
+  let g:NERDDefaultAlign='left'
+'''

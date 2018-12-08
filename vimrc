@@ -165,6 +165,12 @@ inoremap jj <ESC>
 " ノーマルモードにおいて';'で':'
 noremap ; :
 
+" <leader>の変更
+let mapleader = ','
+
+" <leader>のtimeoutを変更
+set timeoutlen=2000
+
 " Linuxの場合はviminfoを用いてヤンクデータを共有
 if has("unix") && !has("mac")
     noremap y y:wv<CR>
