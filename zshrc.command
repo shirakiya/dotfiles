@@ -131,16 +131,13 @@ if exist_command peco; then
 
 	# ファイル選択
 	peco-path() {
-	    local filepath="$(find . | grep -vE '/\.|[_\.]pyc' | peco --prompt 'PATH>')"
+	    local filepath="$(find . | grep -vE '/[_\.]pyc|venv|node_modules|vendor\/bundle' | peco --prompt 'PATH>')"
 	    [ -z "$filepath" ] && return
-	    if [ -n "$LBUFFER" ]; then
-	        BUFFER="$LBUFFER$filepath"
-	    else
-	        if [ -d "$filepath" ]; then
-	          BUFFER="cd $filepath"
-	        elif [ -f "$filepath" ]; then
-	          BUFFER="$EDITOR $filepath"
-	        fi
+
+	    if [ -d "$filepath" ]; then
+	      BUFFER="cd $filepath"
+	    elif [ -f "$filepath" ]; then
+	      BUFFER="$EDITOR $filepath"
 	    fi
 	    CURSOR=$#BUFFER
 	}
@@ -152,14 +149,13 @@ if exist_command peco; then
 	peco-ssh() {
 	    local SSH=$(grep "^\s*Host " ~/.ssh/config | sed s/"[\s ]*Host "// | grep -v "^\*$" | sort | peco --prompt "SSH>")
 	    [ -z "$SSH" ] && return
-	    if [ "$1" = "root" ]; then
-	        ssh 'root@'$SSH
+        if [ -n "$1" ];  then
+            ssh  $1@$SSH
 	    else
 	        ssh $SSH
 	    fi
 	}
 	alias ss="peco-ssh"
-	alias ssr="peco-ssh root"
 fi
 
 
