@@ -21,8 +21,7 @@
     ps = !git push origin `git current-branch`
     pl = !git pull origin `git current-branch`
 [ghq]
-    root = ~/ghq
-    root = ~/.go/src
+    root = ~/ghq/src
 [secrets]
     providers = git secrets --aws-provider
     patterns = [A-Z0-9]{20}

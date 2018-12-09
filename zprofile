@@ -12,7 +12,6 @@ exist_command() {
 }
 
 if [[ `uname` == 'Darwin' ]]; then
-    PATH=
     if [ -x /usr/libexec/path_helper ]; then
         eval `/usr/libexec/path_helper -s`
     fi
@@ -23,8 +22,8 @@ if [[ `uname` == 'Darwin' ]]; then
     export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
     # for Go
-    export GOPATH=$HOME/.go
-    export PATH=$HOME/.go/bin:$PATH
+    export GOPATH=$HOME/ghq
+    export PATH=$HOME/ghq/bin:$PATH
 
     # for Heroku Toolbelt
     export PATH="/usr/local/heroku/bin:$PATH"
@@ -34,9 +33,9 @@ if [[ `uname` == 'Darwin' ]]; then
     if exist_command pyenv; then
         eval "$(pyenv init -)"
     fi
-	if exist_command pyenv-virtualenv-init; then
+    if exist_command pyenv-virtualenv-init; then
         eval "$(pyenv virtualenv-init -)"
-	fi
+    fi
 
     # for plenv
     # https://github.com/tokuhirom/plenv#basic-github-checkout
