@@ -131,7 +131,7 @@ if exist_command peco; then
 
 	# ファイル選択
 	peco-path() {
-	    local filepath="$(find . | grep -vE '/[_\.]pyc|venv|node_modules|vendor\/bundle' | peco --prompt 'PATH>')"
+	    local filepath="$(find . | grep -vE '[_\.]pyc|venv|node_modules|vendor\/bundle' | peco --prompt 'PATH>')"
 	    [ -z "$filepath" ] && return
 
 	    if [ -d "$filepath" ]; then
