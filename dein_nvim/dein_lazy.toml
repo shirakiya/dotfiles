@@ -22,7 +22,7 @@ hook_add = '''
 repo     = 'zchee/deoplete-jedi'
 on_ft    = ['python', 'python3', 'djangohtml']
 jook_add = '''
-  let s:python_path = expand('~/.pyenv/versions/neovim3/bin/python')
+  let s:python_path = expand('~/.pyenv/shims/python')
   if filereadable(s:python_path)
     let g:deoplete#sources#jedi#python_path = s:python_path
   endif
