@@ -123,3 +123,11 @@ hook_add = '''
 [[plugins]]
 repo  = 'hynek/vim-python-pep8-indent'
 on_ft = ['python', 'python3', 'djangohtml']
+
+[[plugins]]
+repo     = 'hashivim/vim-terraform'
+on_ft    = ['tf', 'tfvars', 'tfstate']
+hook_add = '''
+  let g:terraform_align=1
+  let g:terraform_fmt_on_save=1
+'''
