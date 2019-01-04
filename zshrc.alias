@@ -111,6 +111,9 @@ alias mypy="/usr/local/bin/mypy --ignore-missing-imports --follow-imports=skip"
 # Homebrew
 alias brew-cask-upgrade="brew cask reinstall $(brew cask outdated --quiet)"
 
+# Terraform
+alias tf="terraform"
+
 # Other package
 
 # pipのawscliにパスが持っていかれないようにbrewなどで入れたawscliを使うようにする
