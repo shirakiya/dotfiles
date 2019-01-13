@@ -37,6 +37,9 @@ if [[ `uname` == 'Darwin' ]]; then
         eval "$(pyenv virtualenv-init -)"
     fi
 
+    # for Pipenv
+    export PIPENV_VENV_IN_PROJECT=true
+
     # for plenv
     # https://github.com/tokuhirom/plenv#basic-github-checkout
     if exist_command plenv; then
