@@ -134,7 +134,7 @@ compctl -K _pip_completion pip
 # pip zsh completion end
 
 
-exist_command() {
+function exist_command() {
     if which $1 > /dev/null; then
         return 0
     else
@@ -154,7 +154,7 @@ zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:*' formats "[%b]"
 zstyle ':vcs_info:*' actionformats "[%b|%a]"
 
-precmd() {
+function precmd() {
     psvar=()
     LANG=en_US.UTF-8 vcs_info
     psvar[1]="$vcs_info_msg_0_"

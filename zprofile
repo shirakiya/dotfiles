@@ -12,6 +12,8 @@ exist_command() {
 }
 
 if [[ `uname` == 'Darwin' ]]; then
+    export EDITOR='vim'
+
     if [ -x /usr/libexec/path_helper ]; then
         eval `/usr/libexec/path_helper -s`
     fi
@@ -62,10 +64,6 @@ if [[ `uname` == 'Darwin' ]]; then
         export PATH="$HOME/.goenv/shims:$PATH"
         eval "$(goenv init -)"
     fi
-
-    # for direnv
-    export EDITOR='vim'
-    eval "$(direnv hook zsh)"
 
     # for MySQL5.6 (via Homebrew)
     if [[ -d "/usr/local/opt/mysql@5.6/bin" ]]; then
