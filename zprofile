@@ -53,9 +53,8 @@ if [[ `uname` == 'Darwin' ]]; then
     fi
 
     # for ndenv
-    if exist_command ndenv; then
-        export PATH="$HOME/.ndenv/bin:$PATH"
-        eval "$(ndenv init -)"
+    if exist_command nodenv; then
+        eval "$(nodenv init -)"
     fi
 
     # for goenv
