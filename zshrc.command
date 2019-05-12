@@ -81,6 +81,24 @@ unixtime_to_datetime() {
 }
 
 
+urlencode() {
+    if ! exist_command nkf; then
+        echo "Not found nkf command, skipped."
+        return
+    fi
+    echo $1 | nkf -WwMQ | sed 's/=$//g' | tr = %
+}
+
+
+urldecode() {
+    if ! exist_command nkf; then
+        echo "Not found nkf command, skipped."
+        return
+    fi
+    echo $1 | nkf --url-input
+}
+
+
 # ------------------------------
 # peco command settings
 # ------------------------------
