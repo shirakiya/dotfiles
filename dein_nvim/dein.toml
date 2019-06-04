@@ -79,8 +79,7 @@ hook_add = '''
   let g:ale_lint_on_enter = 0  " ファイルオープン時に検証しない
   let g:ale_lint_on_text_changed = 0  " 入力中は検証しない
   let g:ale_lint_on_save = 1  " 保存時に検証
-
-  let g:ale_fix_on_save = 0  " 保存時にFixする
+  let g:ale_fix_on_save = 1  " 保存時にFixする
 
   let g:airline#extensions#ale#enabled = 1
   let g:ale_echo_msg_error_str = 'E'
@@ -91,5 +90,12 @@ hook_add = '''
   let g:ale_python_auto_pipenv = 1
   let g:ale_python_mypy_executable = '/usr/local/bin/mypy'
   let g:ale_python_mypy_use_global = 0
+  let g:ale_python_mypy_ignore_invalid_syntax = 1
   let g:ale_python_mypy_options = '--ignore-missing-imports --follow-imports=skip'
+
+  let g:ale_fixers = {
+  \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+  \   'javascript': ['eslint'],
+  \   'python': ['isort', 'black', 'yapf'],
+  \}
 '''
