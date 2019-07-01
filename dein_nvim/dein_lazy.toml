@@ -12,9 +12,14 @@ hook_add = '''
   set completeopt+=noinsert
 
   " ref.) https://github.com/zchee/deoplete-jedi/wiki/Setting-up-Python-for-Neovim
-  let s:python_path = expand('~/.pyenv/versions/neovim3/bin/python')
-  if filereadable(s:python_path)
-    let g:python3_host_prog = s:python_path
+
+  let s:python2_path = expand('~/.pyenv/versions/neovim2/bin/python')
+  let s:python3_path = expand('~/.pyenv/versions/neovim3/bin/python')
+  if filereadable(s:python2_path)
+    let g:python_host_prog = s:python2_path
+  endif
+  if filereadable(s:python3_path)
+    let g:python3_host_prog = s:python3_path
   endif
 '''
 
