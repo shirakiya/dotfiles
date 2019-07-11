@@ -26,7 +26,7 @@ hook_add = '''
 [[plugins]]
 repo     = 'zchee/deoplete-jedi'
 on_ft    = ['python', 'python3', 'djangohtml']
-jook_add = '''
+hook_add = '''
   let s:python_path = expand('~/.pyenv/shims/python')
   if filereadable(s:python_path)
     let g:deoplete#sources#jedi#python_path = s:python_path
