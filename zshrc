@@ -52,6 +52,9 @@ bindkey -e
 # 重複した環境変数を取り除く
 typeset -U path
 
+# 文字の一部と認識する記号
+export WORDCHARS='*?_-[]~=&;!#$%^(){}<>'
+
 
 # ------------------------------
 # Color settings
