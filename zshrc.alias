@@ -85,6 +85,7 @@ alias gbm="git blame"
 alias grp="git remote prune origin"
 
 # Docker
+alias docker-compose="/usr/local/bin/docker-compose"
 alias d="docker"
 alias dcp="docker-compose"
 alias docker-prm-a='docker rm $(docker ps -aq)'
