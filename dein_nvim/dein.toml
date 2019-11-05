@@ -91,7 +91,7 @@ hook_add = '''
   let g:ale_python_mypy_executable = '/usr/local/bin/mypy'
   let g:ale_python_mypy_use_global = 0
   let g:ale_python_mypy_ignore_invalid_syntax = 1
-  let g:ale_python_mypy_options = '--ignore-missing-imports --follow-imports=skip'
+  let g:ale_python_mypy_options = '--ignore-missing-imports --follow-imports=normal'
 
   let g:ale_fixers = {
   \   '*': ['remove_trailing_lines', 'trim_whitespace'],
