@@ -1,0 +1,39 @@
+#!/usr/bin/env zsh
+CREDENTIALS_FILE="./_assumer_credentials.sh"
+
+if [ -e $CREDENTIALS_FILE ]; then
+    source $CREDENTIALS_FILE
+else
+    echo "$CREDENTIALS_FILE must be set."
+    return 1
+fi
+
+SERIAL_NUMBER=$SERIAL_NUMBER
+SOURCE_PROFILE=$SOURCE_PROFILE
+DATE=`date +%s`
+
+PROFILE=`grep -E '^\[profile' ~/.aws/config | sed s/"\[profile "// | sed s/"\]"// | sort | peco --prompt "AWS>"`
+
+if [ "$PROFILE" = "" ]; then
+    echo "config is not exist in aws/config."
+    return 1
+else
+    echo "Try to assume role ${PROFILE}"
+fi
+
+ROLE_ARN=`/usr/local/bin/aws configure get role_arn --profile $PROFILE`
+
+echo -n "Input MFA Code: "
+read -k 6 TOKEN_CODE
+
+OUTPUT=`/usr/local/bin/aws sts assume-role \
+    --role-arn          ${ROLE_ARN} \
+    --serial-number     ${SERIAL_NUMBER} \
+    --role-session-name ${DATE}-session \
+    --profile           ${SOURCE_PROFILE} \
+    --duration-second   3600 \
+    --token-code        ${TOKEN_CODE}
+`
+export AWS_ACCESS_KEY_ID=`echo $OUTPUT | jq -r .Credentials.AccessKeyId`
+export AWS_SECRET_ACCESS_KEY=`echo $OUTPUT | jq -r .Credentials.SecretAccessKey`
+export AWS_SESSION_TOKEN=`echo $OUTPUT | jq -r .Credentials.SessionToken`
