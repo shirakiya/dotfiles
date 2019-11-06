@@ -64,6 +64,7 @@ make_dotfile_ln zshrc.Darwin
 make_dotfile_ln zshrc.Linux
 make_dotfile_ln zshrc.alias
 make_dotfile_ln zshrc.command
+make_dotfile_ln _assumer
 make_dotfile_ln tmux.conf
 make_dotfile_ln gitconfig
 make_dotfile_ln gitignore

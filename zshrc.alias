@@ -124,4 +124,4 @@ alias tf="terraform"
 alias aws="/usr/local/bin/aws"
 # treeの出力をマルチバイトなファイル名などに対応する
 alias tree='tree -N'
-alias assumer='. ./_assumer.sh'
+alias assumer='. ~/._assumer'
