@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
-CREDENTIALS_FILE="~/.config/_assumer_credentials"
+CREDENTIALS_FILE="$HOME/.config/_assumer_credentials"
 
 if [ -e $CREDENTIALS_FILE ]; then
     source $CREDENTIALS_FILE
