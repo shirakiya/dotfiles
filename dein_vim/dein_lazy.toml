@@ -176,7 +176,7 @@ hook_source = '''
 
 [[plugins]]
 repo     = 'hashivim/vim-terraform'
-on_ft    = ['tf', 'tfvars', 'tfstate']
+on_ft    = ['terraform']
 hook_add = '''
   let g:terraform_align=1
   let g:terraform_fmt_on_save=1
