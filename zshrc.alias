@@ -123,6 +123,7 @@ alias tf="terraform"
 
 # pipのawscliにパスが持っていかれないようにbrewなどで入れたawscliを使うようにする
 alias aws="/usr/local/bin/aws"
+alias aws_completer="/usr/local/bin/aws_completer"
 # treeの出力をマルチバイトなファイル名などに対応する
 alias tree='tree -N'
 alias assumer='. ~/._assumer'
