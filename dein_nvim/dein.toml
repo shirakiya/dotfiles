@@ -97,5 +97,6 @@ hook_add = '''
   \   '*': ['remove_trailing_lines', 'trim_whitespace'],
   \   'javascript': ['eslint'],
   \   'python': ['isort', 'black', 'yapf'],
+  \   'ruby': ['rubocop'],
   \}
 '''
