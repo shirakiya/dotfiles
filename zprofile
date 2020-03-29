@@ -59,12 +59,6 @@ if [[ `uname` == 'Darwin' ]]; then
         eval "$(nodenv init -)"
     fi
 
-    # for goenv
-    if exist_command goenv; then
-        export PATH="$HOME/.goenv/shims:$PATH"
-        eval "$(goenv init -)"
-    fi
-
     # for MySQL5.6 (via Homebrew)
     if [[ -d "/usr/local/opt/mysql@5.6/bin" ]]; then
         export PATH=/usr/local/opt/mysql@5.6/bin:$PATH
@@ -73,6 +67,10 @@ if [[ `uname` == 'Darwin' ]]; then
     # for sqlite3
     if [[ -d "/usr/local/opt/sqlite/bin" ]]; then
         export PATH="/usr/local/opt/sqlite/bin:$PATH"
+    fi
+
+    if [ -d ~/flutter/bin ]; then
+        export PATH="$HOME/flutter/bin:$PATH"
     fi
 
 elif [[ `uname` == 'Linux' ]]; then
