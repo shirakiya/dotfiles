@@ -59,6 +59,11 @@ if [[ `uname` == 'Darwin' ]]; then
         eval "$(nodenv init -)"
     fi
 
+    if exist_command gcloud; then
+        source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+        source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+    fi
+
     # for MySQL5.6 (via Homebrew)
     if [[ -d "/usr/local/opt/mysql@5.6/bin" ]]; then
         export PATH=/usr/local/opt/mysql@5.6/bin:$PATH

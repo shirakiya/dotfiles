@@ -119,7 +119,8 @@ alias brew-cask-upgrade="brew cask reinstall $(brew cask outdated --quiet)"
 # Terraform
 alias tf="terraform"
 
-# Other package
+# gcloud
+alias gc="gcloud"
 
 # pipのawscliにパスが持っていかれないようにbrewなどで入れたawscliを使うようにする
 alias aws="/usr/local/bin/aws"
