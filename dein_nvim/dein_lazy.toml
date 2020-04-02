@@ -130,6 +130,18 @@ on_ft = ['python', 'python3', 'djangohtml']
 repo     = 'hashivim/vim-terraform'
 on_ft    = ['terraform']
 hook_add = '''
-  let g:terraform_align=1
-  let g:terraform_fmt_on_save=1
+  let g:terraform_align = 1
+  let g:terraform_fmt_on_save = 1
 '''
+
+[[plugins]]
+repo     = 'dart-lang/dart-vim-plugin'
+on_ft    = ['dart']
+hook_add = '''
+  let g:dart_style_guide = 2
+  let g:dart_format_on_save = 1
+'''
+
+[[plugins]]
+repo     = 'thosakwe/vim-flutter'
+on_ft    = ['dart']
