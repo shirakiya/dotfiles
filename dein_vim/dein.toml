@@ -94,6 +94,13 @@ hook_add = '''
   let g:ale_python_mypy_ignore_invalid_syntax = 1
   let g:ale_python_mypy_options = '--ignore-missing-imports --follow-imports=skip'
 
+  " Go
+  let g:ale_go_go111module = 'on'
+
+  let g:ale_linters = {
+  \   'go': ['gopls', 'gofmt'],
+  \}
+
   let g:ale_fixers = {
   \   '*': ['remove_trailing_lines', 'trim_whitespace'],
   \   'javascript': ['eslint'],
