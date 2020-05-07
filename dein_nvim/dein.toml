@@ -20,8 +20,14 @@ repo = 'machakann/vim-sandwich'
 repo = 'Townk/vim-autoclose'
 
 [[plugins]]
-repo = 'bronson/vim-trailing-whitespace'
-# INFO: `:FixWhitespace` で行末スペースを全て削除
+repo = 'ntpeters/vim-better-whitespace'
+hook_add = '''
+  let g:better_whitespace_enabled = 1
+  let g:strip_whitespace_on_save = 1
+  let g:strip_whitespace_confirm = 0
+  autocmd FileType markdown EnableWhitespace
+  autocmd FileType markdown DisableStripWhitespaceOnSave
+'''
 
 [[plugins]]
 repo     = 'osyo-manga/vim-anzu'
@@ -101,7 +107,7 @@ hook_add = '''
   \}
 
   let g:ale_fixers = {
-  \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+  \   '*': ['remove_trailing_lines'],
   \   'javascript': ['eslint'],
   \   'python': ['isort', 'black', 'yapf'],
   \   'ruby': ['rubocop'],
