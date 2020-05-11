@@ -64,9 +64,14 @@ if [[ `uname` == 'Darwin' ]]; then
         source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
     fi
 
+    # for openssl (via Homebrew)
+    if [[ -d "/usr/local/opt/openssl@1.1/bin:$PATH" ]]; then
+        export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+    fi
+
     # for MySQL5.6 (via Homebrew)
     if [[ -d "/usr/local/opt/mysql@5.6/bin" ]]; then
-        export PATH=/usr/local/opt/mysql@5.6/bin:$PATH
+        export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
     fi
 
     # for sqlite3
@@ -76,6 +81,8 @@ if [[ `uname` == 'Darwin' ]]; then
 
     if [ -d ~/flutter/bin ]; then
         export PATH="$HOME/flutter/bin:$PATH"
+        export PATH="$HOME/flutter/bin/cache/dart-sdk/bin:$PATH"
+        export PATH="$HOME/flutter/.pub-cache/bin:$PATH"
     fi
 
 elif [[ `uname` == 'Linux' ]]; then
