@@ -104,7 +104,7 @@ hook_add = '''
   let g:ale_go_go111module = 'on'
 
   let g:ale_linters = {
-  \   'go': ['gopls', 'gofmt'],
+  \   'go': ['gopls', 'gofmt', 'golangci-lint'],
   \}
 
   let g:ale_fixers = {
