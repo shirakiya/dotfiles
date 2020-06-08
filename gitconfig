@@ -8,6 +8,8 @@
     editor = vim -c \"set fenc=utf-8\"
     excludesfile = ~/.gitignore
     pager = delta --plus-color="#012800" --minus-color="#340001" --theme='Monokai Extended'
+[pull]
+	rebase = false
 [interactive]
     diffFilter = delta --color-only
 [color]
