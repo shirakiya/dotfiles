@@ -123,7 +123,7 @@ if exist_command peco; then
 
 	# ghqによるリポジトリ一覧&移動
 	peco-src () {
-	    local selected_dir=$(ghq list --full-path | peco --query "$LBUFFER" --prompt "GHQ>")
+	    local selected_dir=$(ghq list --full-path | sort | peco --query "$LBUFFER" --prompt "GHQ>")
 	    if [ -n "$selected_dir" ]; then
 	        BUFFER="cd ${selected_dir}"
 	        zle accept-line
