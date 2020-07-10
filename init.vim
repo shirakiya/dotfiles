@@ -227,6 +227,7 @@ if has("autocmd")
   autocmd FileType sh         setlocal sw=2 sts=2 ts=2 et
   autocmd FileType sql        setlocal sw=4 sts=4 ts=4 et
   autocmd FileType txt        setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType typescript setlocal sw=2 sts=2 ts=2 et
   autocmd FileType vim        setlocal sw=2 sts=2 ts=2 et
   autocmd FileType vue        setlocal sw=2 sts=2 ts=2 et
   autocmd FileType xhtml      setlocal sw=4 sts=4 ts=4 et
