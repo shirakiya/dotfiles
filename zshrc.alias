@@ -122,6 +122,9 @@ alias tf="terraform"
 # gcloud
 alias gc="gcloud"
 
+# kubernetes
+alias k="kubectl"
+
 # pipのawscliにパスが持っていかれないようにbrewなどで入れたawscliを使うようにする
 alias aws="/usr/local/bin/aws"
 alias aws_completer="/usr/local/bin/aws_completer"
