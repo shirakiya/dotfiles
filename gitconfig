@@ -1,15 +1,14 @@
 [user]
     name = shirakiya
     email = shirakiya.pv@gmail.com
-[filter "media"]
-    clean = git-media-clean %f
-    smudge = git-media-smudge %f
 [core]
     editor = vim -c \"set fenc=utf-8\"
     excludesFile = ~/.gitignore
     pager = delta --plus-color="#012800" --minus-color="#340001" --theme='Monokai Extended'
 [pull]
 	rebase = false
+[fetch]
+    prune = true
 [interactive]
     diffFilter = delta --color-only
 [color]
@@ -18,8 +17,6 @@
     branch = auto
     interactive = auto
     grep = auto
-[fetch]
-    prune = true
 [alias]
     current-branch = rev-parse --abbrev-ref HEAD
     ps = !git push origin `git current-branch`
