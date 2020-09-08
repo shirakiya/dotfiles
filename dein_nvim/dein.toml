@@ -103,6 +103,7 @@ hook_add = '''
   let g:ale_go_go111module = 'on'
 
   let g:ale_linters = {
+  \   'python': ['flake8'],
   \   'go': ['gopls', 'gofmt', 'golangci-lint'],
   \}
 
