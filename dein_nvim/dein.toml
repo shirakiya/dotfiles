@@ -70,10 +70,7 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo        = 'scrooloose/nerdcommenter'
-hook_source = '''
-  let g:NERDDefaultAlign='left'
-'''
+repo = 'tpope/vim-commentary'
 
 [[plugins]]
 repo     = 'w0rp/ale'
@@ -99,6 +96,9 @@ hook_add = '''
   let g:ale_python_mypy_ignore_invalid_syntax = 1
   let g:ale_python_mypy_options = '--ignore-missing-imports --follow-imports=normal'
 
+  " JavaScript
+  let g:ale_javascript_prettier_use_local_config = 1
+
   " Go
   let g:ale_go_go111module = 'on'
 
@@ -109,7 +109,7 @@ hook_add = '''
 
   let g:ale_fixers = {
   \   '*': ['remove_trailing_lines'],
-  \   'javascript': ['eslint'],
+  \   'javascript': ['prettier'],
   \   'python': ['isort', 'black', 'yapf'],
   \   'ruby': ['rubocop'],
   \}
