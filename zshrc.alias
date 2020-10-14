@@ -23,6 +23,8 @@ else
     alias diff="diff -Nru"
 fi
 
+alias uuid="python -c 'import uuid; print(uuid.uuid4())'"
+
 # for vim
 alias v="nvim"
 alias vi="vim"
@@ -125,6 +127,7 @@ alias k="kubectl"
 # pipのawscliにパスが持っていかれないようにbrewなどで入れたawscliを使うようにする
 alias aws="/usr/local/bin/aws"
 alias aws_completer="/usr/local/bin/aws_completer"
+
 # treeの出力をマルチバイトなファイル名などに対応する
 alias tree='tree -N'
 alias assumer='. ~/._assumer'
