@@ -14,6 +14,9 @@ setopt no_beep
 # cdしたら自動的にpushdする
 setopt auto_pushd
 
+# cdをつけなくてもディレクトリならcdする
+setopt auto_cd
+
 # 重複したディレクトリを追加しない
 setopt pushd_ignore_dups
 
