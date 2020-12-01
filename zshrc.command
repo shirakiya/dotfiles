@@ -188,7 +188,7 @@ if exist_command peco; then
 
     # Docker Containerの選択
     function peco-docker-containers() {
-      local containers="$(docker ps -a | tail +2 | sort | peco --prompt 'DOCKER IMAGES>' | awk '{print $1}' ORS=' ')"
+      local containers="$(docker ps -a | tail +2 | sort | peco --prompt 'DOCKER CONTAINERS>' | awk '{print $1}' ORS=' ')"
       [ -z "$containers" ] && return
       BUFFER="$LBUFFER$containers$RBUFFER"
       CURSOR=$#BUFFER
