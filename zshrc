@@ -32,6 +32,9 @@ setopt hist_ignore_dups
 # 余分な空白は詰めて記録
 setopt hist_reduce_blanks
 
+# 履歴ファイルに時刻情報を記録
+setopt extended_history
+
 # ヒストリの設定
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
