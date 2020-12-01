@@ -35,7 +35,7 @@ setopt hist_reduce_blanks
 # ヒストリの設定
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
-SAVEHIST=10000
+SAVEHIST=1000000
 
 # Ctrl+D で強制ログアウトしないようにする
 setopt ignoreeof
