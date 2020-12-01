@@ -5,6 +5,7 @@
 		"C-h": "peco.BackwardChar",
 		"C-j": "peco.SelectDown",
 		"C-k": "peco.SelectUp",
-		"C-l": "peco.ForwardChar"
+		"C-l": "peco.ForwardChar",
+    "Tab": "peco.ToggleSelectionAndSelectNext"
 	}
 }
