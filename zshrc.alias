@@ -4,6 +4,7 @@
 
 # for unix
 alias la="ls -a"
+alias l1="ls -1"
 alias ll="ls -l"
 alias lla="ls -al"
 alias grep="grep --color=auto"
