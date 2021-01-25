@@ -214,3 +214,21 @@ if exist_command pet; then
     zle -N pet-select
     bindkey '^s' pet-select
 fi
+
+
+# ------------------------------
+# gh command settings
+# ------------------------------
+
+if exist_command gh; then
+
+    # リポジトリを作成してghq get
+    ghcr() {
+        if ! exist_command ghq; then
+            echo "ghq is not found."
+            return 1
+        fi
+        gh repo create $@ -y
+        ghq get git@github.com:shirakiya/${1}.git
+    }
+fi
