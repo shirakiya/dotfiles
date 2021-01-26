@@ -27,6 +27,15 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo     = 'deoplete-plugins/deoplete-go'
+on_ft    = ['go']
+hook_add = '''
+  let g:deoplete#sources#go#pointer = 1
+  let g:deoplete#sources#go#builtin_objects = 1
+  let g:deoplete#sources#go#fallback_to_source = 1
+'''
+
+[[plugins]]
 repo        = 'Shougo/neosnippet'
 on_event    = 'InsertEnter'
 depends     = ['neosnippet-snippets', 'vim-snippets']
