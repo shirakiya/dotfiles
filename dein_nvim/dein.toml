@@ -72,46 +72,62 @@ hook_add = '''
 [[plugins]]
 repo = 'tpope/vim-commentary'
 
+# [[plugins]]
+# repo     = 'w0rp/ale'
+# hook_add = '''
+#   " エラー行にjump
+#   nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+#   nmap <silent> <C-j> <Plug>(ale_next_wrap)
+#
+#   let g:ale_lint_on_enter = 0  " ファイルオープン時に検証しない
+#   let g:ale_lint_on_text_changed = 0  " 入力中は検証しない
+#   let g:ale_lint_on_save = 1  " 保存時に検証
+#   let g:ale_fix_on_save = 1  " 保存時にFixする
+#
+#   let g:airline#extensions#ale#enabled = 1
+#   let g:ale_echo_msg_error_str = 'E'
+#   let g:ale_echo_msg_warning_str = 'W'
+#   let g:ale_echo_msg_format = '[%linter%] [%severity%] %s'  " エラーメッセージの変更
+#
+#   " Python
+#   let g:ale_python_auto_pipenv = 1
+#   let g:ale_python_mypy_executable = '/usr/local/bin/mypy'
+#   let g:ale_python_mypy_use_global = 0
+#   let g:ale_python_mypy_ignore_invalid_syntax = 1
+#   let g:ale_python_mypy_options = '--ignore-missing-imports --follow-imports=normal'
+#
+#   " JavaScript
+#   let g:ale_javascript_prettier_use_local_config = 1
+#
+#   " Go
+#   let g:ale_go_go111module = 'on'
+#
+#   let g:ale_linters = {
+#   \   'python': ['flake8'],
+#   \   'go': ['gopls', 'gofmt', 'golangci-lint'],
+#   \}
+#
+#   let g:ale_fixers = {
+#   \   '*': ['remove_trailing_lines'],
+#   \   'javascript': ['prettier'],
+#   \   'python': ['isort', 'black', 'yapf'],
+#   \   'ruby': ['rubocop'],
+#   \   'proto': ['clang-format'],
+#   \}
+# '''
+
 [[plugins]]
-repo     = 'w0rp/ale'
-hook_add = '''
-  " エラー行にjump
-  nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-  nmap <silent> <C-j> <Plug>(ale_next_wrap)
+repo = 'prabirshrestha/vim-lsp'
+hook_source = '''
+  autocmd BufWritePre <buffer> LspDocumentFormatSync
 
-  let g:ale_lint_on_enter = 0  " ファイルオープン時に検証しない
-  let g:ale_lint_on_text_changed = 0  " 入力中は検証しない
-  let g:ale_lint_on_save = 1  " 保存時に検証
-  let g:ale_fix_on_save = 1  " 保存時にFixする
-
-  let g:airline#extensions#ale#enabled = 1
-  let g:ale_echo_msg_error_str = 'E'
-  let g:ale_echo_msg_warning_str = 'W'
-  let g:ale_echo_msg_format = '[%linter%] [%severity%] %s'  " エラーメッセージの変更
-
-  " Python
-  let g:ale_python_auto_pipenv = 1
-  let g:ale_python_mypy_executable = '/usr/local/bin/mypy'
-  let g:ale_python_mypy_use_global = 0
-  let g:ale_python_mypy_ignore_invalid_syntax = 1
-  let g:ale_python_mypy_options = '--ignore-missing-imports --follow-imports=normal'
-
-  " JavaScript
-  let g:ale_javascript_prettier_use_local_config = 1
-
-  " Go
-  let g:ale_go_go111module = 'on'
-
-  let g:ale_linters = {
-  \   'python': ['flake8'],
-  \   'go': ['gopls', 'gofmt', 'golangci-lint'],
-  \}
-
-  let g:ale_fixers = {
-  \   '*': ['remove_trailing_lines'],
-  \   'javascript': ['prettier'],
-  \   'python': ['isort', 'black', 'yapf'],
-  \   'ruby': ['rubocop'],
-  \   'proto': ['clang-format'],
-  \}
+  let g:lsp_document_highlight_enabled = 0
+  let g:lsp_diagnostics_echo_cursor = 1
+  let g:lsp_diagnostics_echo_delay = 100
+  let g:lsp_diagnostics_float_delay = 200
+  let g:lsp_diagnostics_virtual_text_enabled = 0
+  let g:lsp_preview_float = 1
 '''
+
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'

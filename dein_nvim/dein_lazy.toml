@@ -1,43 +1,164 @@
+# [[plugins]]
+# repo     = 'Shougo/deoplete.nvim'
+# on_event = 'InsertEnter'
+# hook_add = '''
+#   let g:deoplete#enable_at_startup = 1
+#
+#   inoremap <expr><Tab> pumvisible() ? "\<DOWN>" : "\<Tab>"
+#   inoremap <expr><S-Tab> pumvisible() ? "\<UP>" : "\<S-Tab>"
+#
+#   set completeopt-=preview
+#   set completeopt+=noinsert
+#
+#   " ref.) https://github.com/zchee/deoplete-jedi/wiki/Setting-up-Python-for-Neovim
+#
+#   let s:python3_path = expand('~/.pyenv/versions/neovim3/bin/python')
+#   if filereadable(s:python3_path)
+#     let g:python3_host_prog = s:python3_path
+#   endif
+# '''
+#
+# [[plugins]]
+# repo     = 'deoplete-plugins/deoplete-jedi'
+# on_ft    = ['python', 'python3', 'djangohtml']
+# hook_add = '''
+#   let g:deoplete#sources#jedi#show_docstring = 0
+#   let g:deoplete#sources#jedi#python_path = expand('~/.pyenv/versions/neovim3/bin/python')
+# '''
+
+# [[plugins]]
+# repo     = 'deoplete-plugins/deoplete-go'
+# on_ft    = ['go']
+# hook_add = '''
+#   let g:deoplete#sources#go#pointer = 1
+#   let g:deoplete#sources#go#builtin_objects = 1
+#   let g:deoplete#sources#go#fallback_to_source = 1
+# '''
+
+# Syntax
+#
+# [[plugins]]
+# repo     = 'elzr/vim-json'
+# on_ft    = ['json']
+# hook_add = '''
+#   let g:vim_json_syntax_conceal = 0
+# '''
+
+# [[plugins]]
+# repo  = 'stephpy/vim-yaml'
+# on_ft = ['yaml']
+
+# [[plugins]]
+# repo  = 'hail2u/vim-css3-syntax'
+# on_ft = ['html', 'css', 'scss', 'sass', 'vue']
+
+# [[plugins]]
+# repo  = 'pangloss/vim-javascript'
+# on_ft = ['html', 'javascript', 'javascript.jsx', 'vue']
+
+# [[plugins]]
+# repo        = 'mxw/vim-jsx'
+# on_ft       = ['html', 'javascript', 'javascript.jsx', 'vue']
+# hook_source = '''
+#   let g:jsx_ext_required = 0
+# '''
+
+# [[plugins]]
+# repo  = 'leafgarland/typescript-vim'
+# on_ft = ['typescript']
+
+# [[plugins]]
+# repo  = 'posva/vim-vue'
+# on_ft = ['vue']
+
+# [[plugins]]
+# repo        = 'fatih/vim-go'
+# on_ft       = ['go']
+# hook_post_source = '''
+#   GoUpdateBinaries
+# '''
+# hook_source = '''
+#   let g:go_highlight_functions = 1
+#   let g:go_highlight_methods = 1
+#   let g:go_highlight_structs = 1
+#   let g:go_fmt_command = "goimports"
+# '''
+
+# [[plugins]]
+# repo  = 'vim-scripts/nginx.vim'
+# on_ft = ['nginx']
+
+# [[plugins]]
+# repo  = 'itkq/fluentd-vim'
+# on_ft = ['fluentd']
+
+# [[plugins]]
+# repo  = 'cespare/vim-toml'
+# on_ft = ['toml']
+
+# [[plugins]]
+# repo     = 'hdima/python-syntax'
+# on_ft    = ['python', 'python3', 'djangohtml']
+# hook_add = '''
+#   let g:python_highlight_all = 1
+# '''
+
+# [[plugins]]
+# repo  = 'hynek/vim-python-pep8-indent'
+# on_ft = ['python', 'python3', 'djangohtml']
+
+# [[plugins]]
+# repo     = 'hashivim/vim-terraform'
+# on_ft    = ['terraform']
+# hook_add = '''
+#   let g:terraform_align = 1
+#   let g:terraform_fmt_on_save = 1
+# '''
+
+# [[plugins]]
+# repo     = 'dart-lang/dart-vim-plugin'
+# on_ft    = ['dart']
+# hook_add = '''
+#   let g:dart_style_guide = 2
+#   let g:dart_format_on_save = 1
+# '''
+
+# [[plugins]]
+# repo     = 'thosakwe/vim-flutter'
+# on_ft    = ['dart']
+
 [[plugins]]
-repo     = 'Shougo/deoplete.nvim'
+repo        = 'prabirshrestha/asyncomplete.vim'
+depends     = ['asyncomplete-lsp.vim']
+on_event    = 'InsertEnter'
+hook_source = '''
+  inoremap <expr><Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+  inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+  inoremap <expr><cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+
+  set completeopt=menuone,noinsert,noselect,preview
+'''
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete-lsp.vim'
+on_source = ['vim-lsp-settings']
+
+# Snippet
+#
+[[plugins]]
+repo     = 'thomasfaingnaert/vim-lsp-snippets'
 on_event = 'InsertEnter'
-hook_add = '''
-  let g:deoplete#enable_at_startup = 1
-
-  inoremap <expr><Tab> pumvisible() ? "\<DOWN>" : "\<Tab>"
-  inoremap <expr><S-Tab> pumvisible() ? "\<UP>" : "\<S-Tab>"
-
-  set completeopt-=preview
-  set completeopt+=noinsert
-
-  " ref.) https://github.com/zchee/deoplete-jedi/wiki/Setting-up-Python-for-Neovim
-
-  let s:python3_path = expand('~/.pyenv/versions/neovim3/bin/python')
-  if filereadable(s:python3_path)
-    let g:python3_host_prog = s:python3_path
-  endif
-'''
+depends  = ['neosnippet']
 
 [[plugins]]
-repo     = 'deoplete-plugins/deoplete-jedi'
-on_ft    = ['python', 'python3', 'djangohtml']
-hook_add = '''
-  let g:deoplete#sources#jedi#show_docstring = 0
-  let g:deoplete#sources#jedi#python_path = expand('~/.pyenv/versions/neovim3/bin/python')
-'''
-
-[[plugins]]
-repo     = 'deoplete-plugins/deoplete-go'
-on_ft    = ['go']
-hook_add = '''
-  let g:deoplete#sources#go#pointer = 1
-  let g:deoplete#sources#go#builtin_objects = 1
-  let g:deoplete#sources#go#fallback_to_source = 1
-'''
+repo      = 'thomasfaingnaert/vim-lsp-neosnippet'
+on_source = ['vim-lsp-snippets']
+depends   = ['neosnippet']
 
 [[plugins]]
 repo        = 'Shougo/neosnippet'
 on_event    = 'InsertEnter'
+on_source   = ['vim-lsp-neosnippet']
 depends     = ['neosnippet-snippets', 'vim-snippets']
 hook_source = '''
   imap <C-n> <Plug>(neosnippet_expand_or_jump)
@@ -62,95 +183,3 @@ on_source = ['neosnippet']
 [[plugins]]
 repo   = 'mattn/benchvimrc-vim'
 on_cmd = ['BenchVimrc']
-
-# Syntax
-#
-[[plugins]]
-repo     = 'elzr/vim-json'
-on_ft    = ['json']
-hook_add = '''
-  let g:vim_json_syntax_conceal = 0
-'''
-
-[[plugins]]
-repo  = 'stephpy/vim-yaml'
-on_ft = ['yaml']
-
-[[plugins]]
-repo  = 'hail2u/vim-css3-syntax'
-on_ft = ['html', 'css', 'scss', 'sass', 'vue']
-
-[[plugins]]
-repo  = 'pangloss/vim-javascript'
-on_ft = ['html', 'javascript', 'javascript.jsx', 'vue']
-
-[[plugins]]
-repo        = 'mxw/vim-jsx'
-on_ft       = ['html', 'javascript', 'javascript.jsx', 'vue']
-hook_source = '''
-  let g:jsx_ext_required = 0
-'''
-
-[[plugins]]
-repo  = 'leafgarland/typescript-vim'
-on_ft = ['typescript']
-
-[[plugins]]
-repo  = 'posva/vim-vue'
-on_ft = ['vue']
-
-[[plugins]]
-repo        = 'fatih/vim-go'
-on_ft       = ['go']
-hook_post_source = '''
-  GoUpdateBinaries
-'''
-hook_source = '''
-  let g:go_highlight_functions = 1
-  let g:go_highlight_methods = 1
-  let g:go_highlight_structs = 1
-  let g:go_fmt_command = "goimports"
-'''
-
-[[plugins]]
-repo  = 'vim-scripts/nginx.vim'
-on_ft = ['nginx']
-
-[[plugins]]
-repo  = 'itkq/fluentd-vim'
-on_ft = ['fluentd']
-
-[[plugins]]
-repo  = 'cespare/vim-toml'
-on_ft = ['toml']
-
-[[plugins]]
-repo     = 'hdima/python-syntax'
-on_ft    = ['python', 'python3', 'djangohtml']
-hook_add = '''
-  let g:python_highlight_all = 1
-'''
-
-[[plugins]]
-repo  = 'hynek/vim-python-pep8-indent'
-on_ft = ['python', 'python3', 'djangohtml']
-
-[[plugins]]
-repo     = 'hashivim/vim-terraform'
-on_ft    = ['terraform']
-hook_add = '''
-  let g:terraform_align = 1
-  let g:terraform_fmt_on_save = 1
-'''
-
-[[plugins]]
-repo     = 'dart-lang/dart-vim-plugin'
-on_ft    = ['dart']
-hook_add = '''
-  let g:dart_style_guide = 2
-  let g:dart_format_on_save = 1
-'''
-
-[[plugins]]
-repo     = 'thosakwe/vim-flutter'
-on_ft    = ['dart']
