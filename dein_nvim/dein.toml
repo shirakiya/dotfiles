@@ -112,5 +112,6 @@ hook_add = '''
   \   'javascript': ['prettier'],
   \   'python': ['isort', 'black', 'yapf'],
   \   'ruby': ['rubocop'],
+  \   'proto': ['clang-format'],
   \}
 '''
