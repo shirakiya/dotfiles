@@ -94,15 +94,15 @@ on_ft = ['vue']
 repo        = 'fatih/vim-go'
 on_source   = ['deoplete.nvim']
 on_ft       = ['go']
-hook_post_source = '''
-  GoUpdateBinaries
-
-  call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
-'''
 hook_source = '''
   let g:go_highlight_functions = 1
   let g:go_highlight_methods = 1
   let g:go_highlight_structs = 1
+'''
+hook_post_source = '''
+  call deoplete#custom#option('omni_patterns', {
+  \   'go': '[^. *\t]\.\w*',
+  \})
 '''
 
 [[plugins]]
