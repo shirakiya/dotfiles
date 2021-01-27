@@ -73,8 +73,8 @@ hook_add = '''
 repo = 'tpope/vim-commentary'
 
 [[plugins]]
-repo     = 'w0rp/ale'
-hook_add = '''
+repo      = 'dense-analysis/ale'
+hook_add  = '''
   " エラー行にjump
   nmap <silent> <C-k> <Plug>(ale_previous_wrap)
   nmap <silent> <C-j> <Plug>(ale_next_wrap)
@@ -104,11 +104,12 @@ hook_add = '''
 
   let g:ale_linters = {
   \   'python': ['flake8'],
-  \   'go': ['gopls', 'gofmt', 'golangci-lint'],
+  \   'go': ['gopls', 'golangci-lint'],
   \}
 
   let g:ale_fixers = {
   \   '*': ['remove_trailing_lines'],
+  \   'go': ['goimports', 'gofmt'],
   \   'javascript': ['prettier'],
   \   'python': ['isort', 'black', 'yapf'],
   \   'ruby': ['rubocop'],
