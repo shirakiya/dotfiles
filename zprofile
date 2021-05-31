@@ -33,7 +33,7 @@ if [[ `uname` == 'Darwin' ]]; then
     # for pyenv path
     # https://github.com/yyuu/pyenv
     if exist_command pyenv; then
-        eval "$(pyenv init -)"
+        eval "$(pyenv init --path)"
     fi
     if exist_command pyenv-virtualenv-init; then
         eval "$(pyenv virtualenv-init -)"
