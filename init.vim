@@ -242,7 +242,8 @@ endif
 " Color 設定
 "-------------------------------------------------
 
-set background=dark
+" XXX: Feel discomfort...
+" set termguicolors
 
 
 "-------------------------------------------------
