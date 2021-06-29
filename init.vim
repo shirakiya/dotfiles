@@ -168,6 +168,9 @@ endif
 set nofoldenable
 set re=1
 
+" See https://github.com/neovim/neovim/issues/11393
+cnoremap 16e8 <c-u>undo<CR>
+
 
 "-------------------------------------------------
 " Filetype 設定
