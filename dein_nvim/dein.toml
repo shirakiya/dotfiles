@@ -91,7 +91,8 @@ hook_add  = '''
 
   " Python
   let g:ale_python_auto_pipenv = 1
-  let g:ale_python_mypy_executable = '/usr/local/bin/mypy'
+  " FIXME: Darwin specific code.
+  let g:ale_python_mypy_executable = $HOMEBREW_DIR . '/bin/mypy'
   let g:ale_python_mypy_use_global = 0
   let g:ale_python_mypy_ignore_invalid_syntax = 1
   let g:ale_python_mypy_options = '--ignore-missing-imports --follow-imports=normal'

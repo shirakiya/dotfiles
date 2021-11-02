@@ -92,8 +92,8 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # zsh-completions
 # compinit の実行よりも前に記述する
-if [ -e /usr/local/share/zsh-completions ]; then
-    fpath=(/usr/local/share/zsh-completions $fpath)
+if [ -e ${HOMEBREW_DIR}/share/zsh-completions ]; then
+    fpath=(${HOMEBREW_DIR}/share/zsh-completions $fpath)
 fi
 
 # 補完機能を有効にする
@@ -218,4 +218,11 @@ fi
 # ------------------------------
 if [[ -f ${HOME}/.iterm2_shell_integration.zsh ]]; then
     source ${HOME}/.iterm2_shell_integration.zsh
+fi
+
+# ------------------------------
+# pyenv
+# ------------------------------
+if exist_command pyenv; then
+    eval "$(pyenv init -)"
 fi

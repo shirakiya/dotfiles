@@ -21,12 +21,12 @@ else
     echo "Try to assume role ${PROFILE}"
 fi
 
-ROLE_ARN=`/usr/local/bin/aws configure get role_arn --profile $PROFILE`
+ROLE_ARN=`aws configure get role_arn --profile $PROFILE`
 
 echo -n "Input MFA Code: "
 read -k 6 TOKEN_CODE
 
-OUTPUT=`/usr/local/bin/aws sts assume-role \
+OUTPUT=`aws sts assume-role \
     --role-arn          ${ROLE_ARN} \
     --serial-number     ${SERIAL_NUMBER} \
     --role-session-name ${DATE}-session \

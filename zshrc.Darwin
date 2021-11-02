@@ -6,17 +6,17 @@
 alias ls="ls -GF"
 
 # zsh-syntax-highliting
-if [ -e /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
-    source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [ -e ${HOMEBREW_DIR}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+    source ${HOMEBREW_DIR}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
 # source-highlight
 export LESS="-R"
-export LESSOPEN='| /usr/local/bin/src-hilite-lesspipe.sh %s'
+export LESSOPEN="| ${HOMEBREW_DIR}/bin/src-hilite-lesspipe.sh %s"
 
 # enable zsh completion aws-cli
 if exist_command aws; then
-    source /usr/local/share/zsh/site-functions/aws_zsh_completer.sh
+    source ${HOMEBREW_DIR}/share/zsh/site-functions/aws_zsh_completer.sh
 fi
 
 # export for xgboost

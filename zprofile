@@ -1,7 +1,5 @@
-# ------------------------------
-# Path settings
-# cf.) https://github.com/thoughtbot/dotfiles/issues/420
-# ------------------------------
+# `$HOME/.zprofile` is read only once by using login shell.
+
 
 exist_command() {
     if which $1 > /dev/null; then
@@ -17,7 +15,13 @@ if [[ `uname` == 'Darwin' ]]; then
     if [ -x /usr/libexec/path_helper ]; then
         eval `/usr/libexec/path_helper -s`
     fi
-    export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+
+    # for Homebrew
+    if [[ -d "/opt/homebrew" ]]; then
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+    fi
+
+    export HOMEBREW_DIR=${HOMEBREW_PREFIX:-"/usr/local"}
 
     # for Homebrew-cask
     # https://github.com/caskroom/homebrew-cask/blob/master/USAGE.md
@@ -26,9 +30,6 @@ if [[ `uname` == 'Darwin' ]]; then
     # for Go
     export GOPATH=$HOME/ghq
     export PATH=$HOME/ghq/bin:$PATH
-
-    # for Heroku Toolbelt
-    export PATH="/usr/local/heroku/bin:$PATH"
 
     # for pyenv path
     # https://github.com/yyuu/pyenv
@@ -60,23 +61,18 @@ if [[ `uname` == 'Darwin' ]]; then
     fi
 
     if exist_command gcloud; then
-        source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
-        source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+        source $HOMEBREW_DIR/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+        source $HOMEBREW_DIR/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+    fi
+
+    # for mysql-client
+    if [[ -d "${HOMEBREW_DIR}/opt/mysql-client/bin" ]]; then
+        export PATH="${HOMEBREW_DIR}/opt/mysql-client/bin:$PATH"
     fi
 
     # for openssl (via Homebrew)
-    if [[ -d "/usr/local/opt/openssl@1.1/bin:$PATH" ]]; then
-        export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
-    fi
-
-    # for MySQL5.6 (via Homebrew)
-    if [[ -d "/usr/local/opt/mysql@5.6/bin" ]]; then
-        export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
-    fi
-
-    # for sqlite3
-    if [[ -d "/usr/local/opt/sqlite/bin" ]]; then
-        export PATH="/usr/local/opt/sqlite/bin:$PATH"
+    if [[ -d "${HOMEBREW_DIR}/opt/openssl@1.1/bin" ]]; then
+        export PATH="${HOMEBREW_DIR}/opt/openssl@1.1/bin:$PATH"
     fi
 
     if [ -d ~/flutter/bin ]; then
@@ -86,11 +82,9 @@ if [[ `uname` == 'Darwin' ]]; then
     fi
 
 elif [[ `uname` == 'Linux' ]]; then
-
     # for rbenv
     if which rbenv > /dev/null; then
         export PATH=$PATH:$HOME/.rbenv/bin:$HOME/.rbenv/shims
         eval "$(rbenv init -)"
     fi
-
 fi
