@@ -20,6 +20,9 @@ endif
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
 
+  " `hook_post_source` を有効にする
+  autocmd VimEnter * call dein#call_hook('post_source')
+
   let g:config_dir = s:dein_dir . '/config'
   let s:toml       = g:config_dir . '/dein.toml'
   let s:lazy_toml  = g:config_dir . '/dein_lazy.toml'

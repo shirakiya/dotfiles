@@ -1,7 +1,7 @@
 # Color
 #
 [[plugins]]
-repo = 'tomasr/molokai'
+repo     = 'tomasr/molokai'
 hook_add = '''
   let g:molokai_original = 1
   colorscheme molokai
@@ -20,11 +20,24 @@ repo = 'machakann/vim-sandwich'
 repo = 'Townk/vim-autoclose'
 
 [[plugins]]
-repo = 'ntpeters/vim-better-whitespace'
+repo     = 'ntpeters/vim-better-whitespace'
 hook_add = '''
+  " See https://github.com/ntpeters/vim-better-whitespace#usage
+  " `markdown` is removed to enable white space.
+  let g:better_whitespace_filetypes_blacklist=[
+    \ 'diff',
+    \ 'git',
+    \ 'gitcommit',
+    \ 'unite',
+    \ 'qf',
+    \ 'help',
+    \ 'fugitive'
+  \ ]
   let g:better_whitespace_enabled = 1
   let g:strip_whitespace_on_save = 1
   let g:strip_whitespace_confirm = 0
+'''
+hook_post_source = '''
   autocmd FileType markdown EnableWhitespace
   autocmd FileType markdown DisableStripWhitespaceOnSave
 '''
