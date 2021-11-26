@@ -172,7 +172,8 @@ set nofoldenable
 set re=1
 
 " See https://github.com/neovim/neovim/issues/11393
-cnoremap 16e8 <c-u>undo<CR>
+" Fix? https://github.com/neovim/neovim/pull/12004
+" cnoremap 16e8 <c-u>undo<CR>
 
 
 "-------------------------------------------------
