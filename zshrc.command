@@ -176,7 +176,7 @@ if exist_command peco; then
 	alias ss="peco-ssh"
 
     # Docker Imageの選択
-    function peco-docker-images() {
+    peco-docker-images() {
       local images="$(docker images | tail +2 | sort | peco --prompt 'DOCKER IMAGES>' | awk '{print $3}' ORS=' ')"
       [ -z "$images" ] && return
       BUFFER="$LBUFFER$images$RBUFFER"
@@ -187,7 +187,7 @@ if exist_command peco; then
     bindkey '^x^i' peco-docker-images
 
     # Docker Containerの選択
-    function peco-docker-containers() {
+    peco-docker-containers() {
       local containers="$(docker ps -a | tail +2 | sort | peco --prompt 'DOCKER CONTAINERS>' | awk '{print $1}' ORS=' ')"
       [ -z "$containers" ] && return
       BUFFER="$LBUFFER$containers$RBUFFER"

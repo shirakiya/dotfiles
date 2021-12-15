@@ -131,7 +131,7 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/s
 zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
 
 # pip zsh completion start
-function _pip_completion {
+_pip_completion() {
   local words cword
   read -Ac words
   read -cn cword
@@ -143,7 +143,7 @@ compctl -K _pip_completion pip
 # pip zsh completion end
 
 
-function exist_command() {
+exist_command() {
     if which $1 > /dev/null; then
         return 0
     else
@@ -163,7 +163,7 @@ zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:*' formats "[%b]"
 zstyle ':vcs_info:*' actionformats "[%b|%a]"
 
-function precmd() {
+precmd() {
     psvar=()
     LANG=en_US.UTF-8 vcs_info
     psvar[1]="$vcs_info_msg_0_"
