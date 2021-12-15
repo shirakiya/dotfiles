@@ -17,7 +17,7 @@ pmver () {
     );
     echo $fullpath;
     if [ "$do_cd" = '1' ]; then
-        \cd $(dirname $fullpath);
+        cd $(dirname $fullpath);
     fi
 }
 
@@ -105,75 +105,73 @@ urldecode() {
 
 if exist_command peco; then
 
-	# ブランチ選択
-	peco-branch () {
-	    local branch=$(git branch | peco | tr -d ' ' | tr -d '*')
-	    if [ -n "$branch" ]; then
-	      if [ -n "$LBUFFER" ]; then
-	        local new_left="${LBUFFER%\ } $branch"
-	      else
-	        local new_left="$branch"
-	      fi
-	      BUFFER=${new_left}${RBUFFER}
-	      CURSOR=${#new_left}
-	    fi
-	}
-	zle -N peco-branch
-	bindkey '^b' peco-branch
+    # ブランチ選択
+    peco-branch () {
+        local branch=$(git branch | peco | tr -d ' ' | tr -d '*')
+        if [ -n "$branch" ]; then
+          if [ -n "$LBUFFER" ]; then
+            local new_left="${LBUFFER%\ } $branch"
+          else
+            local new_left="$branch"
+          fi
+          BUFFER=${new_left}${RBUFFER}
+          CURSOR=${#new_left}
+        fi
+    }
+    zle -N peco-branch
+    bindkey '^b' peco-branch
 
-	# ghqによるリポジトリ一覧&移動
-	peco-src () {
-	    local selected_dir=$(ghq list --full-path | sort | peco --query "$LBUFFER" --prompt "GHQ>")
-	    if [ -n "$selected_dir" ]; then
-	        BUFFER="cd ${selected_dir}"
-	        zle accept-line
-	    fi
-	    zle clear-screen
-	}
-	zle -N peco-src
-	bindkey '^t' peco-src
+    # ghqによるリポジトリ一覧&移動
+    peco-src () {
+        local selected_dir=$(ghq list --full-path | sort | peco --query "$LBUFFER" --prompt "GHQ>")
+        if [ -n "$selected_dir" ]; then
+            BUFFER="cd ${selected_dir}"
+            zle accept-line
+        fi
+        zle clear-screen
+    }
+    zle -N peco-src
+    bindkey '^t' peco-src
 
+    # 履歴のインクリメンタルサーチ
+    peco-history() {
+        local tac
+        type tac &> /dev/null \
+            && tac="tac" \
+            || tac="tail -r"
+        BUFFER=$(history -n 1 | eval $tac | peco --query "$LBUFFER" --prompt "HISTORY>")
+        CURSOR=$#BUFFER
+    }
+    zle -N peco-history
+    bindkey '^r' peco-history
 
-	# 履歴のインクリメンタルサーチ
-	peco-history() {
-	    local tac
-	    type tac &> /dev/null \
-	        && tac="tac" \
-	        || tac="tail -r"
-	    BUFFER=$(history -n 1 | eval $tac | peco --query "$LBUFFER" --prompt "HISTORY>")
-	    CURSOR=$#BUFFER
-	}
-	zle -N peco-history
-	bindkey '^r' peco-history
+    # ファイル選択
+    peco-path() {
+        local filepath="$(find . | grep -vE '[_\.]pyc|venv|node_modules|vendor\/bundle' | peco --prompt 'PATH>')"
+        [ -z "$filepath" ] && return
 
-
-	# ファイル選択
-	peco-path() {
-	    local filepath="$(find . | grep -vE '[_\.]pyc|venv|node_modules|vendor\/bundle' | peco --prompt 'PATH>')"
-	    [ -z "$filepath" ] && return
-
-	    if [ -d "$filepath" ]; then
-	      BUFFER="cd $filepath"
-	    elif [ -f "$filepath" ]; then
-	      BUFFER="$EDITOR $filepath"
-	    fi
-	    CURSOR=$#BUFFER
-	}
-	zle -N peco-path
-	bindkey '^f' peco-path
+        if [ -d "$filepath" ]; then
+          BUFFER="cd $filepath"
+        elif [ -f "$filepath" ]; then
+          BUFFER="$EDITOR $filepath"
+        fi
+        CURSOR=$#BUFFER
+    }
+    zle -N peco-path
+    bindkey '^f' peco-path
 
 
-	# SSHのホスト名選択
-	peco-ssh() {
-	    local SSH=$(grep "^\s*Host " ~/.ssh/config | sed s/"[\s ]*Host "// | grep -v "^\*$" | sort | peco --prompt "SSH>")
-	    [ -z "$SSH" ] && return
+    # SSHのホスト名選択
+    peco-ssh() {
+        local SSH=$(grep "^\s*Host " ~/.ssh/config | sed s/"[\s ]*Host "// | grep -v "^\*$" | sort | peco --prompt "SSH>")
+        [ -z "$SSH" ] && return
         if [ -n "$1" ];  then
             ssh  $1@$SSH
-	    else
-	        ssh $SSH
-	    fi
-	}
-	alias ss="peco-ssh"
+        else
+            ssh $SSH
+        fi
+    }
+    alias ss="peco-ssh"
 
     # Docker Imageの選択
     peco-docker-images() {
@@ -182,7 +180,6 @@ if exist_command peco; then
       BUFFER="$LBUFFER$images$RBUFFER"
       CURSOR=$#BUFFER
     }
-
     zle -N peco-docker-images
     bindkey '^x^i' peco-docker-images
 
@@ -193,11 +190,11 @@ if exist_command peco; then
       BUFFER="$LBUFFER$containers$RBUFFER"
       CURSOR=$#BUFFER
     }
-
     zle -N peco-docker-containers
     bindkey '^x^n' peco-docker-containers
 
     if exist_command gcloud; then
+
         peco_gcp_config() {
             gcloud config configurations activate $(gcloud config configurations list | awk '{print $1}' | grep -v NAME | peco)
         }
