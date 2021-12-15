@@ -196,6 +196,13 @@ if exist_command peco; then
 
     zle -N peco-docker-containers
     bindkey '^x^n' peco-docker-containers
+
+    if exist_command gcloud; then
+        peco_gcp_config() {
+            gcloud config configurations activate $(gcloud config configurations list | awk '{print $1}' | grep -v NAME | peco)
+        }
+        alias chgcp="peco_gcp_config"
+    fi
 fi
 
 
