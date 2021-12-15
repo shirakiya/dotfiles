@@ -3,7 +3,7 @@
 # ------------------------------
 
 # show cpan module version
-pmver () {
+pmver() {
     do_cd=;
     if [ "$1" = '-cd' ]; then
         do_cd=1;
@@ -106,7 +106,7 @@ urldecode() {
 if exist_command peco; then
 
     # ブランチ選択
-    peco-branch () {
+    peco-branch() {
         local branch=$(git branch | peco | tr -d ' ' | tr -d '*')
         if [ -n "$branch" ]; then
           if [ -n "$LBUFFER" ]; then
@@ -122,7 +122,7 @@ if exist_command peco; then
     bindkey '^b' peco-branch
 
     # ghqによるリポジトリ一覧&移動
-    peco-src () {
+    peco-src() {
         local selected_dir=$(ghq list --full-path | sort | peco --query "$LBUFFER" --prompt "GHQ>")
         if [ -n "$selected_dir" ]; then
             BUFFER="cd ${selected_dir}"
