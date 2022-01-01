@@ -6,7 +6,7 @@
 // });
 //
 // an example to replace `T` with `gt`, click `Default mappings` to see how `T` works.
-map('gt', 'T');
+// map('gt', 'T');
 //
 // // an example to remove mapkey `Ctrl-i`
 // unmap('<Ctrl-i>');
