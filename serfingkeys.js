@@ -51,4 +51,4 @@
 // }`;
 // // click `Save` button to make above settings to take effect.
 
-settings.blacklistPattern = /.*mail.google.com.*|http\:.*localhost.*/
+settings.blocklistPattern = /.*mail.google.com.*|http\:.*localhost.*/
