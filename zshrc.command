@@ -107,7 +107,7 @@ if exist_command peco; then
 
     # ブランチ選択
     peco-branch() {
-        local branch=$(git branch | peco | tr -d ' ' | tr -d '*')
+        local branch=$(git branch | peco --prompt "BRANCH>" | tr -d ' ' | tr -d '*' | awk '{print $0}' ORS=' ')
         if [ -n "$branch" ]; then
           if [ -n "$LBUFFER" ]; then
             local new_left="${LBUFFER%\ } $branch"
