@@ -71,6 +71,12 @@ if [[ `uname` == 'Darwin' ]]; then
         export CLOUDSDK_PYTHON=$HOME/.pyenv/versions/3.8.12/bin/python
     fi
 
+    # for openjdk
+    if [[ -d "${HOMEBREW_DIR}/opt/openjdk/bin" ]]; then
+        export PATH="${HOMEBREW_DIR}/opt/openjdk/bin:$PATH"
+        export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
+    fi
+
     # for mysql-client
     if [[ -d "${HOMEBREW_DIR}/opt/mysql-client/bin" ]]; then
         export PATH="${HOMEBREW_DIR}/opt/mysql-client/bin:$PATH"
