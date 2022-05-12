@@ -160,27 +160,21 @@ exist_command() {
 autoload -Uz vcs_info
 setopt prompt_subst
 zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:*' formats "[%b]"
-zstyle ':vcs_info:*' actionformats "[%b|%a]"
+zstyle ':vcs_info:git:*' stagedstr "!"
+zstyle ':vcs_info:git:*' unstagedstr "+"
+zstyle ':vcs_info:*' formats "[%b%c%u]"
+zstyle ':vcs_info:*' actionformats "[%b%c%u|%a]"
 
 precmd() {
     psvar=()
-    LANG=en_US.UTF-8 vcs_info
+    LANG=en_U.UTF-8 vcs_info
     psvar[1]="$vcs_info_msg_0_"
 }
 
-local p_git="%1v"
+local p_info="%F{green}[%n@%m${WINDOW:+"($WINDOW)"}]%f"
 local p_cdir="%B%F{yellow}(%~)%f%b"
+local p_git="%1v"
 local p_mark="%(?,%F{green},%F{red})%(!,#,$)%f"
-
-case ${OSTYPE} in
-    darwin*)
-        local p_info="%F{green}[%n@%m${WINDOW:+"($WINDOW)"}]%f"
-        ;;
-    *)
-        local p_info="%F{cyan}[%n@%m${WINDOW:+"($WINDOW)"}]%f"
-        ;;
-esac
 
 PROMPT="$p_info $p_cdir $p_git
 $p_mark "
