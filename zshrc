@@ -165,18 +165,30 @@ zstyle ':vcs_info:git:*' unstagedstr "+"
 zstyle ':vcs_info:*' formats "[%b%c%u]"
 zstyle ':vcs_info:*' actionformats "[%b%c%u|%a]"
 
+load_current_gcp_config() {
+  local config_path="$HOME/.config/gcloud/active_config"
+  if [ -f $config_path ]; then
+    GCP_PROFILE=$(cat $config_path)
+  fi
+}
+
 precmd() {
     psvar=()
+
     LANG=en_U.UTF-8 vcs_info
     psvar[1]="$vcs_info_msg_0_"
+
+    load_current_gcp_config
+    psvar[2]=$GCP_PROFILE
 }
 
 local p_info="%F{green}[%n@%m${WINDOW:+"($WINDOW)"}]%f"
 local p_cdir="%B%F{yellow}(%~)%f%b"
 local p_git="%1v"
+local p_gcp="[gcp:%2v]"
 local p_mark="%(?,%F{green},%F{red})%(!,#,$)%f"
 
-PROMPT="$p_info $p_cdir $p_git
+PROMPT="$p_info $p_cdir $p_git$p_gcp
 $p_mark "
 RPROMPT=""
 SPROMPT="'%r' is correct? ([n]o, [y]es, [a]bort, [e]dit):"
