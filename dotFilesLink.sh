@@ -57,6 +57,17 @@ setup_peco() {
   make_ln peco_config.json $PECO_DIR/config.json
 }
 
+setup_karabiner() {
+  KARABINER_DIR=$HOME/.config/karabiner
+  COMPLEX_MODIFICATIONS=$HOME/.config/karabiner/assets/complex_modifications
+
+  check_and_mkdir $KARABINER_DIR
+  check_and_mkdir $COMPLEX_MODIFICATIONS
+
+  make_ln karabiner/karabiner.json $KARABINER_DIR/karabiner.json
+  make_ln karabiner/assets/complex_modifications/1659331752.json $COMPLEX_MODIFICATIONS/1659331752.json
+}
+
 make_dotfile_ln zprofile
 make_dotfile_ln zshenv
 make_dotfile_ln zshrc
@@ -74,3 +85,4 @@ make_dotfile_ln isort.cfg
 setup_vim
 setup_neovim
 setup_peco
+setup_karabiner
