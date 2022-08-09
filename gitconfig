@@ -2,7 +2,7 @@
     name = shirakiya
     email = shirakiya.pv@gmail.com
 [core]
-    editor = vim -c \"set fenc=utf-8\"
+    editor = nvim
     excludesFile = ~/.gitignore
     pager = delta
 [pull]
