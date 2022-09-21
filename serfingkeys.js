@@ -51,4 +51,4 @@
 // }`;
 // // click `Save` button to make above settings to take effect.
 
-settings.blocklistPattern = /.*mail.google.com.*|http\:.*localhost.*/
+settings.blocklistPattern = /.*mail.google.com.*|http\:.*localhost.*|https\:.*\.atlassian.net/
