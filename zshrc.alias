@@ -90,6 +90,9 @@ alias gcp="git cherry-pick"
 alias gbm="git blame"
 alias grp="git remote prune origin"
 
+# GitHub CLI
+alias gprc="gh pr create --web"
+
 # Docker
 alias d="docker"
 alias dcp="docker compose"
