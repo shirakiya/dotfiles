@@ -194,11 +194,21 @@ if exist_command peco; then
     bindkey '^x^n' peco-docker-containers
 
     if exist_command gcloud; then
-
-        peco_gcp_config() {
+        peco-gcp-config() {
             gcloud config configurations activate $(gcloud config configurations list | awk '{print $1}' | grep -v NAME | peco)
         }
-        alias chgcp="peco_gcp_config"
+        alias chgcp="peco-gcp-config"
+    fi
+
+    if exist_command aws; then
+        peco-aws-profile() {
+            local profile=$(aws configure list-profiles | sort | peco --prompt 'AWS PROFILE>' | tr '\n' ' ')
+            [ -z $profile ] && return
+            BUFFER="$LBUFFER$profile$RBUFFER"
+            CURSOR=$#BUFFER
+        }
+        zle -N peco-aws-profile
+        bindkey '^x^a' peco-aws-profile
     fi
 fi
 
