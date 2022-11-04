@@ -200,16 +200,19 @@ if exist_command peco; then
         alias chgcp="peco-gcp-config"
     fi
 
-    if exist_command aws; then
-        peco-aws-profile() {
-            local profile=$(aws configure list-profiles | sort | peco --prompt 'AWS PROFILE>' | tr '\n' ' ')
-            [ -z $profile ] && return
-            BUFFER="$LBUFFER$profile$RBUFFER"
-            CURSOR=$#BUFFER
-        }
-        zle -N peco-aws-profile
-        bindkey '^x^a' peco-aws-profile
-    fi
+    # AWS
+    peco-aws-profile() {
+        local profile=$(aws configure list-profiles | sort | peco --prompt 'AWS PROFILE>' | tr '\n' ' ')
+        [ -z $profile ] && return
+        BUFFER="$LBUFFER$profile$RBUFFER"
+        CURSOR=$#BUFFER
+    }
+    zle -N peco-aws-profile
+    bindkey '^x^a' peco-aws-profile
+
+    awslogin() {
+        aws sso login --profile $(aws configure list-profiles | sort | peco --select-1 --prompt 'AWS PROFILE>')
+    }
 fi
 
 
