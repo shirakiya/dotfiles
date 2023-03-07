@@ -147,7 +147,7 @@ if exist_command peco; then
 
     # ファイル選択
     peco-path() {
-        local filepath="$(find . | grep -vE '[_\.]pyc|venv|node_modules|vendor\/bundle' | peco --prompt 'PATH>')"
+        local filepath=$(find . | grep -vE '[_\.]pyc|venv|node_modules|vendor\/bundle|\.git' | peco --prompt 'PATH>')
         [ -z "$filepath" ] && return
 
         if [ -d "$filepath" ]; then
@@ -159,7 +159,6 @@ if exist_command peco; then
     }
     zle -N peco-path
     bindkey '^f' peco-path
-
 
     # SSHのホスト名選択
     peco-ssh() {
@@ -175,44 +174,59 @@ if exist_command peco; then
 
     # Docker Imageの選択
     peco-docker-images() {
-      local images="$(docker images | tail +2 | sort | peco --prompt 'DOCKER IMAGES>' | awk '{print $3}' ORS=' ')"
-      [ -z "$images" ] && return
-      BUFFER="$LBUFFER$images$RBUFFER"
-      CURSOR=$#BUFFER
+        local images=$(docker images | tail +2 | sort | peco --prompt 'DOCKER IMAGES>' | awk '{print $3}' ORS=' ')
+        [ -z "$images" ] && return
+        BUFFER="$LBUFFER$images$RBUFFER"
+        CURSOR=$#BUFFER
     }
     zle -N peco-docker-images
     bindkey '^x^i' peco-docker-images
 
     # Docker Containerの選択
     peco-docker-containers() {
-      local containers="$(docker ps -a | tail +2 | sort | peco --prompt 'DOCKER CONTAINERS>' | awk '{print $1}' ORS=' ')"
-      [ -z "$containers" ] && return
-      BUFFER="$LBUFFER$containers$RBUFFER"
-      CURSOR=$#BUFFER
+        local containers=$(docker ps -a | tail +2 | sort | peco --prompt 'DOCKER CONTAINERS>' | awk '{print $1}' ORS=' ')
+        [ -z "$containers" ] && return
+        BUFFER="$LBUFFER$containers$RBUFFER"
+        CURSOR=$#BUFFER
     }
     zle -N peco-docker-containers
     bindkey '^x^n' peco-docker-containers
 
     # Kubernetes
     peco-kubectl-context() {
-        local context=$(kubectl config get-contexts | peco --initial-index=1 --prompt='kubectl context>' |  sed -e 's/^\*//' | awk '{print $1}')
+        local context=$(kubectl config get-contexts | peco --prompt='kubectl context>' --initial-index=1 |  sed -e 's/^\*//' | awk '{print $1}')
         [ -z $context ] && return
-
         kubectl config use-context $context
     }
+    zle -N peco-kubectl-context
     bindkey '^x^k' peco-kubectl-context
     alias kctx="peco-kubectl-context"
 
     # GCP
-    peco-gcp-config() {
-        gcloud config configurations activate $(gcloud config configurations list | awk '{print $1}' | grep -v NAME | peco)
+    _peco-gcp-config() {
+        gcloud config configurations list | awk '{print $1}' | grep -v NAME | peco --prompt='GCP CONFIG>'
     }
+    peco-gcp-config() {
+        local config=$(_peco-gcp-config)
+        [ -z $config ] && return
+        BUFFER="$LBUFFER$config$RBUFFER"
+        CURSOR=$#BUFFER
+    }
+    zle -N peco-gcp-config
     bindkey '^x^g' peco-gcp-config
-    alias chgcp="peco-gcp-config"
+
+    chgcp() {
+        local config=$(_peco-gcp-config)
+        [ -z $config ] && return
+        gcloud config configurations activate $config
+    }
 
     # AWS
+    _peco-aws-profile() {
+        aws configure list-profiles | sort | peco --prompt 'AWS PROFILE>' | tr '\n' ' '
+    }
     peco-aws-profile() {
-        local profile=$(aws configure list-profiles | sort | peco --prompt 'AWS PROFILE>' | tr '\n' ' ')
+        local profile=$(_peco-aws-profile)
         [ -z $profile ] && return
         BUFFER="$LBUFFER$profile$RBUFFER"
         CURSOR=$#BUFFER
@@ -221,7 +235,9 @@ if exist_command peco; then
     bindkey '^x^a' peco-aws-profile
 
     awslogin() {
-        aws sso login --profile $(aws configure list-profiles | sort | peco --select-1 --prompt 'AWS PROFILE>')
+        local profile=$(_peco-aws-profile)
+        [ -z $profile ] && return
+        aws sso login --profile $profile
     }
 fi
 
