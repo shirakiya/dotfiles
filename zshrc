@@ -144,7 +144,7 @@ compctl -K _pip_completion pip
 
 
 exist_command() {
-    if which $1 > /dev/null; then
+    if [[ $commands[$1] ]]; then
         return 0
     else
         return 1
