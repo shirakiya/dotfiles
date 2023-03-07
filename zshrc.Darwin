@@ -24,6 +24,9 @@ fi
 # export CXX=g++-5
 
 if exist_command direnv; then
-    # for direnv
     eval "$(direnv hook zsh)"
+fi
+
+if exist_command kubectl; then
+    eval "$(kubectl completion zsh)"
 fi
