@@ -193,12 +193,22 @@ if exist_command peco; then
     zle -N peco-docker-containers
     bindkey '^x^n' peco-docker-containers
 
-    if exist_command gcloud; then
-        peco-gcp-config() {
-            gcloud config configurations activate $(gcloud config configurations list | awk '{print $1}' | grep -v NAME | peco)
-        }
-        alias chgcp="peco-gcp-config"
-    fi
+    # Kubernetes
+    peco-kubectl-context() {
+        local context=$(kubectl config get-contexts | peco --initial-index=1 --prompt='kubectl context>' |  sed -e 's/^\*//' | awk '{print $1}')
+        [ -z $context ] && return
+
+        kubectl config use-context $context
+    }
+    bindkey '^x^k' peco-kubectl-context
+    alias kctx="peco-kubectl-context"
+
+    # GCP
+    peco-gcp-config() {
+        gcloud config configurations activate $(gcloud config configurations list | awk '{print $1}' | grep -v NAME | peco)
+    }
+    bindkey '^x^g' peco-gcp-config
+    alias chgcp="peco-gcp-config"
 
     # AWS
     peco-aws-profile() {
