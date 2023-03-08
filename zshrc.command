@@ -223,12 +223,12 @@ if exist_command peco; then
 
     # AWS
     _peco-aws-profile() {
-        aws configure list-profiles | sort | peco --prompt 'AWS PROFILE>' | tr '\n' ' '
+        aws configure list-profiles | sort | peco --prompt 'AWS PROFILE>'
     }
     peco-aws-profile() {
         local profile=$(_peco-aws-profile)
         [ -z $profile ] && return
-        BUFFER="$LBUFFER$profile$RBUFFER"
+        BUFFER="$LBUFFER$profile $RBUFFER"
         CURSOR=$#BUFFER
     }
     zle -N peco-aws-profile
