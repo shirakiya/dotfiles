@@ -237,6 +237,7 @@ if exist_command peco; then
     awslogin() {
         local profile=$(_peco-aws-profile)
         [ -z $profile ] && return
+        echo "Attempt SSO login to $profile"
         aws sso login --profile $profile
     }
 fi
