@@ -63,8 +63,8 @@ if [[ `uname` == 'Darwin' ]]; then
     if exist_command gcloud; then
         # The gcloud CLI depends on Python. It recommends Pythoon version as 3.5~3.8.
         # ref.) `$ gcloud topic startup`
-        source $HOMEBREW_DIR/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
-        source $HOMEBREW_DIR/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+        source "$HOMEBREW_DIR/share/google-cloud-sdk/path.zsh.inc"
+        source "$HOMEBREW_DIR/share/google-cloud-sdk/completion.zsh.inc"
     fi
 
     # for openjdk
