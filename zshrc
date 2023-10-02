@@ -93,7 +93,7 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # zsh-completions
 # compinit の実行よりも前に記述する
 if [ -e ${HOMEBREW_DIR}/share/zsh-completions ]; then
-    fpath=(${HOMEBREW_DIR}/share/zsh-completions $fpath)
+    FPATH=${HOMEBREW_DIR}/share/zsh-completions:$FPATH
 fi
 
 # 補完機能を有効にする
