@@ -30,8 +30,6 @@
     allowed = AKIAIOSFODNN7EXAMPLE
     allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 	patterns = (A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
-	patterns = private_key
-	patterns = private_key_id
 [delta]
     line-numbers = true
     plus-style = syntax "#012800"
@@ -39,3 +37,5 @@
     theme = "Monokai Extended"
 [init]
 	templateDir = /Users/shirakiya/.git-templates/git-secrets
+[url "ssh://git@github.com"]
+	insteadOf = https://github.com
