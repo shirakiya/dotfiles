@@ -67,6 +67,10 @@ if [[ `uname` == 'Darwin' ]]; then
         source "$HOMEBREW_DIR/share/google-cloud-sdk/completion.zsh.inc"
     fi
 
+    if exist_command ngrok; then
+        eval "$(ngrok completion)"
+    fi
+
     # for openjdk
     if [[ -d "${HOMEBREW_DIR}/opt/openjdk/bin" ]]; then
         export PATH="${HOMEBREW_DIR}/opt/openjdk/bin:$PATH"
@@ -88,7 +92,6 @@ if [[ `uname` == 'Darwin' ]]; then
         export PATH="$HOME/flutter/bin/cache/dart-sdk/bin:$PATH"
         export PATH="$HOME/flutter/.pub-cache/bin:$PATH"
     fi
-
 elif [[ `uname` == 'Linux' ]]; then
     # for rbenv
     if which rbenv > /dev/null; then
