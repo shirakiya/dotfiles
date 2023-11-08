@@ -6,7 +6,7 @@
     excludesFile = ~/.gitignore
     pager = delta
 [pull]
-	rebase = false
+    rebase = false
 [fetch]
     prune = true
 [interactive]
@@ -29,13 +29,13 @@
     patterns = (\"|')?(AWS|aws|Aws)?_?(ACCOUNT|account|Account)_?(ID|id|Id)?(\"|')?\\s*(:|=>|=)\\s*(\"|')?[0-9]{4}\\-?[0-9]{4}\\-?[0-9]{4}(\"|')?
     allowed = AKIAIOSFODNN7EXAMPLE
     allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
-	patterns = (A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
-	patterns = private_key
-	patterns = private_key_id
+    patterns = (A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
 [delta]
     line-numbers = true
     plus-style = syntax "#012800"
     minus-style = syntax "#340001"
     theme = "Monokai Extended"
 [init]
-	templateDir = /Users/shirakiya/.git-templates/git-secrets
+    templateDir = /Users/shirakiya/.git-templates/git-secrets
+[url "ssh://git@github.com"]
+    insteadOf = https://github.com
