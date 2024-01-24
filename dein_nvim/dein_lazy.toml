@@ -12,7 +12,7 @@ hook_add = '''
 
   " ref.) https://github.com/zchee/deoplete-jedi/wiki/Setting-up-Python-for-Neovim
 
-  let s:python3_path = expand('~/.pyenv/versions/neovim3/bin/python')
+  let s:python3_path = expand('~/.pyenv/versions/neovim/bin/python')
   if filereadable(s:python3_path)
     let g:python3_host_prog = s:python3_path
   endif
@@ -23,7 +23,7 @@ repo     = 'deoplete-plugins/deoplete-jedi'
 on_ft    = ['python', 'python3', 'djangohtml']
 hook_add = '''
   let g:deoplete#sources#jedi#show_docstring = 0
-  let g:deoplete#sources#jedi#python_path = expand('~/.pyenv/versions/neovim3/bin/python')
+  let g:deoplete#sources#jedi#python_path = expand('~/.pyenv/versions/neovim/bin/python')
 '''
 
 [[plugins]]
