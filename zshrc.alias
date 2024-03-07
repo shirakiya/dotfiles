@@ -79,7 +79,9 @@ alias glgs="git log --stat"
 alias glgo="git log --no-merges --date=short --pretty='format:%C(yellow)%h %C(green)%cd %C(blue)%an%C(red)%d %C(reset)%s'"
 alias glgg="git log --graph --name-status --pretty='format:%C(red)%h %C(green)%an %Creset%s %C(yellow)%d%Creset'"
 alias glgd="git log --diff-filter=D --summary"
-alias glgG="git log -p -G"
+alias glgG="git log -p -G" # search commit histories with file filtering
+alias glgS="git log -p -S" # search commit histories with word filtering
+alias glgb="git log --first-parent"
 alias ggr="git grep -In"
 alias gmv="git mv"
 alias grm="git rm"
