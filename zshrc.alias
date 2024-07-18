@@ -138,3 +138,6 @@ alias aws_completer="${HOMEBREW_DIR}/bin/aws_completer"
 # treeの出力をマルチバイトなファイル名などに対応する
 alias tree='tree -N'
 alias assumer='. ~/._assumer'
+
+# VS Code
+alias vs="code ."
