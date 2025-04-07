@@ -89,9 +89,6 @@ set formatoptions=lmoq
 " ビープ音 ビジュアルベルを使用しない
 set vb t_vb=
 
-" ファイルブラウザの初期ディレクトリ
-set browsedir=buffer
-
 " コマンド (の一部) を画面の最下行に表示する
 set showcmd
 
