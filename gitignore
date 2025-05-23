@@ -3,4 +3,7 @@
 .envrc
 .node-version
 .python-version
+.vscode/settings.json
+.vscode/launch.json
 misc
+go.work*
