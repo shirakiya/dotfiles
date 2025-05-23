@@ -71,6 +71,12 @@ if [[ `uname` == 'Darwin' ]]; then
         eval "$(ngrok completion)"
     fi
 
+    if exist_command gh; then
+        if gh auth status 1>/dev/null 2>&1; then
+            export GITHUB_TOKEN=$(gh auth token)
+        fi
+    fi
+
     # for openjdk
     if [[ -d "${HOMEBREW_DIR}/opt/openjdk/bin" ]]; then
         export PATH="${HOMEBREW_DIR}/opt/openjdk/bin:$PATH"
