@@ -1,14 +1,5 @@
 # `$HOME/.zprofile` is read only once by using login shell.
 
-
-exist_command() {
-    if command -v $1 > /dev/null; then
-        return 0
-    else
-        return 1
-    fi
-}
-
 if [[ `uname` == 'Darwin' ]]; then
     export EDITOR='vim'
 
@@ -69,12 +60,6 @@ if [[ `uname` == 'Darwin' ]]; then
 
     if exist_command ngrok; then
         eval "$(ngrok completion)"
-    fi
-
-    if exist_command gh; then
-        if gh auth status 1>/dev/null 2>&1; then
-            export GITHUB_TOKEN=$(gh auth token)
-        fi
     fi
 
     # for openjdk
