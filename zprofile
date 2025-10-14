@@ -73,11 +73,6 @@ if [[ `uname` == 'Darwin' ]]; then
         export PATH="${HOMEBREW_DIR}/opt/mysql-client/bin:$PATH"
     fi
 
-    # for openssl (via Homebrew)
-    if [[ -d "${HOMEBREW_DIR}/opt/openssl@1.1/bin" ]]; then
-        export PATH="${HOMEBREW_DIR}/opt/openssl@1.1/bin:$PATH"
-    fi
-
     if [ -d ~/flutter/bin ]; then
         export PATH="$HOME/flutter/bin:$PATH"
         export PATH="$HOME/flutter/bin/cache/dart-sdk/bin:$PATH"
