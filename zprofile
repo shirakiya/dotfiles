@@ -1,15 +1,4 @@
 # `$HOME/.zprofile` is read only once by using login shell.
-zmodload zsh/datetime
-__zprofile_start=$EPOCHREALTIME
-
-printtime() {
-    name=$1
-    base_time=$__zprofile_start
-    if [[ -n $__zprofile_start ]]; then
-        now=$EPOCHREALTIME
-        echo "$name: $(($now - $base_time))s"
-    fi
-}
 
 if [[ `uname` == 'Darwin' ]]; then
     export EDITOR='vim'
@@ -33,8 +22,6 @@ if [[ `uname` == 'Darwin' ]]; then
     export GOPATH=$HOME/ghq
     export PATH=$HOME/ghq/bin:$PATH
 
-    printtime "homebrew"
-
     # for pyenv path
     # https://github.com/yyuu/pyenv
     if exist_command pyenv; then
@@ -44,8 +31,6 @@ if [[ `uname` == 'Darwin' ]]; then
         eval "$(pyenv virtualenv-init -)"
     fi
 
-    printtime "pyenv"
-
     # for Pipenv
     export PIPENV_VENV_IN_PROJECT=true
 
@@ -54,20 +39,17 @@ if [[ `uname` == 'Darwin' ]]; then
     if exist_command plenv; then
         eval "$(plenv init -)"
     fi
-    printtime "plenv"
 
     # for rbenv
     # https://github.com/sstephenson/rbenv#basic-github-checkout
     if exist_command rbenv; then
         eval "$(rbenv init - --no-rehash)";
     fi
-    printtime "rbenv"
 
     # for ndenv
     if exist_command nodenv; then
         eval "$(nodenv init -)"
     fi
-    printtime "nodenv"
 
     if exist_command gcloud; then
         # The gcloud CLI depends on Python. It recommends Pythoon version as 3.5~3.8.
@@ -75,12 +57,10 @@ if [[ `uname` == 'Darwin' ]]; then
         source "$HOMEBREW_DIR/share/google-cloud-sdk/path.zsh.inc"
         source "$HOMEBREW_DIR/share/google-cloud-sdk/completion.zsh.inc"
     fi
-    printtime "gcloud"
 
     if exist_command ngrok; then
         eval "$(ngrok completion)"
     fi
-    printtime "ngrok"
 
     # for openjdk
     if [[ -d "${HOMEBREW_DIR}/opt/openjdk/bin" ]]; then
@@ -110,5 +90,3 @@ elif [[ `uname` == 'Linux' ]]; then
         eval "$(rbenv init -)"
     fi
 fi
-
-printtime "whole zprofile"
