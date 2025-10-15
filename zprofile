@@ -1,5 +1,9 @@
 # `$HOME/.zprofile` is read only once by using login shell.
 
+# Initialization for completion due to compdef in the following evals.
+autoload -Uz compinit
+compinit -C
+
 if [[ `uname` == 'Darwin' ]]; then
     export EDITOR='vim'
 

@@ -100,8 +100,11 @@ if [ -e ${HOMEBREW_DIR}/share/zsh-completions ]; then
 fi
 
 # 補完機能を有効にする
-autoload -Uz compinit
-compinit -C
+# 初期化済みでなければ実行（非ログインシェル対応）
+if (( ! $+functions[compdef] )); then
+    autoload -Uz compinit
+    compinit -C
+fi
 
 # 補完候補を一覧で表示する
 setopt auto_list

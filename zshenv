@@ -8,7 +8,6 @@ exist_command() {
     fi
 }
 
-
 if exist_command gh; then
     if gh auth status 1>/dev/null 2>&1; then
         export GITHUB_TOKEN=$(gh auth token)
