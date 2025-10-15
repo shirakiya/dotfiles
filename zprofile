@@ -39,10 +39,9 @@ if [[ `uname` == 'Darwin' ]]; then
   export PIPENV_VENV_IN_PROJECT=true
 
   # for plenv
-  # https://github.com/tokuhirom/plenv#basic-github-checkout
-  if exist_command plenv; then
-    eval "$(plenv init -)"
-  fi
+  # if exist_command plenv; then
+  #   eval "$(plenv init - zsh)"
+  # fi
 
   # for rbenv
   # https://github.com/sstephenson/rbenv#basic-github-checkout
