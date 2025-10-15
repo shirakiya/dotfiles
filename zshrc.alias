@@ -15,13 +15,13 @@ alias ex="exit"
 alias cdp="cd ~/Dropbox/engineering/practice/"
 
 if exist_command ccat; then
-    alias cat="ccat"
+  alias cat="ccat"
 fi
 
 if exist_command colordiff; then
-    alias diff="colordiff -Nru"
+  alias diff="colordiff -Nru"
 else
-    alias diff="diff -Nru"
+  alias diff="diff -Nru"
 fi
 
 alias uuid="python -c 'import uuid; print(uuid.uuid4())'"

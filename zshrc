@@ -96,14 +96,14 @@ autoload -Uz bashcompinit && bashcompinit
 # zsh-completions
 # compinit の実行よりも前に記述する
 if [ -e ${HOMEBREW_DIR}/share/zsh-completions ]; then
-    FPATH=${HOMEBREW_DIR}/share/zsh-completions:$FPATH
+  FPATH=${HOMEBREW_DIR}/share/zsh-completions:$FPATH
 fi
 
 # 補完機能を有効にする
 # 初期化済みでなければ実行（非ログインシェル対応）
 if (( ! $+functions[compdef] )); then
-    autoload -Uz compinit
-    compinit -C
+  autoload -Uz compinit
+  compinit -C
 fi
 
 # 補完候補を一覧で表示する
@@ -142,19 +142,19 @@ _pip_completion() {
   read -Ac words
   read -cn cword
   reply=( $( COMP_WORDS="$words[*]" \
-             COMP_CWORD=$(( cword-1 )) \
-             PIP_AUTO_COMPLETE=1 $words[1] ) )
+           COMP_CWORD=$(( cword-1 )) \
+           PIP_AUTO_COMPLETE=1 $words[1] ) )
 }
 compctl -K _pip_completion pip
 # pip zsh completion end
 
 
 exist_command() {
-    if [[ $commands[$1] ]]; then
-        return 0
-    else
-        return 1
-    fi
+  if [[ $commands[$1] ]]; then
+    return 0
+  else
+    return 1
+  fi
 }
 
 
@@ -179,13 +179,13 @@ load_current_gcp_config() {
 }
 
 precmd() {
-    psvar=()
+  psvar=()
 
-    LANG=en_U.UTF-8 vcs_info
-    psvar[1]="$vcs_info_msg_0_"
+  LANG=en_U.UTF-8 vcs_info
+  psvar[1]="$vcs_info_msg_0_"
 
-    load_current_gcp_config
-    psvar[2]=$GCP_PROFILE
+  load_current_gcp_config
+  psvar[2]=$GCP_PROFILE
 }
 
 local p_info="%F{green}[%n@%m${WINDOW:+"($WINDOW)"}]%f"
@@ -205,13 +205,13 @@ SPROMPT="'%r' is correct? ([n]o, [y]es, [a]bort, [e]dit):"
 # ------------------------------
 
 if [[ ! -f ${HOME}/.zprofile.zwc || ${HOME}/.zprofile -nt ${HOME}/.zprofile.zwc ]]; then
-   zcompile ~/.zprofile
+  zcompile ~/.zprofile
 fi
 if [[ ! -f ${HOME}/.zshenv.zwc || ${HOME}/.zshenv -nt ${HOME}/.zshenv.zwc ]]; then
-   zcompile ~/.zshenv
+  zcompile ~/.zshenv
 fi
 if [[ ! -f ${HOME}/.zshrc.zwc || ${HOME}/.zshrc -nt ${HOME}/.zshrc.zwc ]]; then
-   zcompile ~/.zshrc
+  zcompile ~/.zshrc
 fi
 
 
@@ -229,5 +229,5 @@ fi
 # iTerm2
 # ------------------------------
 if [[ -f ${HOME}/.iterm2_shell_integration.zsh ]]; then
-    source ${HOME}/.iterm2_shell_integration.zsh
+  source ${HOME}/.iterm2_shell_integration.zsh
 fi
