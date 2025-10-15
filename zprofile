@@ -1,24 +1,4 @@
 # `$HOME/.zprofile` is read only once by using login shell.
-zmodload zsh/datetime
-__zprofile_start=$EPOCHREALTIME
-
-printtime() {
-  name=$1
-  base_time=$__zprofile_start
-  if [[ -n $__zprofile_start ]]; then
-    now=$EPOCHREALTIME
-    echo "$name: $(($now - $base_time))s"
-  fi
-}
-
-# path_helper: 0.040494203567504883s
-# shellenv: 0.089651107788085938s
-# pyenv: 0.49128198623657227s
-# plenv: 0.57828903198242188s
-# rbenv: 0.67188501358032227s
-# nodenv: 0.86107110977172852s
-# ngrok: 0.9383690357208252s
-# zprofile: 0.93868517875671387s
 
 # Initialization for completion due to compdef in the following evals.
 autoload -Uz compinit
@@ -30,13 +10,11 @@ if [[ `uname` == 'Darwin' ]]; then
   if [ -x /usr/libexec/path_helper ]; then
     eval `/usr/libexec/path_helper -s`
   fi
-  printtime "path_helper"
 
   # for Homebrew
   if [[ -d "/opt/homebrew" ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
   fi
-  printtime "shellenv"
 
   export HOMEBREW_DIR=${HOMEBREW_PREFIX:-"/usr/local"}
 
@@ -56,29 +34,25 @@ if [[ `uname` == 'Darwin' ]]; then
   if exist_command pyenv-virtualenv-init; then
     eval "$(pyenv virtualenv-init -)"
   fi
-  printtime "pyenv"
 
   # for Pipenv
   export PIPENV_VENV_IN_PROJECT=true
 
   # for plenv
-  if exist_command plenv; then
-    eval "$(plenv init - zsh)"
-  fi
-  printtime "plenv"
+  # if exist_command plenv; then
+  #   eval "$(plenv init - zsh)"
+  # fi
 
   # for rbenv
   # https://github.com/sstephenson/rbenv#basic-github-checkout
   if exist_command rbenv; then
     eval "$(rbenv init - --no-rehash)";
   fi
-  printtime "rbenv"
 
   # for ndenv
   if exist_command nodenv; then
     eval "$(nodenv init -)"
   fi
-  printtime "nodenv"
 
   if exist_command gcloud; then
     export PATH="${HOMEBREW_DIR}/share/google-cloud-sdk/bin:$PATH"
@@ -87,7 +61,6 @@ if [[ `uname` == 'Darwin' ]]; then
   if exist_command ngrok; then
     eval "$(ngrok completion)"
   fi
-  printtime "ngrok"
 
   # for openjdk
   if [[ -d "${HOMEBREW_DIR}/opt/openjdk/bin" ]]; then
@@ -112,5 +85,3 @@ elif [[ `uname` == 'Linux' ]]; then
     eval "$(rbenv init -)"
   fi
 fi
-
-printtime "zprofile"
