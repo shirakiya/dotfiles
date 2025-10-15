@@ -52,10 +52,7 @@ if [[ `uname` == 'Darwin' ]]; then
     fi
 
     if exist_command gcloud; then
-        # The gcloud CLI depends on Python. It recommends Pythoon version as 3.5~3.8.
-        # ref.) `$ gcloud topic startup`
-        source "$HOMEBREW_DIR/share/google-cloud-sdk/path.zsh.inc"
-        source "$HOMEBREW_DIR/share/google-cloud-sdk/completion.zsh.inc"
+        export PATH="${HOMEBREW_DIR}/share/google-cloud-sdk/bin:$PATH"
     fi
 
     if exist_command ngrok; then
@@ -65,7 +62,7 @@ if [[ `uname` == 'Darwin' ]]; then
     # for openjdk
     if [[ -d "${HOMEBREW_DIR}/opt/openjdk/bin" ]]; then
         export PATH="${HOMEBREW_DIR}/opt/openjdk/bin:$PATH"
-        export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
+        export CPPFLAGS="-I${HOMEBREW_DIR}/opt/openjdk/include"
     fi
 
     # for mysql-client
