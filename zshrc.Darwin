@@ -27,5 +27,27 @@ if [ -f ${HOMEBREW_DIR}/bin/aws_completer ]; then
 fi
 
 if exist_command kubectl; then
-    eval "$(kubectl completion zsh)"
+    local ZSH_SITE_FUNCTIONS=${HOMEBREW_DIR}/share/zsh/site-functions
+    local KUBECTL_COMPLETION_FILE=${ZSH_SITE_FUNCTIONS}/_kubectl
+    local KUBECTL_VERSION_RAW=$(kubectl version --client 2>/dev/null | head -n1)
+    # "Client Version: v1.28.0" -> "client_v1.28.0"
+    local KUBECTL_VERSION=$(echo ${KUBECTL_VERSION_RAW} | tr 'A-Z ' 'a-z_' | tr -d ':')
+
+    local NEED_UPDATE=false
+    if [ ! -f ${KUBECTL_COMPLETION_FILE} ]; then
+        NEED_UPDATE=true
+    elif [ -n "${KUBECTL_VERSION}" ]; then
+        local VERSION_MARKER_FILE="${KUBECTL_COMPLETION_FILE}.version.${KUBECTL_VERSION}"
+        if [ ! -f ${VERSION_MARKER_FILE} ]; then
+            NEED_UPDATE=true
+        fi
+    fi
+
+    if [ "${NEED_UPDATE}" = true ]; then
+        kubectl completion zsh > ${KUBECTL_COMPLETION_FILE}
+        chmod +x ${KUBECTL_COMPLETION_FILE}
+        # rotate version marker files
+        rm -f ${KUBECTL_COMPLETION_FILE}.version.* 2>/dev/null
+        touch "${KUBECTL_COMPLETION_FILE}.version.${KUBECTL_VERSION}"
+    fi
 fi
