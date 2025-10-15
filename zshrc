@@ -90,6 +90,9 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # complement settings
 # ------------------------------
 
+# bash用に書かれた補完スクリプトをzshでも使えるようにする
+autoload -Uz bashcompinit && bashcompinit
+
 # zsh-completions
 # compinit の実行よりも前に記述する
 if [ -e ${HOMEBREW_DIR}/share/zsh-completions ]; then

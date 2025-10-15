@@ -14,17 +14,16 @@ fi
 export LESS="-R"
 export LESSOPEN="| ${HOMEBREW_DIR}/bin/src-hilite-lesspipe.sh %s"
 
-# enable zsh completion aws-cli
-if exist_command aws; then
-    source ${HOMEBREW_DIR}/share/zsh/site-functions/aws_zsh_completer.sh
-fi
-
 # export for xgboost
 # export CC=gcc-5
 # export CXX=g++-5
 
 if exist_command direnv; then
     eval "$(direnv hook zsh)"
+fi
+
+if [ -f ${HOMEBREW_DIR}/bin/aws_completer ]; then
+    complete -C "${HOMEBREW_DIR}/bin/aws_completer" aws
 fi
 
 if exist_command kubectl; then
