@@ -26,17 +26,21 @@ if [[ `uname` == 'Darwin' ]]; then
   export GOPATH=$HOME/ghq
   export PATH=$HOME/ghq/bin:$PATH
 
+  if exist_command mise; then
+    eval "$(mise activate zsh)"
+  fi
+
   # for pyenv path
-  if exist_command pyenv; then
-    export PYENV_ROOT="$HOME/.pyenv"
-    if [ -d $PYENV_ROOT/bin ]; then
-      export PATH="$PYENV_ROOT/bin:$PATH"
-    fi
-    eval "$(pyenv init - zsh)"
-  fi
-  if exist_command pyenv-virtualenv-init; then
-    eval "$(pyenv virtualenv-init -)"
-  fi
+  # if exist_command pyenv; then
+  #   export PYENV_ROOT="$HOME/.pyenv"
+  #   if [ -d $PYENV_ROOT/bin ]; then
+  #     export PATH="$PYENV_ROOT/bin:$PATH"
+  #   fi
+  #   eval "$(pyenv init - zsh)"
+  # fi
+  # if exist_command pyenv-virtualenv-init; then
+  #   eval "$(pyenv virtualenv-init -)"
+  # fi
 
   # for Pipenv
   export PIPENV_VENV_IN_PROJECT=true
@@ -47,14 +51,14 @@ if [[ `uname` == 'Darwin' ]]; then
   # fi
 
   # for rbenv
-  if exist_command rbenv; then
-    eval "$(rbenv init - zsh)"
-  fi
+  # if exist_command rbenv; then
+  #   eval "$(rbenv init - zsh)"
+  # fi
 
   # for ndenv
-  if exist_command nodenv; then
-    eval "$(nodenv init -)"
-  fi
+  # if exist_command nodenv; then
+  #   eval "$(nodenv init -)"
+  # fi
 
   if exist_command gcloud; then
     export PATH="${HOMEBREW_DIR}/share/google-cloud-sdk/bin:$PATH"

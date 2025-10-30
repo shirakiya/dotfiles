@@ -8,3 +8,4 @@
 misc
 go.work*
 .claude/settings.local.json
+mise.local.toml
