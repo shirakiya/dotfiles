@@ -68,6 +68,13 @@ setup_karabiner() {
   make_ln karabiner/assets/complex_modifications/1659331752.json $COMPLEX_MODIFICATIONS/1659331752.json
 }
 
+setup_mise() {
+  MISE_CONFIG_DIR=$HOME/.config/mise
+
+  check_and_mkdir $MISE_CONFIG_DIR
+  make_ln mise.toml $MISE_CONFIG_DIR/config.toml
+}
+
 make_dotfile_ln zprofile
 make_dotfile_ln zshenv
 make_dotfile_ln zshrc
@@ -86,3 +93,4 @@ setup_vim
 setup_neovim
 setup_peco
 setup_karabiner
+setup_mise
