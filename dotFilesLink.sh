@@ -4,24 +4,20 @@ set -eu
 
 DOTDIR=$HOME/dotfiles
 
-make_dotfile_ln() {
-  BASE_PATH=$DOTDIR/$1
-  TARGET_PATH=$HOME/.$1
-
-  if [ ! -e $TARGET_PATH ]; then
-    ln -s $BASE_PATH $TARGET_PATH
-    echo "create symlink to ${TARGET_PATH}"
-  fi
-}
-
 make_ln() {
   BASE_PATH=$DOTDIR/$1
   TARGET_PATH=$2
 
-  if [ ! -e $TARGET_PATH ]; then
+  if [ -e $TARGET_PATH ]; then
+    echo "already created symlink at $TARGET_PATH"
+  else
     ln -s $BASE_PATH $TARGET_PATH
     echo "create symlink to $TARGET_PATH"
   fi
+}
+
+make_dotfile_ln() {
+  make_ln $DOTDIR/$1 $HOME/.$1
 }
 
 check_and_mkdir() {
