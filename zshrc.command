@@ -190,7 +190,7 @@ if exist_command peco; then
 
   # Docker Imageの選択
   peco-docker-images() {
-    local images=$(docker images --format table | tail +2 | sort | peco --prompt 'DOCKER IMAGES>' | awk '{print $3}' ORS=' ')
+    local images=$(docker images --all --format table | tail +2 | sort | peco --prompt 'DOCKER IMAGES>' | awk '{print $3}' ORS=' ')
     [ -z "$images" ] && return
     BUFFER="$LBUFFER$images$RBUFFER"
     CURSOR=$#BUFFER
