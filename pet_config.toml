@@ -1,0 +1,12 @@
+[General]
+  snippetfile = "~/.config/pet/snippet.toml"
+  editor = "vim"
+  column = 40
+  selectcmd = "peco"
+  backend = "gist"
+  sortby  = "command"
+
+[Gist]
+  file_name = "pet-snippet.toml"
+  gist_id = "214e55c27e6cb0471ff2170dd4539b61"
+  public = true

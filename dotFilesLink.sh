@@ -71,6 +71,13 @@ setup_mise() {
   make_ln mise.toml $MISE_CONFIG_DIR/config.toml
 }
 
+setup_pet() {
+  PET_CONFIG_DIR=$HOME/.config/pet
+
+  check_and_mkdir $PET_CONFIG_DIR
+  make_ln pet_config.toml $PET_CONFIG_DIR/config.toml
+}
+
 make_dotfile_ln zprofile
 make_dotfile_ln zshenv
 make_dotfile_ln zshrc
@@ -90,3 +97,4 @@ setup_neovim
 setup_peco
 setup_karabiner
 setup_mise
+setup_pet
