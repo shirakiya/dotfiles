@@ -18,6 +18,12 @@ export LESSOPEN="| ${HOMEBREW_DIR}/bin/src-hilite-lesspipe.sh %s"
 # export CC=gcc-5
 # export CXX=g++-5
 
+if exist_command gh; then
+  if gh auth status 1>/dev/null 2>&1; then
+    export GITHUB_TOKEN=$(gh auth token)
+  fi
+fi
+
 if exist_command direnv; then
   eval "$(direnv hook zsh)"
 fi
