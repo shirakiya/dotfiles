@@ -1,5 +1,13 @@
 # `$HOME/.zprofile` is read only once by using login shell.
 
+exist_command() {
+  if command -v $1 > /dev/null; then
+    return 0
+  else
+    return 1
+  fi
+}
+
 # Initialization for completion due to compdef in the following evals.
 autoload -Uz compinit
 compinit -C
