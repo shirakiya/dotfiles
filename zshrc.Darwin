@@ -21,6 +21,11 @@ export LESSOPEN="| ${HOMEBREW_DIR}/bin/src-hilite-lesspipe.sh %s"
 if exist_command gh; then
   if gh auth status 1>/dev/null 2>&1; then
     export GITHUB_TOKEN=$(gh auth token)
+
+    # gist authentication for pet
+    if exist_command pet; then
+      export PET_GITHUB_ACCESS_TOKEN=$GITHUB_TOKEN
+    fi
   fi
 fi
 
