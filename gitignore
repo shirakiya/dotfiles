@@ -8,4 +8,5 @@
 misc
 go.work*
 .claude/settings.local.json
+.claude/worktrees
 mise.local.toml
