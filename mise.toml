@@ -1,7 +1,9 @@
 [tools]
-go = "1.26.0"
-node = "24.11.1"
+go = "1.26.1"
+node = "24.14.0"
+python = "3.14.3"
 ruby = "3.4.7"
+uv = "latest"
 
 [env]
 MISE_DEFAULT_CONFIG_FILENAME = "mise.local.toml"
