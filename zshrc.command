@@ -237,6 +237,22 @@ if exist_command peco; then
     gcloud config configurations activate $config
   }
 
+  # tmux: セッション選択
+  peco-tmux-session() {
+    local session=$(tmux ls 2>/dev/null | peco --prompt 'TMUX SESSION>' | awk -F: '{print $1}')
+    [ -z "$session" ] && return
+    local quoted="\"$session\""
+    if [ -n "$LBUFFER" ]; then
+      local new_left="${LBUFFER%\ } $quoted"
+    else
+      local new_left="$quoted"
+    fi
+    BUFFER=${new_left}${RBUFFER}
+    CURSOR=${#new_left}
+  }
+  zle -N peco-tmux-session
+  bindkey '^x^t' peco-tmux-session
+
   # AWS
   _peco-aws-profile() {
     aws configure list-profiles | sort | peco --prompt 'AWS PROFILE>'
