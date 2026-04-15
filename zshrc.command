@@ -2,6 +2,12 @@
 # Optional command settings
 # ------------------------------
 
+# XXX: nvim終了後にカーソル形状をiTerm2の設定(vertical+Blink)にリセットする(WORKAROUND)
+nvim() {
+  command nvim "$@"
+  printf '\e[5 q'
+}
+
 # show cpan module version
 pmver() {
   do_cd=;

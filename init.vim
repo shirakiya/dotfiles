@@ -50,11 +50,13 @@ endif
 " Basic
 "-------------------------------------------------
 
+" カーソル形状
+let &t_SI = "\e[5 q" " Insertモードで点滅I字型にする
+let &t_SR = "\e[4 q" " Replaceモードで下線にする
+let &t_EI = "\e[6 q" " ノーマル/コマンドモードで非点滅I字型にする
+
 " 行番号を表示する
 set number
-
-" カーソルの変更をしない
-set guicursor=
 
 " 検索の/
 set inccommand=split
