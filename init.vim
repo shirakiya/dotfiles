@@ -182,7 +182,6 @@ set re=1
 au BufRead,BufNewFile *.psgi set filetype=perl
 au BufRead,BufNewFile *.tx set filetype=html
 au BufRead,BufNewFile *.tt set filetype=html
-au BufRead,BufNewFile *.md set filetype=markdown
 au BufRead,BufNewFile nginx.conf set filetype=nginx
 au BufRead,BufNewFile td-agent.conf set filetype=fluentd
 au BufRead,BufNewFile *.toml set filetype=toml
@@ -242,6 +241,9 @@ if has("autocmd")
   autocmd FileType xml            setlocal sw=4 sts=4 ts=4 et
   autocmd FileType yaml           setlocal sw=2 sts=2 ts=2 et
   autocmd FileType zsh            setlocal sw=2 sts=2 ts=2 et
+
+  " 編集モードでのconceal機能をオフにする
+  autocmd FileType markdown setlocal conceallevel=0
 endif
 
 
