@@ -25,9 +25,9 @@ hook_add = '''
   let g:better_whitespace_enabled = 1
   let g:strip_whitespace_on_save = 1
   let g:strip_whitespace_confirm = 0
+  let g:better_whitespace_filetypes_blacklist = ['diff', 'git', 'gitcommit', 'unite', 'qf', 'help', 'fugitive']
 '''
 hook_post_source = '''
-  autocmd FileType markdown EnableWhitespace
   autocmd FileType markdown DisableStripWhitespaceOnSave
 '''
 
