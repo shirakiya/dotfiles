@@ -127,6 +127,22 @@ if exist_command peco; then
   zle -N peco-branch
   bindkey '^b' peco-branch
 
+  # Git: worktree選択
+  peco-worktree() {
+    local worktree=$(git worktree list | peco --prompt "WORKTREE>" | awk '{print $1}' ORS=' ')
+    if [ -n "$worktree" ]; then
+      if [ -n "$LBUFFER" ]; then
+        local new_left="${LBUFFER%\ } $worktree"
+      else
+        local new_left="$worktree"
+      fi
+      BUFFER=${new_left}${RBUFFER}
+      CURSOR=${#new_left}
+    fi
+  }
+  zle -N peco-worktree
+  bindkey '^x^w' peco-worktree
+
   # Git: コミット選択
   peco-git-log() {
     local commit=$(git log --date=short --pretty='format:%H %cd %an%d %s' | peco --prompt "COMMIT>" | awk '{print $1}' ORS=' ')
